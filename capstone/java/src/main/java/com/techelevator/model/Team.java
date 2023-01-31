@@ -12,15 +12,25 @@ public class Team {
     private boolean acceptingMembers;
     @JsonProperty("team_captain_id")
     private int teamCaptainId;
-    @JsonProperty("games_played")
-    private int gamesPlayed;
+    @JsonProperty("team_description")
+    private String teamDescription;
 
-    public Team(int teamId, String teamName, boolean acceptingMembers, int teamCaptainId, int gamesPlayed) {
+    public String getTeamDescription() {
+        return teamDescription;
+    }
+
+    public void setTeamDescription(String teamDescription) {
+        this.teamDescription = teamDescription;
+    }
+
+
+
+    public Team(int teamId, String teamName, boolean acceptingMembers, int teamCaptainId, String teamDescription) {
         this.teamId = teamId;
         this.teamName = teamName;
         this.acceptingMembers = acceptingMembers;
         this.teamCaptainId = teamCaptainId;
-        this.gamesPlayed = gamesPlayed;
+        this.teamDescription = teamDescription;
     }
 
     public int getTeamId() {
@@ -55,11 +65,5 @@ public class Team {
         this.teamCaptainId = teamCaptainId;
     }
 
-    public int getGamesPlayed() {
-        return gamesPlayed;
-    }
 
-    public void setGamesPlayed(int gamesPlayed) {
-        this.gamesPlayed = gamesPlayed;
-    }
 }
