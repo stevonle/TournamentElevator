@@ -4,5 +4,5 @@ import com.techelevator.model.Tournament;
 
 public interface TournamentDao {
 
-    Tournament createTournament(Tournament newTournament);
+    boolean create(Tournament tournament, int hostId);
 }
