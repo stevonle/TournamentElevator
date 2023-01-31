@@ -6,7 +6,7 @@
       type="text"
       placeholder="Team Name"
       id="teamNameInput"
-      v-model="team.team_name"
+      v-model="team.teamName"
     />
     Accepting New Members?
     <br>
@@ -14,7 +14,7 @@
       class="accepting-members-input"
       type="checkbox"
       placeholder="acceptingMembers"
-      v-model="team.accepting_members"
+      v-model="team.acceptingMembers"
     />
     <br>
     <label for="teamDescription" class='form-label'> Please enter team description </label>
@@ -32,9 +32,9 @@ export default {
   data() {
     return {
       team: {
-        team_name: "", 
-        accepting_members: false,
-        team_captain_id:"",
+        teamName: "", 
+        acceptingMembers: false,
+        teamCaptainId:"",
         teamDescription: "",
       },
     };
@@ -42,7 +42,7 @@ export default {
   methods: {
    async saveTeam() {
     const tempUser = this.$store.state.user
-    this.team.team_captain_id = tempUser.id;
+    this.team.teamCaptainId = tempUser.id;
       try {
         const response = await TournamentServices.addTeam(
           this.team
