@@ -17,6 +17,8 @@ public class Tournament {
     private String prize;
     private boolean completed;
 
+    public Tournament() {}
+
     public Tournament(int tournamentId, String name, LocalDate date, String location, BigDecimal fee, String description, String prize, boolean completed) {
         this.tournamentId = tournamentId;
         this.name = name;
