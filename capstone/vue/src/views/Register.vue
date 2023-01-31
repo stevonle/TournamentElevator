@@ -1,11 +1,12 @@
 <template>
-  <div id="register" class="text-center">
+  <div id="register" class="register-container">
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+      <br/>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <label for="username" class="sr-only">Username</label>
+      <label for="username" class="sr-only">Username:</label>
       <input
         type="text"
         id="username"
@@ -14,8 +15,8 @@
         v-model="user.username"
         required
         autofocus
-      />
-      <label for="password" class="sr-only">Password</label>
+      /> <br>
+      <label for="password" class="sr-only">Password:</label>
       <input
         type="password"
         id="password"
@@ -23,7 +24,8 @@
         placeholder="Password"
         v-model="user.password"
         required
-      />
+      /> <br>
+      <label for="confirmPassword" class="sr-only">Confirm Password:</label>
       <input
         type="password"
         id="confirmPassword"
@@ -31,9 +33,9 @@
         placeholder="Confirm Password"
         v-model="user.confirmPassword"
         required
-      />
+      /> <br>
       <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <button class="btn btn-md btn-primary btn-block" type="submit">
         Create Account
       </button>
     </form>
@@ -90,4 +92,24 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("/img/bg.jpg");
+    background-size: cover;
+    
+  
+}
+</style>
+
+<style scoped>
+.register-container {
+  color: orange;
+  margin: 30px auto;
+  width: 50%;
+  text-align: center;
+  min-width: 300px;
+  max-width: 400px;
+}
+</style>
