@@ -3,7 +3,7 @@ import axios from 'axios';
 export default {
 
     addTeam(team){
-      return axios.post('/team/create', team)
+      return axios.post('/teams/create', team)
     },
 
     addTournament(tournament) {

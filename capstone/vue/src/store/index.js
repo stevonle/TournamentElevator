@@ -25,7 +25,7 @@ export default new Vuex.Store({
         teamName: 'Test',
         acceptingMembers: true,
         teamCaptainUsername: '',
-        games_played: 0
+        teamDescription: '',
       }
     ],
     tournaments: []

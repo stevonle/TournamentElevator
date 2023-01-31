@@ -6,7 +6,7 @@
       type="text"
       placeholder="Team Name"
       id="teamNameInput"
-      v-model="team.teamName"
+      v-model="team.team_name"
     />
     Accepting New Members?
     <br>
@@ -14,15 +14,17 @@
       class="accepting-members-input"
       type="checkbox"
       placeholder="acceptingMembers"
-      v-model="team.acceptingMembers"
+      v-model="team.accepting_members"
     />
     <br>
+    <label for="teamDescription" class='form-label'> Please enter team description </label>
+    <input type="text" class='team-description-input' placeholder="Team Description" v-model="team.teamDescription"/>
     <button class="btn btn-md btn-primary btn-block" type='submit' placeholder="createTeamButton">Create</button>
   </form>
 </template>
 
 <script>
-// import axios from 'axios'; uncomment when line 47 implemented
+
 import TournamentServices from '../services/TournamentServices.js'
 
 export default {
@@ -30,42 +32,31 @@ export default {
   data() {
     return {
       team: {
-        teamName: "", 
-        acceptingMembers: false,
-        teamCaptainUsername: this.$store.state.user.username,
-        games_played: 0,
+        team_name: "", 
+        accepting_members: false,
+        team_captain_id:"",
+        teamDescription: "",
       },
     };
   },
   methods: {
-    saveTeam() {
-//     axios.get('api/user').then(response => {
-//    team.teamCaptainId = response.userId
-//wait for controller to add get user info
+   async saveTeam() {
+    const tempUser = this.$store.state.user
+    this.team.team_captain_id = tempUser.id;
+      try {
+        const response = await TournamentServices.addTeam(
+          this.team
+        );
+        if (response.status !== 200) {
+          console.log(response.statusText);
+          return;
+        }
 
-
-
-      this.$store.commit("SAVE_TEAM", this.team);
-      this.team = {
-        teamName: "",
-        acceptingMembers: "",
-        teamCaptainUsername: this.$store.data.user,
-        games_played: 0,
-      };
-
-
-
-    TournamentServices
-        .addTeam(this.team)
-        .then(response => {
-            if(response.status === 201){
-                this.$router.push('/');
-                //redirect to my-teams page when done
-            }
-        });
-    
-
-
+         this.$store.commit("SAVE_TEAM", this.team);
+         this.$router.push('/')
+      } catch (err) {
+        console.log(err);
+      }
     },
   },
 };
@@ -82,11 +73,12 @@ export default {
   max-width: 400px;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr .5fr;
+  grid-template-rows: 1fr 1fr 1fr .5fr 2fr;
   grid-template-areas: 'label'
   'teamName'
   'acceptingMembers'
-  'createTeamButton';
+  'createTeamButton'
+  'teamDescription';
 }
 .team-name-input{
     display:block;

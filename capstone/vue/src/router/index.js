@@ -56,7 +56,7 @@ const router = new Router({
       },
     },
     {
-      path: "/team/create",
+      path: "/teams/create",
       name: "team-create",
       component: NewTeamForm,
       meta: {
