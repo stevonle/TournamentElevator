@@ -7,6 +7,6 @@ import java.util.List;
 public interface TeamDao {
 
 
-    boolean create(String teamName, boolean isAcceptingMembers,int TeamCaptainId, int gamesPlayed);
+    boolean create(String teamName, boolean isAcceptingMembers,int TeamCaptainId, String teamDescription);
 
 }

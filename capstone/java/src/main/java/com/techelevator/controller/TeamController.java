@@ -23,7 +23,7 @@ public class TeamController {
     public boolean create(@RequestBody Team team){
        boolean success = false;
        try {
-           dao.create(team.getTeamName(), team.isAcceptingMembers(), team.getTeamCaptainId(), 0);
+           dao.create(team.getTeamName(), team.isAcceptingMembers(), team.getTeamCaptainId(), team.getTeamDescription());
            success = true;
        }catch (Exception e){
            System.out.println(e.getMessage() + "Something messed up");

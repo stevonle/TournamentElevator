@@ -11,9 +11,9 @@ public class JdbcTeamDao implements TeamDao{
     public JdbcTeamDao(JdbcTemplate jdbcTemplate){this.jdbcTemplate = jdbcTemplate;}
 
     @Override
-    public boolean create(String teamName, boolean isAcceptingMembers, int teamCaptainId, int gamesPlayed) {
-        String insertTeamSql = "insert into teams(team_name, isAcceptingMembers, team_captain) values (?,?,?)";
+    public boolean create(String teamName, boolean isAcceptingMembers, int teamCaptainId, String teamDescription) {
+        String insertTeamSql = "insert into teams(team_name, isAcceptingMembers, team_captain, team_description) values (?,?,?,?)";
 
-        return jdbcTemplate.update(insertTeamSql, teamName, isAcceptingMembers, teamCaptainId)==1;
+        return jdbcTemplate.update(insertTeamSql, teamName, isAcceptingMembers, teamCaptainId, teamDescription)==1;
     }
 }

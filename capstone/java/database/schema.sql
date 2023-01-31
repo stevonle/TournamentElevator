@@ -16,12 +16,13 @@ CREATE TABLE teams (
 	team_name varchar(100),
 	isAcceptingMembers boolean,
 	team_captain int,
+	team_description varchar(500),
 	CONSTRAINT PK_teams_key PRIMARY KEY (team_id)
 );
 
 CREATE TABLE tournaments (
 	tournament_id SERIAL,
-	tournament_name varchar(50), 
+	tournament_name varchar(50),
 	tournament_date timestamp,
 	tournament_location varChar(200),
 	fee numeric(10,2),
