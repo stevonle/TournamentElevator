@@ -27,7 +27,8 @@ export default new Vuex.Store({
         teamCaptainUsername: '',
         games_played: 0
       }
-    ]
+    ],
+    tournaments: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -48,6 +49,9 @@ export default new Vuex.Store({
     },
     SAVE_TEAM(state, team){
       state.teams.push(team);
+    },
+    SAVE_TOURNAMENT(state, tournament){
+      state.tournaments.push(tournament);
     }
-  }
+  }  
 })

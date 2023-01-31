@@ -6,6 +6,10 @@ export default {
       return axios.post('/team/create', team)
     },
 
+    addTournament(tournament) {
+      return axios.post('/tournament/create', tournament)
+    }
+
     
   
   }
