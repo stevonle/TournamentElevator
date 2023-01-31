@@ -49,7 +49,7 @@ CREATE TABLE games (
 	CONSTRAINT PK_games_key PRIMARY KEY (game_id)
 );
 
-CREATE TABLE teams (
+CREATE TABLE team_games (
 	team_id int,
 	game_id int,
 	CONSTRAINT PK_team_games_key PRIMARY KEY (team_id, game_id),
