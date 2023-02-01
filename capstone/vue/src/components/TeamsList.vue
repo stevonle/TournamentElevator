@@ -2,11 +2,14 @@
   <section>
     <h3>Viewing all teams</h3>
     <div class="all-teams-list card-group">
-      <team-card
+    
+       <team-card
         v-for="team in this.teamsList"
         v-bind:team="team"
-        v-bind:key="team.teamId"
+        v-bind:key="team.team_id"
+        v-on:click.prevent="viewTeamDetails(team.team_id)"
       />
+    
     </div>
   </section>
 </template>
@@ -23,20 +26,6 @@ export default {
     };
   },
   async created() {
-  //   
-  //   try {
-  //     const response = await TournamentServices.viewAllTeams();
-  //     if (response.status !== 200) {
-  //       console.log(response.statusText);
-  //       return;
-  //     }
-  //     this.teamsList = response.data;
-  //     this.loading = false;
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-    
-  // },
   TournamentServices.viewAllTeams().then(response => {
     this.teamsList = response.data;
     this.loading = false;
@@ -44,6 +33,11 @@ export default {
     console.log(response.data);
   });
   },
+  methods: {
+    viewTeamDetails(teamID) {
+      this.$router.push(`/teams/${teamID}`)
+    }
+  }
 };
 </script>
 

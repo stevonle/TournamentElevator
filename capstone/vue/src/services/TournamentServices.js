@@ -16,6 +16,10 @@ export default {
 
     viewAllTeams(){
       return axios.get('/teams/')
+    },
+
+    getTeamById(teamID){
+      return axios.get(`/teams/${teamID}`)
     }
   
   }
