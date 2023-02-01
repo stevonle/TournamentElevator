@@ -10,7 +10,6 @@ import java.security.Principal;
 
 @RestController
 @CrossOrigin
-
 @RequestMapping("/tournament/")
 public class TournamentController {
     private TournamentDao dao;
@@ -35,7 +34,7 @@ public class TournamentController {
         return success;
     }
 
-    @RequestMapping(path = "tournaments/tournament/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "{id}", method = RequestMethod.GET)
     public Tournament getTournament(@PathVariable int tournamentId) {
         return dao.getTournamentById(tournamentId);
     }

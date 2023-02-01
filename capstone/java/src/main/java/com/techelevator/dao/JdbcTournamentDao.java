@@ -26,7 +26,7 @@ public class JdbcTournamentDao implements TournamentDao{
     public Tournament getTournamentById(int tournamentId) {
         Tournament tournament = null;
         String selectTournamentSql = "SELECT tournament_name, tournament_date, tournament_location, fee, tournament_description, prize, host) " +
-                "FROM tournaments WHERE tournament_id = ?";
+                "FROM tournaments WHERE tournament_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(selectTournamentSql, tournamentId);
         if (results.next()) {
             tournament = mapRowToTournament(results);
