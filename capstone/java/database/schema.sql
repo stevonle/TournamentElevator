@@ -23,6 +23,7 @@ CREATE TABLE teams (
 CREATE TABLE tournaments (
 	tournament_id SERIAL,
 	tournament_name varchar(50),
+	game_type int,
 	tournament_date timestamp,
 	tournament_location varChar(200),
 	fee numeric(10,2),
@@ -30,7 +31,8 @@ CREATE TABLE tournaments (
 	prize varChar(100),
 	host int,
 	CONSTRAINT PK_tournaments_key PRIMARY KEY (tournament_id),
-	CONSTRAINT FK_host_foreign FOREIGN KEY (host) REFERENCES users(user_id)
+	CONSTRAINT FK_host_foreign FOREIGN KEY (host) REFERENCES users(user_id),
+	CONSTRAINT game_type FOREIGN KEY (game_type) REFERENCES games(game_id)
 );
 
 CREATE TABLE pairings (

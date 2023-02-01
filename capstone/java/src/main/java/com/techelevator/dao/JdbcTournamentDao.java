@@ -20,7 +20,4 @@ public class JdbcTournamentDao implements TournamentDao{
                 tournament.getLocation(), tournament.getFee(), tournament.getDescription(),
                 tournament.getPrize(), hostId)==1;
     }
-
-
-
 }

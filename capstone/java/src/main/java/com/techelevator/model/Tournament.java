@@ -10,17 +10,18 @@ public class Tournament {
     @JsonProperty("tournament_id")
     private int tournamentId;
     private String name;
+    private int gameType;
     private LocalDate date;
     private String location;
     private BigDecimal fee;
     private String description;
     private String prize;
-    /*private int host;
-    private boolean completed;*/
+    private int host;
+    private boolean completed;
 
     public Tournament() {}
 
-    public Tournament(int tournamentId, String name, LocalDate date, String location, BigDecimal fee, String description, String prize/*, int host, boolean completed*/) {
+    public Tournament(int tournamentId, String name, LocalDate date, String location, BigDecimal fee, String description, String prize, int host, boolean completed) {
         this.tournamentId = tournamentId;
         this.name = name;
         this.date = date;
@@ -28,8 +29,8 @@ public class Tournament {
         this.fee = fee;
         this.description = description;
         this.prize = prize;
-        //this.host = host;
-        //this.completed = completed;
+        this.host = host;
+        this.completed = completed;
     }
 
     public int getTournamentId() {
@@ -46,6 +47,14 @@ public class Tournament {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getGameType() {
+        return gameType;
+    }
+
+    public void setGameType(int gameType) {
+        this.gameType = gameType;
     }
 
     public LocalDate getDate() {
@@ -88,7 +97,6 @@ public class Tournament {
         this.prize = prize;
     }
 
-    /*
     public int getHost() {return host;}
 
     public void setHost(int host) {this.host = host;}
@@ -99,5 +107,5 @@ public class Tournament {
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
-    }*/
+    }
 }
