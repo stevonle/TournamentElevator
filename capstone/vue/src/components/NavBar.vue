@@ -24,8 +24,14 @@
                     </div>
                     </li>
             </ul>
-            <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-             <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+            <div class="form-inline me-auto my-2 my-lg-0 justify-content-end" style="text-align: right">
+                <ul class="navbar-nav mr-auto">
+                    <li>
+             <router-link  v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp; </li>
+             <li>
+             <router-link  v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link></li>
+             </ul>
+             </div>
         </div>
     </nav>
 </template>
