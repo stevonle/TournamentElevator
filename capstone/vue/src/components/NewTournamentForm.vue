@@ -1,54 +1,75 @@
 <template>
-  <form class="new-tournament-form" v-on:submit.prevent="saveTournament">
-    <input
-      class="tournament-input"
-      type="text"
-      placeholder="Tournament Name"
-      v-model="tournament.name"
-    />
-    <input
-      class="tournament-input"
-      type="date"
-      placeholder="Tournament date"
-      v-model="tournament.date"
-    />
-    <input
-      class="tournament-input"
-      type="text"
-      placeholder="Tournament location"
-      v-model="tournament.location"
-    />
-    <input
-      class="tournament-input"
-      type="number"
-      placeholder="Tournament fee"
-      v-model="tournament.fee"
-    />
-    <textarea
-      class="tournament-input"
-      type="text"
-      placeholder="Tournament description"
-      v-model="tournament.description"
-    />
-    <input
-      class="tournament-input"
-      type="number"
-      placeholder="Tournament prize"
-      v-model="tournament.prize"
-    />
+  <div>
+    <h1>Tournament Registration</h1>
+    <form class="new-tournament-form" @submit.prevent="saveTournament">
+      <div class="mb-2">
+        <label for="tournament-name">Tournament Name</label>
+        <input
+          class="tournament-input"
+          type="text"
+          id="tournament-name"
+          v-model="tournament.name"
+        />
+      </div>
+      <div class="mb-2">
+        <label for="tournament-date">Tournament Date</label>
+        <input
+          class="tournament-input"
+          type="date"
+          id="tournament-date"
+          v-model="tournament.date"
+        />
+      </div>
+      <div class="mb-2">
+        <label for="tournament-location">Tournament Location</label>
+        <input
+          class="tournament-input"
+          type="text"
+          id="tournament-location"
+          v-model="tournament.location"
+        />
+      </div>
+      <div class="mb-2">
+        <label for="tournament-fee">Tournament Fee</label>
+        <input
+          class="tournament-input"
+          type="number"
+          id="tournament-fee"
+          v-model="tournament.fee"
+        />
+      </div>
+      <div class="mb-2">
+        <label for="tournament-description">Tournament Description</label>
+        <textarea
+          class="tournament-input"
+          type="text"
+          id="tournament-description"
+          v-model="tournament.description"
+        />
+      </div>
+      <div class="mb-2">
+        <label for="tournament-prize">Tournament Prize</label>
+        <input
+          class="tournament-input"
+          type="number"
+          id="tournament-prize"
+          v-model="tournament.prize"
+        />
+      </div>
+      <br />
 
-    <button
-      class="btn btn-md btn-primary btn-block"
-      type="submit"
-      placeholder="createTeamButton"
-    >
-      Create
-    </button>
-  </form>
+      <button
+        class="btn btn-md btn-primary btn-block"
+        type="submit"
+        placeholder="createTeamButton"
+      >
+        Create
+      </button>
+    </form>
+  </div>
 </template>
 
 <script>
-// import axios from 'axios'; uncomment when line 47 implemented
 import TournamentServices from "../services/TournamentServices.js";
 
 export default {
@@ -56,12 +77,12 @@ export default {
   data() {
     return {
       tournament: {
-        name: "",
-        date: "",
-        location: "",
-        fee: 0,
-        description: "",
-        prize: 0,
+        // name: "",
+        // date: "",
+        // location: "",
+        // fee: 0,
+        // description: "",
+        // prize: 0,
       },
     };
   },
@@ -76,8 +97,8 @@ export default {
           return;
         }
 
-         this.$store.commit("SAVE_TOURNAMENT", this.tournament);
-         this.$router.push('/')
+        this.$store.commit("SAVE_TOURNAMENT", this.tournament);
+        this.$router.push("/");
       } catch (err) {
         console.log(err);
       }
@@ -88,25 +109,21 @@ export default {
 
 <style scoped>
 .new-tournament-form {
-  color: orange;
-  margin: 75px auto;
-  width: 50%;
-  text-align: center;
+  color: rgb(241, 179, 63);
+  margin: 35px auto;
+  width: 100%;
   min-width: 300px;
   max-width: 400px;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr 0.5fr;
-  grid-template-areas:
-    "label"
-    "teamName"
-    "acceptingMembers"
-    "createTeamButton";
 }
 .tournament-input {
   display: block;
+  width: 100%;
 }
-.accepting-members-input {
-  display: block;
+
+h1 {
+  color: orange;
+  text-align: center;
+  margin: 20px 0px 0px 0px;
 }
 </style>

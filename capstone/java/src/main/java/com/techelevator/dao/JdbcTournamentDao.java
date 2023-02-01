@@ -16,4 +16,5 @@ public class JdbcTournamentDao implements TournamentDao{
         String insertTournamentSql = "insert into tournaments(tournament_name, tournament_date, tournament_location, fee, tournament_description, prize, host) values (?,?,?,?,?,?,?)";
         return jdbcTemplate.update(insertTournamentSql, tournament.getName(), tournament.getDate(), tournament.getLocation(), tournament.getFee(), tournament.getDescription(), tournament.getPrize(), hostId)==1;
     }
+
 }

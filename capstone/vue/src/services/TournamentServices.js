@@ -8,8 +8,10 @@ export default {
 
     addTournament(tournament) {
       return axios.post('/tournament/create', tournament)
-    }
+    },
 
-    
+    viewAllTournaments() {
+      return axios.get('/tournaments')
+    }
   
   }
