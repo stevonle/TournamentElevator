@@ -21,7 +21,7 @@ public class TournamentController {
         this.userDao = userDao;
     }
 
-    @PreAuthorize("isAuthenticated()")
+    //@PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "create", method = RequestMethod.POST)
     public boolean create(@RequestBody Tournament tournament, Principal principal){
         boolean success = false;
@@ -37,8 +37,7 @@ public class TournamentController {
 
     @RequestMapping(path = "{id}", method = RequestMethod.GET)
     public Tournament getTournament(@PathVariable int id) {
-        Tournament tournament = dao.getTournamentById(id);
-        return tournament;
+        return dao.getTournamentById(id);
     }
 
     @RequestMapping(path = "all", method = RequestMethod.GET)
