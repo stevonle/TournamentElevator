@@ -63,7 +63,7 @@ const router = new Router({
       component: NewTeamForm,
       meta: {
         requiresAuth: true,
-        title: "Create Team"
+        title: "Team Creation"
       },
     },
     {
