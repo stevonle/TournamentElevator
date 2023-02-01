@@ -20,9 +20,9 @@ public class JdbcTournamentDao implements TournamentDao{
         String insertTournamentSql = "INSERT INTO tournaments (tournament_name, game_type, tournament_date, " +
                                      "tournament_location, fee, tournament_description, prize, host) " +
                                      "VALUES (?,?,?,?,?,?,?,?);";
-        return jdbcTemplate.update(insertTournamentSql, tournament.getName(), tournament.getGameType(),
-                tournament.getDate(), tournament.getLocation(), tournament.getFee(),
-                tournament.getDescription(), tournament.getPrize(), hostId)==1;
+        return jdbcTemplate.update(insertTournamentSql, tournament.getName(), tournament.getGameType(), tournament.getDate(),
+                tournament.getLocation(), tournament.getFee(), tournament.getDescription(),
+                tournament.getPrize(), hostId)==1;
     }
 
     @Override
