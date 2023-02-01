@@ -6,6 +6,7 @@ import com.techelevator.model.Team;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -18,6 +19,18 @@ public class TeamController {
         this.dao = dao;
         this.userDao = userDao;
     }
+
+    @RequestMapping(path = "", method = RequestMethod.GET)
+    public List<Team> list(){
+        return dao.list();
+    }
+
+   @RequestMapping(path = "id?={id}", method = RequestMethod.GET)
+    public Team getTeam(@PathVariable int id){
+        Team team = dao.getTeam(id);
+        return team;
+    }
+
 
     @RequestMapping(path = "create", method = RequestMethod.POST)
     public boolean create(@RequestBody Team team) {
