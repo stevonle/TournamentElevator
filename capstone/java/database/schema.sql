@@ -20,6 +20,11 @@ CREATE TABLE teams (
 	CONSTRAINT PK_teams_key PRIMARY KEY (team_id)
 );
 
+CREATE TABLE games (
+	game_id SERIAL,
+	game_name varChar(50),
+	CONSTRAINT PK_games_key PRIMARY KEY (game_id)
+);
 CREATE TABLE tournaments (
 	tournament_id SERIAL,
 	tournament_name varchar(50),
@@ -46,11 +51,7 @@ CREATE TABLE pairings (
 	CONSTRAINT FK_tournament_pairings FOREIGN KEY (tournament_id) REFERENCES tournaments(tournament_id)
 );
 
-CREATE TABLE games (
-	game_id SERIAL,
-	game_name varChar(50),
-	CONSTRAINT PK_games_key PRIMARY KEY (game_id)
-);
+
 
 CREATE TABLE team_games (
 	team_id int,

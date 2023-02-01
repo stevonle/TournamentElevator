@@ -20,20 +20,7 @@ export default new Vuex.Store({
   state: {
     token: currentToken || "",
     user: currentUser || {},
-    teams: [
-      {
-        teamName: "Test",
-        acceptingMembers: true,
-        teamCaptainUsername: "",
-        teamDescription: "This is a good team",
-      },
-      {
-        teamName: "Flying Dragons",
-        acceptingMembers: true,
-        teamCaptainUsername: "",
-        teamDescription: "This is a bad team",
-      }
-    ],
+    teams: [],
     tournaments: [
       {
         tournamentId: 1,

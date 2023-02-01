@@ -9,7 +9,7 @@
       type="text"
       placeholder="Team Name"
       id="teamNameInput"
-      v-model="team.teamName"
+      v-model="team.team_name"
     /></div>
     
     <div class='mb-2'>
@@ -18,12 +18,12 @@
       class="team-input"
       type="checkbox"
       placeholder="acceptingMembers"
-      v-model="team.acceptingMembers"
+      v-model="team.isAcceptingMmembers"
     />
     </div>
     <div>
     <label for="teamDescription" class='form-label'> Please enter team description </label>
-    <textarea type="text" class='team-input' placeholder="Team Description" v-model="team.teamDescription"/>
+    <textarea type="text" class='team-input' placeholder="Team Description" v-model="team.team_description"/>
     </div>
     <br />
     <button class="btn btn-md btn-primary btn-block" type='submit' placeholder="createTeamButton">Create</button>
@@ -40,10 +40,10 @@ export default {
   data() {
     return {
       team: {
-        teamName: "", 
-        acceptingMembers: false,
-        teamCaptainId:"",
-        teamDescription: "",
+        team_name: "", 
+        isAcceptingMembers: false,
+        team_captain:"",
+        team_description: "",
       },
     };
   },

@@ -27,7 +27,7 @@ public class JdbcTeamDao implements TeamDao{
     }
 
     @Override
-    public Team getTeam(int id){
+    public Team getTeam(int id) {
         Team team = null;
         String sql = "SELECT * from teams WHERE team_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
@@ -38,10 +38,11 @@ public class JdbcTeamDao implements TeamDao{
     }
 
     @Override
-    public boolean create(String teamName, boolean isAcceptingMembers, int teamCaptainId, String teamDescription) {
+    public boolean create(String teamName, boolean acceptingMembers, int teamCaptainId, String teamDescription) {
         String insertTeamSql = "insert into teams(team_name, isAcceptingMembers, team_captain, team_description) values (?,?,?,?);";
 
-        return jdbcTemplate.update(insertTeamSql, teamName, isAcceptingMembers, teamCaptainId, teamDescription)==1;
+
+        return jdbcTemplate.update(insertTeamSql, teamName, acceptingMembers, teamCaptainId, teamDescription)==1;
     }
 
     private Team mapRowToTeam(SqlRowSet rowSet){

@@ -9,6 +9,7 @@ import NewTeamForm from "../components/NewTeamForm.vue";
 import Tournament from "../views/Tournament.vue";
 import BrowseTournaments from "../components/BrowseTournaments.vue"
 import TeamsList from "../components/TeamsList.vue"
+import TeamCard from "../components/TeamCard.vue"
 
 Vue.use(Router);
 
@@ -91,8 +92,17 @@ const router = new Router({
       meta: {
         requiresAuth: false,
         title: 'Teams'
-      }
-    }
+      },
+    },
+    {
+      path: '/teams/:id',
+      name: "Team Card",
+      component: TeamCard,
+      meta: {
+        requiresAuth: false,
+        title: 'Team Information'
+      },
+    },
   ],
 });
 
@@ -111,7 +121,7 @@ router.beforeEach((to, from, next) => {
 
 router.afterEach((to) => {
   Vue.nextTick(() => {
-      document.title = to.meta.title || "Tournament Capstone";
+    document.title = to.meta.title || "Tournament Capstone";
   });
 });
 

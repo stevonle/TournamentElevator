@@ -15,7 +15,7 @@ export default {
     },
 
     viewAllTeams(){
-      return axios.get('/teams')
+      return axios.get('/teams/')
     }
   
   }
