@@ -10,10 +10,29 @@
 </template>
 
 <script>
+import TournamentServices from '../services/TournamentServices'
 export default {
+
   name: "team-card",
   props: {
-    team: Object,
+    teamID: Number,
+  },
+  data(){
+    return {
+      team: {
+        team_id: 0,
+        team_name: "",
+        isAcceptingMembers: false,
+        team_captain: "",
+        team_description: "",
+      },
+    };
+  },
+  created(){
+    const teamID = this.$route.params.teamID
+    TournamentServices.getTeamById(teamID).then((response) => {
+      this.team = response.data;
+    });
   },
 };
 </script>

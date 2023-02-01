@@ -2,42 +2,42 @@
   <section>
     <h3>Viewing all teams</h3>
     <div class="all-teams-list card-group">
-    
-       <team-card
+      <div
+        class="card text-center text-white bg-warning mb-3"
+        style="max-width: 15rem"
         v-for="team in this.teamsList"
         v-bind:team="team"
         v-bind:key="team.team_id"
-        v-on:click.prevent="viewTeamDetails(team.team_id)"
-      />
-    
+      >
+        <div class="card-body">
+          <router-link
+            v-bind:to="{ name: 'Teamcard', params: { teamID: team.team_id } }"
+          >
+            <h2 class="team-name">{{ this.team.team_name }}</h2>
+            <p class="team-description">{{ this.team.team_description }}</p>
+          </router-link>
+        </div>
+      </div>
     </div>
   </section>
 </template>
 
 <script>
 import TournamentServices from "../services/TournamentServices";
-import TeamCard from "./TeamCard.vue";
 export default {
-  components: { TeamCard },
   data() {
     return {
       loading: false,
       teamsList: [],
     };
   },
-  async created() {
-  TournamentServices.viewAllTeams().then(response => {
-    this.teamsList = response.data;
-    this.loading = false;
-    this.$store.state.teams = response.data;
-    console.log(response.data);
-  });
+   created() {
+    TournamentServices.viewAllTeams().then((response) => {
+      this.teamsList = response.data;
+      this.loading = false;
+      console.log(response.data);
+    });
   },
-  methods: {
-    viewTeamDetails(teamID) {
-      this.$router.push(`/teams/${teamID}`)
-    }
-  }
 };
 </script>
 
