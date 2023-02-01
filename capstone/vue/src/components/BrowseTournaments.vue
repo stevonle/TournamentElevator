@@ -11,7 +11,7 @@
         :key="tournament.tournamentId"
       >
         <h3>Name: {{ tournament.name }}</h3>
-        <p> Game Type: {{tournament.gametype}} </p>
+        <p> Game Type: {{tournament.game_type}} </p>
         <p>Date: {{tournament.date}}</p>
         <p>Location: {{tournament.location}}</p>
         <p>Fee: {{tournament.fee}} </p>
@@ -23,17 +23,22 @@
 </template>
 
 <script>
-// import TournamentServices from "../services/TournamentServices.js";
+import TournamentServices from "../services/TournamentServices.js";
 export default {
   data() {
     return {
-      loading: false,
+      loading: true,
       tournamentList: [],
     };
   },
 
   async created() {
-      this.tournamentList = this.$store.state.tournaments
+
+    TournamentServices.viewAllTournaments().then(response => {
+      this.tournamentList = response.data;
+      this.loading = false;
+    })
+      // this.tournamentList = this.$store.state.tournaments
     //   uncomment when backend is done
     // try {
     //   const response = await TournamentServices.viewAllTournaments();
