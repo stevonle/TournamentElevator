@@ -10,27 +10,29 @@ public class Tournament {
     @JsonProperty("tournament_id")
     private int tournamentId;
     private String name;
+    @JsonProperty("game_type")
     private int gameType;
     private LocalDate date;
     private String location;
     private BigDecimal fee;
     private String description;
     private String prize;
-    private int host;
-    private boolean completed;
+    //private int host;
+    //private boolean completed;
 
     public Tournament() {}
 
-    public Tournament(int tournamentId, String name, LocalDate date, String location, BigDecimal fee, String description, String prize, int host, boolean completed) {
+    public Tournament(int tournamentId, String name, int gameType, LocalDate date, String location, BigDecimal fee, String description, String prize/*, int host, boolean completed*/) {
         this.tournamentId = tournamentId;
         this.name = name;
+        this.gameType = gameType;
         this.date = date;
         this.location = location;
         this.fee = fee;
         this.description = description;
         this.prize = prize;
-        this.host = host;
-        this.completed = completed;
+        //this.host = host;
+        //this.completed = completed;
     }
 
     public int getTournamentId() {
@@ -97,15 +99,15 @@ public class Tournament {
         this.prize = prize;
     }
 
-    public int getHost() {return host;}
-
-    public void setHost(int host) {this.host = host;}
-
-    public boolean isCompleted() {
-        return completed;
-    }
-
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
-    }
+//    public int getHost() {return host;}
+//
+//    public void setHost(int host) {this.host = host;}
+//
+//    public boolean isCompleted() {
+//        return completed;
+//    }
+//
+//    public void setCompleted(boolean completed) {
+//        this.completed = completed;
+//    }
 }

@@ -27,7 +27,7 @@ public class JdbcTeamDao implements TeamDao{
     }
 
     @Override
-    public Team getTeam(int id){
+    public Team getTeam(int id) {
         Team team = null;
         String sql = "SELECT * from teams WHERE team_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);

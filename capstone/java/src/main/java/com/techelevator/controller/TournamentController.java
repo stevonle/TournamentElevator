@@ -7,10 +7,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/tournament/")
+@RequestMapping("/tournaments/")
 public class TournamentController {
     private TournamentDao dao;
     private UserDao userDao;
@@ -35,9 +36,13 @@ public class TournamentController {
     }
 
     @RequestMapping(path = "{id}", method = RequestMethod.GET)
-    public Tournament getTournament(@PathVariable int tournamentId) {
-        return dao.getTournamentById(tournamentId);
+    public Tournament getTournament(@PathVariable int id) {
+        Tournament tournament = dao.getTournamentById(id);
+        return tournament;
     }
 
-
+    @RequestMapping(path = "all", method = RequestMethod.GET)
+    public List<Tournament> getTournaments() {
+        return dao.getAllTournaments();
+    }
 }
