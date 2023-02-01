@@ -8,6 +8,7 @@ import store from "../store/index";
 import NewTeamForm from "../components/NewTeamForm.vue";
 import Tournament from "../views/Tournament.vue";
 import BrowseTournaments from "../components/BrowseTournaments.vue"
+import TeamsList from "../components/TeamsList.vue"
 
 Vue.use(Router);
 
@@ -62,7 +63,7 @@ const router = new Router({
       component: NewTeamForm,
       meta: {
         requiresAuth: true,
-        title: "Create Team"
+        title: "Team Creation"
       },
     },
     {
@@ -83,6 +84,15 @@ const router = new Router({
         title: "Tournaments"
       },
     },
+    {
+      path: '/teams/all',
+      name: "BrowseTeams",
+      component: TeamsList,
+      meta: {
+        requiresAuth: false,
+        title: 'Teams'
+      }
+    }
   ],
 });
 
