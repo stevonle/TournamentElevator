@@ -10,6 +10,10 @@ public class Tournament {
     @JsonProperty("tournament_id")
     private int tournamentId;
     private String name;
+
+
+
+    private int gameType;
     private LocalDate date;
     private String location;
     private BigDecimal fee;
@@ -46,6 +50,14 @@ public class Tournament {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getGameType() {
+        return gameType;
+    }
+
+    public void setGameType(int gameType) {
+        this.gameType = gameType;
     }
 
     public LocalDate getDate() {

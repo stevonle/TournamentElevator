@@ -22,7 +22,8 @@ INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description)
 INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description) VALUES ('Army of Whatever', TRUE ,'5','This is a description. This is a description. This is a description. ');
 INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description) VALUES ('Legion of Doom', TRUE ,'3','This is a description. This is a description. This is a description. This is a description. ');
 
-INSERT INTO tournaments (tournament_name, tournament_date, tournament_location, fee,
- tournament_description, prize, host) VALUES ('THE BIG ONE', '2023-02-20 10:23:54', 'Everywhere', '1000.00', 'This is a description. This is the BIG ONE!', 'Everything', '3');
+INSERT INTO tournaments (tournament_name, game_type, tournament_date, tournament_location, fee,
+ tournament_description, prize, host) VALUES ('THE BIG ONE', '1', '2023-02-20 10:23:54', 'Everywhere', '1000.00', 'This is a description. This is the BIG ONE!', 'Everything', '3');
+
 
 COMMIT TRANSACTION;
