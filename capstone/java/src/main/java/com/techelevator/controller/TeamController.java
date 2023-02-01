@@ -25,7 +25,7 @@ public class TeamController {
         return dao.list();
     }
 
-   @RequestMapping(path = "id?={id}", method = RequestMethod.GET)
+   @RequestMapping(path = "{id}", method = RequestMethod.GET)
     public Team getTeam(@PathVariable int id){
         Team team = dao.getTeam(id);
         return team;
