@@ -8,5 +8,6 @@ public interface TournamentDao {
     boolean create(Tournament tournament, int hostId);
     Tournament getTournamentById(int tournamentId);
     List<Tournament> getAllTournaments();
+    boolean updateTournament(Tournament tournament);
     
 }

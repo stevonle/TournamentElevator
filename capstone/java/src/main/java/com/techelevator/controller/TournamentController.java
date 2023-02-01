@@ -44,4 +44,16 @@ public class TournamentController {
     public List<Tournament> getTournaments() {
         return dao.getAllTournaments();
     }
+
+    @RequestMapping(path = "{id}/update", method = RequestMethod.PUT)
+    public boolean update(@RequestBody Tournament tournament) {
+        boolean success = false;
+        try {
+            dao.updateTournament(tournament);
+            success = true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage() + " Tournament update failed!!!!!");
+        }
+        return success;
+    }
 }
