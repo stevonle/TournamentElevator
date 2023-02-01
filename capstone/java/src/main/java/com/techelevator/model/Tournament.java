@@ -16,11 +16,11 @@ public class Tournament {
     private String description;
     private String prize;
     //private int host;
-    private boolean completed;
+    //private boolean completed;
 
     public Tournament() {}
 
-    public Tournament(int tournamentId, String name, LocalDate date, String location, BigDecimal fee, String description, String prize, boolean completed) {
+    public Tournament(int tournamentId, String name, LocalDate date, String location, BigDecimal fee, String description, String prize/*, int host, boolean completed*/) {
         this.tournamentId = tournamentId;
         this.name = name;
         this.date = date;
@@ -29,7 +29,7 @@ public class Tournament {
         this.description = description;
         this.prize = prize;
         //this.host = host;
-        this.completed = completed;
+        //this.completed = completed;
     }
 
     public int getTournamentId() {
@@ -88,9 +88,10 @@ public class Tournament {
         this.prize = prize;
     }
 
-    //public int getHost() {return host;}
+    /*
+    public int getHost() {return host;}
 
-    //public void setHost(int host) {this.host = host;}
+    public void setHost(int host) {this.host = host;}
 
     public boolean isCompleted() {
         return completed;
@@ -98,5 +99,5 @@ public class Tournament {
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
-    }
+    }*/
 }

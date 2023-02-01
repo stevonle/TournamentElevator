@@ -12,7 +12,7 @@ public class JdbcTeamDao implements TeamDao{
 
     @Override
     public boolean create(String teamName, boolean acceptingMembers, int teamCaptainId, String teamDescription) {
-        String insertTeamSql = "insert into teams (team_name, isAcceptingMembers, team_captain, team_description) values (?,?,?,?)";
+        String insertTeamSql = "insert into teams(team_name, isAcceptingMembers, team_captain, team_description) values (?,?,?,?)";
 
         return jdbcTemplate.update(insertTeamSql, teamName, acceptingMembers, teamCaptainId, teamDescription)==1;
     }
