@@ -1,6 +1,6 @@
 <template>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" v-bind:class=" { 'navbarOpen': show }">
-        <a class="navbar-brand" href="#">Tournament Elevator</a>
+        <a class="navbar-brand" href="/">Tournament Elevator</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" @click.stop="toggleNavbar()">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -17,7 +17,7 @@
                       Tournaments
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">View Tournaments</a>
+                        <a class="dropdown-item" href="/tournament/all">View Tournaments</a>
                         <a class="dropdown-item" href="/tournament/create">Create Tournaments</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">My Tournaments</a>
