@@ -7,7 +7,7 @@ export default {
     },
 
     addTournament(tournament) {
-      return axios.post('/tournament/create', tournament)
+      return axios.post('/tournaments/create', tournament)
     },
 
     viewAllTournaments() {

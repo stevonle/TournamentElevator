@@ -18,7 +18,7 @@
           class="tournament-input"
           type="number"
           id="tournament-gametype"
-          v-model="tournament.gametype"
+          v-model="tournament.game_type"
           required
         />
       </div>
