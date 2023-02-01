@@ -6,7 +6,8 @@ import Logout from "../views/Logout.vue";
 import Register from "../views/Register.vue";
 import store from "../store/index";
 import NewTeamForm from "../components/NewTeamForm.vue";
-import NewTournamentForm from "../components/NewTournamentForm.vue";
+import Tournament from "../views/Tournament.vue";
+import BrowseTournaments from "../components/BrowseTournaments.vue"
 
 Vue.use(Router);
 
@@ -61,14 +62,25 @@ const router = new Router({
       component: NewTeamForm,
       meta: {
         requiresAuth: true,
+        title: "Create Team"
       },
     },
     {
       path: "/tournament/create",
-      name: "tournament-create",
-      component: NewTournamentForm,
+      name: "Tournament",
+      component: Tournament,
       meta: {
         requiresAuth: true,
+        title: "Tournament Registration"
+      },
+    },
+    {
+      path: "/tournament/all",
+      name: "BrowseTournaments",
+      component: BrowseTournaments,
+      meta: {
+        requiresAuth: false,
+        title: "Tournaments"
       },
     },
   ],
@@ -85,6 +97,12 @@ router.beforeEach((to, from, next) => {
     // Else let them go to their next destination
     next();
   }
+});
+
+router.afterEach((to) => {
+  Vue.nextTick(() => {
+      document.title = to.meta.title || "Tournament Capstone";
+  });
 });
 
 export default router;
