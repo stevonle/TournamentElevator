@@ -15,13 +15,7 @@ public class Team {
     @JsonProperty("team_description")
     private String teamDescription;
 
-    public String getTeamDescription() {
-        return teamDescription;
-    }
-
-    public void setTeamDescription(String teamDescription) {
-        this.teamDescription = teamDescription;
-    }
+    public Team(){}
 
 
 
@@ -63,6 +57,14 @@ public class Team {
 
     public void setTeamCaptainId(int teamCaptainId) {
         this.teamCaptainId = teamCaptainId;
+    }
+
+    public String getTeamDescription() {
+        return teamDescription;
+    }
+
+    public void setTeamDescription(String teamDescription) {
+        this.teamDescription = teamDescription;
     }
 
 
