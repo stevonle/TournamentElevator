@@ -3,9 +3,9 @@
     <h3>Viewing all teams</h3>
     <div class="all-teams-list card-group">
       <team-card
-        v-for="team in teamsList"
+        v-for="team in this.teamsList"
         v-bind:team="team"
-        v-bind:key="team.captainID"
+        v-bind:key="team.teamId"
       />
     </div>
   </section>
@@ -23,19 +23,26 @@ export default {
     };
   },
   async created() {
-    this.teamsList = this.$store.state.teams;
-    try {
-      const response = await TournamentServices.viewAllTeams();
-      if (response.status !== 200) {
-        console.log(response.statusText);
-        return;
-      }
-      this.teamsList = response;
-      this.loading = false;
-    } catch (err) {
-      console.log(err);
-    }
+  //   
+  //   try {
+  //     const response = await TournamentServices.viewAllTeams();
+  //     if (response.status !== 200) {
+  //       console.log(response.statusText);
+  //       return;
+  //     }
+  //     this.teamsList = response.data;
+  //     this.loading = false;
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
     
+  // },
+  TournamentServices.viewAllTeams().then(response => {
+    this.teamsList = response.data;
+    this.loading = false;
+    this.$store.state.teams = response.data;
+    console.log(response.data);
+  });
   },
 };
 </script>
