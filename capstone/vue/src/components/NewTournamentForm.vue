@@ -13,6 +13,16 @@
         />
       </div>
       <div class="mb-2">
+        <label for="tournament-name">Tournament Game Type</label>
+        <input
+          class="tournament-input"
+          type="number"
+          id="tournament-gametype"
+          v-model="tournament.gametype"
+          required
+        />
+      </div>
+      <div class="mb-2">
         <label for="tournament-date">Tournament Date</label>
         <input
           class="tournament-input"

@@ -11,7 +11,7 @@ export default {
     },
 
     viewAllTournaments() {
-      return axios.get('/tournaments')
+      return axios.get('/tournaments/all')
     },
 
     viewAllTeams(){
