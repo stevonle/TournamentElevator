@@ -10,7 +10,7 @@ import java.security.Principal;
 
 @RestController
 @CrossOrigin
-@PreAuthorize("isAuthenticated()")
+
 @RequestMapping("/tournament/")
 public class TournamentController {
     private TournamentDao dao;
@@ -21,7 +21,7 @@ public class TournamentController {
         this.userDao = userDao;
     }
 
-
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "create", method = RequestMethod.POST)
     public boolean create(@RequestBody Tournament tournament, Principal principal){
         boolean success = false;
@@ -33,6 +33,11 @@ public class TournamentController {
             System.out.println(e.getMessage() + "Tournament error");
         }
         return success;
+    }
+
+    @RequestMapping(path = "tournaments/tournament/{id}", method = RequestMethod.GET)
+    public Tournament getTournament(@PathVariable int tournamentId) {
+        return dao.getTournamentById(tournamentId);
     }
 
 
