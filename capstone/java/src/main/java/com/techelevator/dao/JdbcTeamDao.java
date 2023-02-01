@@ -21,7 +21,7 @@ public class JdbcTeamDao implements TeamDao{
         String getAllTeamsSql = "SELECT * FROM teams;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(getAllTeamsSql);
         while(results.next()) {
-               teams.add(mapRowToTeam(results));
+            teams.add(mapRowToTeam(results));
         }
         return teams;
     }
@@ -35,6 +35,20 @@ public class JdbcTeamDao implements TeamDao{
             team = mapRowToTeam(results);
         }
         return team;
+    }
+
+    @Override
+    public boolean updateTeam(Team team){
+        boolean success = false;
+        String sql = "UPDATE teams SET team_name = ?, isacceptingmembers = ?, team_captain = ?, team_description = ? WHERE team_id = ?;  ";
+        int linesReturned = jdbcTemplate.update(sql,
+                team.getTeamName(), team.isAcceptingMembers(),
+                team.getTeamCaptainId(), team.getTeamDescription(),
+                team.getTeamId());
+        if(linesReturned ==1){
+            success = true;
+        }
+        return success;
     }
 
     @Override
@@ -56,3 +70,4 @@ public class JdbcTeamDao implements TeamDao{
 
 
 }
+status

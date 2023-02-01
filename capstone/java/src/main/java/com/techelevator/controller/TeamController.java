@@ -3,7 +3,9 @@ package com.techelevator.controller;
 import com.techelevator.dao.TeamDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Team;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
 import java.util.List;
@@ -42,6 +44,14 @@ public class TeamController {
            System.out.println(e.getMessage() + "Something messed up");
        }
         return success;
+    }
+    @PutMapping("{id}")
+    public void updateTeam(@PathVariable int id, @RequestBody Team team){
+        team.setTeamId(id);
+        boolean updated = dao.updateTeam(team);
+        if(!updated){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Team not found!" );
+        }
     }
 
 
