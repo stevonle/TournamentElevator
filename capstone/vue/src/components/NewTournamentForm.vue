@@ -9,6 +9,7 @@
           type="text"
           id="tournament-name"
           v-model="tournament.name"
+          required
         />
       </div>
       <div class="mb-2">
@@ -18,6 +19,7 @@
           type="date"
           id="tournament-date"
           v-model="tournament.date"
+          required
         />
       </div>
       <div class="mb-2">
@@ -27,6 +29,7 @@
           type="text"
           id="tournament-location"
           v-model="tournament.location"
+          required
         />
       </div>
       <div class="mb-2">
@@ -36,6 +39,7 @@
           type="number"
           id="tournament-fee"
           v-model="tournament.fee"
+          required
         />
       </div>
       <div class="mb-2">
@@ -45,15 +49,17 @@
           type="text"
           id="tournament-description"
           v-model="tournament.description"
+          required
         />
       </div>
       <div class="mb-2">
         <label for="tournament-prize">Tournament Prize</label>
         <input
           class="tournament-input"
-          type="number"
+          type="text"
           id="tournament-prize"
           v-model="tournament.prize"
+          required
         />
       </div>
       <br />
