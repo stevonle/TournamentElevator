@@ -15,8 +15,8 @@ public class Tournament {
     private BigDecimal fee;
     private String description;
     private String prize;
-    //private int host;
-    //private boolean completed;
+    /*private int host;
+    private boolean completed;*/
 
     public Tournament() {}
 

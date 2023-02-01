@@ -21,4 +21,6 @@ public class JdbcTournamentDao implements TournamentDao{
                 tournament.getPrize(), hostId)==1;
     }
 
+
+
 }
