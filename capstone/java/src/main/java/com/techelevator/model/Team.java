@@ -8,9 +8,9 @@ public class Team {
     private int teamId;
     @JsonProperty("team_name")
     private String teamName;
-    @JsonProperty("accepting_members")
+    @JsonProperty("isAcceptingMembers")
     private boolean acceptingMembers;
-    @JsonProperty("team_captain_id")
+    @JsonProperty("team_captain")
     private int teamCaptainId;
     @JsonProperty("team_description")
     private String teamDescription;

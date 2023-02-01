@@ -1,26 +1,34 @@
 <template>
+<div>
+  <h1> Create Team </h1>
   <form class="new-team-form" v-on:submit.prevent="saveTeam">
       <label for="teamNameInput" class='form-label'> Input Team Name Below </label>
+      <div class='mb-2'>
     <input
-      class="team-name-input"
+      class="team-input"
       type="text"
       placeholder="Team Name"
       id="teamNameInput"
       v-model="team.teamName"
-    />
-    Accepting New Members?
-    <br>
+    /></div>
+    
+    <div class='mb-2'>
+    <label for="acceptingMembers" class="form-label"> Accepting Members? </label>
     <input
-      class="accepting-members-input"
+      class="team-input"
       type="checkbox"
       placeholder="acceptingMembers"
       v-model="team.acceptingMembers"
     />
-    <br>
+    </div>
+    <div>
     <label for="teamDescription" class='form-label'> Please enter team description </label>
-    <input type="text" class='team-description-input' placeholder="Team Description" v-model="team.teamDescription"/>
+    <textarea type="text" class='team-input' placeholder="Team Description" v-model="team.teamDescription"/>
+    </div>
+    <br />
     <button class="btn btn-md btn-primary btn-block" type='submit' placeholder="createTeamButton">Create</button>
   </form>
+  </div>
 </template>
 
 <script>
@@ -65,26 +73,23 @@ export default {
 <style scoped>
 
 .new-team-form {
-  color: orange;
-  margin: 75px auto;
-  width: 50%;
-  text-align: center;
+  color: rgb(241, 179, 63);
+  margin: 35px auto;
+  width: 100%;
   min-width: 300px;
   max-width: 400px;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr .5fr 2fr;
-  grid-template-areas: 'label'
-  'teamName'
-  'acceptingMembers'
-  'createTeamButton'
-  'teamDescription';
 }
-.team-name-input{
-    display:block;
+
+.team-input{
+display: block;
+width: 100%;
 }
-.accepting-members-input {
-    display: block;
+
+h1 {
+  color: orange;
+  text-align: center;
+  margin: 20px 0px 0px 0px;
 }
 
 </style>

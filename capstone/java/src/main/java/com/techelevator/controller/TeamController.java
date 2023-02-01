@@ -33,12 +33,12 @@ public class TeamController {
 
 
     @RequestMapping(path = "create", method = RequestMethod.POST)
-    public boolean create(@RequestBody Team team){
+    public boolean create(@RequestBody Team team) {
        boolean success = false;
        try {
            dao.create(team.getTeamName(), team.isAcceptingMembers(), team.getTeamCaptainId(), team.getTeamDescription());
            success = true;
-       }catch (Exception e){
+       } catch (Exception e) {
            System.out.println(e.getMessage() + "Something messed up");
        }
         return success;
