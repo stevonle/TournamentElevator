@@ -6,11 +6,17 @@
     </div>
     <div v-if="!loading">
       <div
-        class="tournamentCard"
+        class="tournamentCard card text-center text-white bg-warning mb-3"
         v-for="tournament in tournamentList"
         :key="tournament.tournamentId"
       >
         <h3>Name: {{ tournament.name }}</h3>
+        <p> Game Type: {{tournament.gametype}} </p>
+        <p>Date: {{tournament.date}}</p>
+        <p>Location: {{tournament.location}}</p>
+        <p>Fee: {{tournament.fee}} </p>
+        <p>Description: {{tournament.description}} </p>
+        <p>Prize: {{tournament.prize}}</p>
       </div>
     </div>
   </div>
@@ -43,4 +49,11 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+h1 {
+  color: orange;
+  text-align: center;
+  margin: 20px 0px 50px 20px;
+}
+
+</style>
