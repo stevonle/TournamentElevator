@@ -21,13 +21,13 @@ public class JdbcTeamDao implements TeamDao{
         String getAllTeamsSql = "SELECT * FROM teams;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(getAllTeamsSql);
         while(results.next()) {
-            teams.add(mapRowToTeam(results));
+               teams.add(mapRowToTeam(results));
         }
         return teams;
     }
 
     @Override
-    public Team getTeam(int id){
+    public Team getTeam(int id) {
         Team team = null;
         String sql = "SELECT * from teams WHERE team_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
@@ -38,24 +38,24 @@ public class JdbcTeamDao implements TeamDao{
     }
 
     @Override
-    public boolean updateTeam(Team team){
-        boolean success = false;
-        String sql = "UPDATE teams SET team_name = ?, isacceptingmembers = ?, team_captain = ?, team_description = ? WHERE team_id = ?;  ";
-        int linesReturned = jdbcTemplate.update(sql,
-                team.getTeamName(), team.isAcceptingMembers(),
-                team.getTeamCaptainId(), team.getTeamDescription(),
-                team.getTeamId());
-        if(linesReturned ==1){
-            success = true;
+    public boolean update(Team team) {
+        boolean isUpdated = false;
+        String sql = "UPDATE teams SET team_name = ?, isacceptingmembers = ?," +
+                "team_captain = ?, team_description = ? WHERE team_id = ?";
+
+        if(jdbcTemplate.update(sql, team.getTeamName(), team.isAcceptingMembers(),
+                team.getTeamCaptainId(), team.getTeamDescription(), team.getTeamId())==1){
+            isUpdated = true;
         }
-        return success;
+        return isUpdated;
     }
 
     @Override
-    public boolean create(String teamName, boolean isAcceptingMembers, int teamCaptainId, String teamDescription) {
+    public boolean create(String teamName, boolean acceptingMembers, int teamCaptainId, String teamDescription) {
         String insertTeamSql = "insert into teams(team_name, isAcceptingMembers, team_captain, team_description) values (?,?,?,?);";
 
-        return jdbcTemplate.update(insertTeamSql, teamName, isAcceptingMembers, teamCaptainId, teamDescription)==1;
+
+        return jdbcTemplate.update(insertTeamSql, teamName, acceptingMembers, teamCaptainId, teamDescription)==1;
     }
 
     private Team mapRowToTeam(SqlRowSet rowSet){

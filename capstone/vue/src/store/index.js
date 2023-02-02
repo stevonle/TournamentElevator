@@ -20,24 +20,12 @@ export default new Vuex.Store({
   state: {
     token: currentToken || "",
     user: currentUser || {},
-    teams: [
-      {
-        teamName: "Test",
-        acceptingMembers: true,
-        teamCaptainUsername: "",
-        teamDescription: "This is a good team",
-      },
-      {
-        teamName: "Flying Dragons",
-        acceptingMembers: true,
-        teamCaptainUsername: "",
-        teamDescription: "This is a bad team",
-      }
-    ],
+    teams: [],
     tournaments: [
       {
         tournamentId: 1,
         name: "Super Mario",
+        gametype: 5,
         date: "03/03/2023",
         location: "Canada",
         fee: 100,
@@ -47,6 +35,7 @@ export default new Vuex.Store({
       {
         tournamentId: 2,
         name: "Super Liam",
+        gametype: 5,
         date: "03/03/2023",
         location: "Canada",
         fee: 100,
@@ -56,11 +45,12 @@ export default new Vuex.Store({
       {
         tournamentId: 3,
         name: "Super Jarred",
+        gametype: 5,
         date: "03/03/2023",
         location: "Tim Hortons",
         fee: 100,
         description: "Big Tournament",
-        prize: 1000042140,
+        prize: "Car",
       },
     ],
   },

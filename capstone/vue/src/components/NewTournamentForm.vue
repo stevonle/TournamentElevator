@@ -5,55 +5,73 @@
       <div class="mb-2">
         <label for="tournament-name">Tournament Name</label>
         <input
-          class="tournament-input"
+          class="tournament-input form-control"
           type="text"
           id="tournament-name"
           v-model="tournament.name"
+          required
         />
+      </div>
+      <div class="mb-2">
+        <label for="tournament-name">Tournament Game Type</label>
+        
+        <select required class="form-control" v-model="tournament.game_type">
+          <option value="1">Football</option>
+          <option value="2">Soccer</option>
+          <option value="3">Basketball</option>
+          <option value="4">Volleyball</option>
+          <option value="5">Quidditch</option>
+          
+        </select>
       </div>
       <div class="mb-2">
         <label for="tournament-date">Tournament Date</label>
         <input
-          class="tournament-input"
+          class="tournament-input form-control"
           type="date"
           id="tournament-date"
           v-model="tournament.date"
+          required
         />
       </div>
       <div class="mb-2">
         <label for="tournament-location">Tournament Location</label>
         <input
-          class="tournament-input"
+          class="tournament-input form-control"
           type="text"
           id="tournament-location"
           v-model="tournament.location"
+          required
         />
       </div>
       <div class="mb-2">
         <label for="tournament-fee">Tournament Fee</label>
         <input
-          class="tournament-input"
+          class="tournament-input form-control"
           type="number"
           id="tournament-fee"
           v-model="tournament.fee"
+          required
         />
       </div>
       <div class="mb-2">
         <label for="tournament-description">Tournament Description</label>
         <textarea
-          class="tournament-input"
+          class="tournament-input form-control"
           type="text"
           id="tournament-description"
           v-model="tournament.description"
+          required
         />
       </div>
       <div class="mb-2">
         <label for="tournament-prize">Tournament Prize</label>
         <input
-          class="tournament-input"
-          type="number"
+          class="tournament-input form-control"
+          type="text"
           id="tournament-prize"
           v-model="tournament.prize"
+          required
         />
       </div>
       <br />
@@ -98,7 +116,7 @@ export default {
         }
 
         this.$store.commit("SAVE_TOURNAMENT", this.tournament);
-        this.$router.push("/");
+        this.$router.push("/tournament/all");
       } catch (err) {
         console.log(err);
       }

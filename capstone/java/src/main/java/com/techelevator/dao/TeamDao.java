@@ -10,8 +10,7 @@ public interface TeamDao {
 
     Team getTeam(int id);
 
-    boolean updateTeam(Team team);
-
     boolean create(String teamName, boolean isAcceptingMembers,int TeamCaptainId, String teamDescription);
 
+    boolean update(Team team);
 }

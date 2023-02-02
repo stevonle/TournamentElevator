@@ -7,11 +7,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 @RestController
 @CrossOrigin
-@PreAuthorize("isAuthenticated()")
-@RequestMapping("/tournament/")
+@RequestMapping("/tournaments")
 public class TournamentController {
     private TournamentDao dao;
     private UserDao userDao;
@@ -21,8 +21,8 @@ public class TournamentController {
         this.userDao = userDao;
     }
 
-
-    @RequestMapping(path = "create", method = RequestMethod.POST)
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(path = "/create", method = RequestMethod.POST)
     public boolean create(@RequestBody Tournament tournament, Principal principal){
         boolean success = false;
         try {
@@ -35,5 +35,14 @@ public class TournamentController {
         return success;
     }
 
+    @RequestMapping(path = "/{id}", method = RequestMethod.GET)
+    public Tournament getTournament(@PathVariable int id) {
+        Tournament tournament = dao.getTournamentById(id);
+        return tournament;
+    }
 
+    @RequestMapping(path = "/all", method = RequestMethod.GET)
+    public List<Tournament> getTournaments() {
+        return dao.getAllTournaments();
+    }
 }
