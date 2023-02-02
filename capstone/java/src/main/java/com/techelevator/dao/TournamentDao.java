@@ -5,7 +5,7 @@ import com.techelevator.model.Tournament;
 import java.util.List;
 
 public interface TournamentDao {
-    boolean create(Tournament tournament, int hostId);
+    boolean createTournament(Tournament tournament, int hostId);
     Tournament getTournamentById(int tournamentId);
     List<Tournament> getAllTournaments();
     boolean updateTournament(Tournament tournament, int id);

@@ -23,15 +23,16 @@ public class TournamentController {
     }
 
     @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(code = HttpStatus.CREATED, reason = "Created")
     @RequestMapping(path = "/create", method = RequestMethod.POST)
     public boolean create(@RequestBody Tournament tournament, Principal principal){
         boolean success = false;
         try {
             int authorizedUser = userDao.findIdByUsername(principal.getName());
-            dao.create(tournament, authorizedUser);
+            dao.createTournament(tournament, authorizedUser);
             success = true;
         }catch (Exception e){
-            System.out.println(e.getMessage() + "Tournament create failed!!!!!");
+            System.out.println(e.getMessage() + " Tournament create failed!!!!!");
         }
         return success;
     }
@@ -46,7 +47,7 @@ public class TournamentController {
         return dao.getAllTournaments();
     }
 
-    @ResponseStatus(code = HttpStatus.I_AM_A_TEAPOT, reason = "idk")
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/{id}/update", method = RequestMethod.PUT)
     public boolean update(@RequestBody Tournament tournament, @PathVariable int id) {
         boolean success = false;
