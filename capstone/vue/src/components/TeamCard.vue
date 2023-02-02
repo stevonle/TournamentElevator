@@ -7,7 +7,7 @@
       <h2 class="team-name">{{ this.team.team_name }}</h2>
       <p class="team-description">{{ this.team.team_description }}</p>
       <button
-        v-show="!registeredUser"
+        v-show="!registeredUser && team.isAcceptingMembers"
         class="btn btn-md btn-primary btn-block"
         type="submit"
         placeholder="RequestToJoin"
@@ -51,7 +51,7 @@ export default {
   computed: {
     registeredUser(){
       return this.$store.state.token === ''
-    }
+    },
   }
 };
 </script>
