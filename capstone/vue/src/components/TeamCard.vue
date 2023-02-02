@@ -1,23 +1,20 @@
 <template>
-  <div class="card text-center text-white bg-warning mb-3" style="max-width: 15rem;">
-      <div class="card-body">
-  <router-link v-bind:to="{name: 'Teamcard', params: {teamID: team.team_id} }">
-    <h2 class="team-name">{{ this.team.team_name }}</h2>
-    <p class="team-description">{{ this.team.team_description }}</p>
-  </router-link>
-        </div>
+  <div
+    class="card text-center text-white bg-warning mb-3"
+    style="max-width: 15rem"
+  >
+    <div class="card-body">
+      <h2 class="team-name">{{ this.team.team_name }}</h2>
+      <p class="team-description">{{ this.team.team_description }}</p>
+    </div>
   </div>
 </template>
 
 <script>
-import TournamentServices from '../services/TournamentServices'
+import TournamentServices from "../services/TournamentServices";
 export default {
-
   name: "team-card",
-  props: {
-    teamID: Number,
-  },
-  data(){
+  data() {
     return {
       team: {
         team_id: 0,
@@ -28,8 +25,8 @@ export default {
       },
     };
   },
-  created(){
-    const teamID = this.$route.params.teamID
+  created() {
+    const teamID = this.$route.params.teamID;
     TournamentServices.getTeamById(teamID).then((response) => {
       this.team = response.data;
     });

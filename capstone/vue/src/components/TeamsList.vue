@@ -1,21 +1,23 @@
 <template>
   <section>
     <h3>Viewing all teams</h3>
-    <div class="all-teams-list card-group">
+    <div v-if="loading">
+      <h1>PAGE LOADING</h1>
+    </div>
+    <div v-if="!loading" class="container card-group">
+      <div class="row">
       <div
-        class="card text-center text-white bg-warning mb-3"
-        style="max-width: 15rem"
-        v-for="team in this.teamsList"
+        class="col-md-6 col-lg-4 card-group"
+        v-for="team in teamsList"
         v-bind:team="team"
         v-bind:key="team.team_id"
       >
-        <div class="card-body">
-          <router-link
-            v-bind:to="{ name: 'Teamcard', params: { teamID: team.team_id } }"
-          >
-            <h2 class="team-name">{{ this.team.team_name }}</h2>
-            <p class="team-description">{{ this.team.team_description }}</p>
-          </router-link>
+        <div @click="viewTeamDetails(team.team_id)" class="card team-card text-center text-white">
+            <h2 class="team-name"> Team Name: {{ team.team_name }}</h2>
+            <textarea :value="team.team_description" class="form-control description-container" type="text" readonly rows="3"/>
+
+    
+        </div>
         </div>
       </div>
     </div>
@@ -27,24 +29,59 @@ import TournamentServices from "../services/TournamentServices";
 export default {
   data() {
     return {
-      loading: false,
+      loading: true,
       teamsList: [],
     };
   },
-   created() {
+  created() {
     TournamentServices.viewAllTeams().then((response) => {
       this.teamsList = response.data;
       this.loading = false;
       console.log(response.data);
     });
   },
+  methods: {
+    viewTeamDetails(teamID){
+      this.$router.push(`/teams/${teamID}`)
+    }
+  }
 };
 </script>
 
-<style>
-.all-teams-list {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+<style scoped>
+
+.team-card {
+  background-color: orange;
+  width: 100%;
+  max-height: 400px;
+  cursor: pointer;
+}
+h1 {
+  color: orange;
+  text-align: center;
+  margin: 20px 0px 50px 20px;
+}
+
+.description-container{
+  background-color: orange;
+  color: white;
+  border: none;
+  text-align: center;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    box-shadow: 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    box-shadow: 0 0 6px rgba(0,0,0,0.5);
 }
 </style>
