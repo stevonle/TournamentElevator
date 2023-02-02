@@ -62,7 +62,7 @@ public class TournamentController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @RequestMapping(path = "/tournament/{id}/join", method = RequestMethod.POST)
+    @RequestMapping(path = "/{id}/join", method = RequestMethod.POST)
     public boolean join(@PathVariable int id, @RequestBody Team team) {
         boolean success = false;
         try {
