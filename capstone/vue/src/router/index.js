@@ -7,9 +7,10 @@ import Register from "../views/Register.vue";
 import store from "../store/index";
 import NewTeamForm from "../components/NewTeamForm.vue";
 import Tournament from "../views/Tournament.vue";
-import BrowseTournaments from "../components/BrowseTournaments.vue"
-import TeamsList from "../components/TeamsList.vue"
-import TeamCard from "../views/TeamCard.vue"
+import BrowseTournaments from "../components/BrowseTournaments.vue";
+import TeamsList from "../components/TeamsList.vue";
+import TeamCard from "../views/TeamCard.vue";
+import TournamentCard from "../components/TournamentCard.vue"
 
 Vue.use(Router);
 
@@ -64,7 +65,7 @@ const router = new Router({
       component: NewTeamForm,
       meta: {
         requiresAuth: true,
-        title: "Team Creation"
+        title: "Team Creation",
       },
     },
     {
@@ -73,7 +74,7 @@ const router = new Router({
       component: Tournament,
       meta: {
         requiresAuth: true,
-        title: "Tournament Registration"
+        title: "Tournament Registration",
       },
     },
     {
@@ -82,25 +83,34 @@ const router = new Router({
       component: BrowseTournaments,
       meta: {
         requiresAuth: false,
-        title: "Tournaments"
+        title: "Tournaments",
       },
     },
     {
-      path: '/teams/all',
+      path: "/teams/all",
       name: "BrowseTeams",
       component: TeamsList,
       meta: {
         requiresAuth: false,
-        title: 'Teams'
+        title: "Teams",
       },
     },
     {
-      path: '/teams/:teamID',
+      path: "/teams/:teamID",
       name: "Teamcard",
       component: TeamCard,
       meta: {
         requiresAuth: false,
-        title: 'Team Information'
+        title: "Team Information",
+      },
+    },
+    {
+      path: "/tournament/:id",
+      name: "TournamentCard",
+      component: TournamentCard,
+      meta: {
+        requiresAuth: false,
+        title: "Tournament Details",
       },
     },
   ],

@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/tournaments/")
+@RequestMapping("/tournaments")
 public class TournamentController {
     private TournamentDao dao;
     private UserDao userDao;
@@ -20,9 +20,9 @@ public class TournamentController {
         this.dao = dao;
         this.userDao = userDao;
     }
-
-    //@PreAuthorize("isAuthenticated()")
-    @RequestMapping(path = "create", method = RequestMethod.POST)
+    
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(path = "/create", method = RequestMethod.POST)
     public boolean create(@RequestBody Tournament tournament, Principal principal){
         boolean success = false;
         try {
@@ -35,12 +35,12 @@ public class TournamentController {
         return success;
     }
 
-    @RequestMapping(path = "{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public Tournament getTournament(@PathVariable int id) {
         return dao.getTournamentById(id);
     }
 
-    @RequestMapping(path = "all", method = RequestMethod.GET)
+    @RequestMapping(path = "/all", method = RequestMethod.GET)
     public List<Tournament> getTournaments() {
         return dao.getAllTournaments();
     }

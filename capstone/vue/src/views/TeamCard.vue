@@ -16,11 +16,11 @@ export default {
   data(){
     return {
       team: {
-        team_id: 0,
-        team_name: "",
-        isAcceptingMembers: false,
-        team_captain: "",
-        team_description: "",
+        // team_id: 0,
+        // team_name: "",
+        // isAcceptingMembers: false,
+        // team_captain: "",
+        // team_description: "",
       },
     };
   },
