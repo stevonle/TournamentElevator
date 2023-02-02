@@ -9,12 +9,16 @@ public class Tournament {
 
     @JsonProperty("tournament_id")
     private int tournamentId;
+    @JsonProperty("tournament_name")
     private String name;
     @JsonProperty("game_type")
     private int gameType;
+    @JsonProperty("tournament_date")
     private LocalDate date;
+    @JsonProperty("tournament_location")
     private String location;
     private BigDecimal fee;
+    @JsonProperty("tournament_description")
     private String description;
     private String prize;
     private int host;

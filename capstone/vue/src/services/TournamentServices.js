@@ -24,4 +24,8 @@ export default {
   getTournamentById(id) {
     return axios.get(`/tournaments/${id}`);
   },
+
+  updateTeam(teamID, team){
+    return axios.put(`/teams/${teamID}/update`, team);
+  }
 };

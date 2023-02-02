@@ -45,6 +45,7 @@ public class TeamController {
        }
         return success;
     }
+<<<<<<< HEAD
     @PutMapping("{id}")
     public void updateTeam(@PathVariable int id, @RequestBody Team team){
         team.setTeamId(id);
@@ -53,6 +54,8 @@ public class TeamController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Team not found!" );
         }
     }
+=======
+>>>>>>> main
 
     @PutMapping("{id}/update")
     public void update(@PathVariable int id, @RequestBody Team team){

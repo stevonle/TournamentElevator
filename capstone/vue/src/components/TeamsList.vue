@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h3>Viewing all teams</h3>
+    <h1>Viewing all teams</h1>
     <div v-if="loading">
       <h1>PAGE LOADING</h1>
     </div>
@@ -29,8 +29,9 @@ import TournamentServices from "../services/TournamentServices";
 export default {
   data() {
     return {
-      loading: true,
       teamsList: [],
+      loading: true,
+      
     };
   },
   created() {

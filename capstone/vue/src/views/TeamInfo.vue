@@ -1,6 +1,6 @@
 <template>
-<div class="card">
-  <team-card v-bind:teamID="parseInt($route.params.id)"/>
+<div>
+  <team-card/>
 </div>
 </template>
 
