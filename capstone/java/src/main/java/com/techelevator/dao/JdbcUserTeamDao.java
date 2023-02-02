@@ -22,7 +22,7 @@ public class JdbcUserTeamDao implements UserTeamsDao{
     @Override
     public boolean add(Team team, String userName){
         boolean isAdded = false;
-        String sql = "UPDATE user_teams SET user_id = ? , team_id = ?, isAccepted = FALSE; ";
+        String sql = "INSERT INTO user_teams(user_id, team_id, isaccepted) VALUES (?,?,FALSE);";
         User user = UserDao.findByUsername(userName);
 
         jdbcTemplate.update(sql, user.getId(), team.getTeamId() );
