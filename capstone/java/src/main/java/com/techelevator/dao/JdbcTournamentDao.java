@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Team;
 import com.techelevator.model.Tournament;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -20,8 +21,8 @@ public class JdbcTournamentDao implements TournamentDao{
         String insertTournamentSql = "INSERT INTO tournaments (tournament_name, game_type, tournament_date, " +
                                      "tournament_location, fee, tournament_description, prize, host) " +
                                      "VALUES (?,?,?,?,?,?,?,?);";
-        return jdbcTemplate.update(insertTournamentSql, tournament.getName(), tournament.getGameType(), tournament.getDate(),
-                tournament.getLocation(), tournament.getFee(), tournament.getDescription(),
+        return jdbcTemplate.update(insertTournamentSql, tournament.getName(), tournament.getGameType(),
+                tournament.getDate(), tournament.getLocation(), tournament.getFee(), tournament.getDescription(),
                 tournament.getPrize(), hostId)==1;
     }
 
@@ -50,11 +51,19 @@ public class JdbcTournamentDao implements TournamentDao{
 
     @Override
     public boolean updateTournament(Tournament tournament, int tournamentId) {
-        String sql = "UPDATE tournaments SET tournament_name = ?, game_type = ?, tournament_date = ?, " +
-                     "tournament_location = ?, fee = ?, tournament_description = ?, prize = ? WHERE tournament_id = ?;";
-        return jdbcTemplate.update(sql, tournament.getName(), tournament.getGameType(), tournament.getDate(),
-                    tournament.getLocation(), tournament.getFee(), tournament.getDescription(), tournament.getPrize(),
-                    tournamentId) == 1;
+        String updateTournamentSql = "UPDATE tournaments SET tournament_name = ?, game_type = ?, " +
+                                     "tournament_date = ?, tournament_location = ?, fee = ?, " +
+                                     "tournament_description = ?, prize = ? " +
+                                     "WHERE tournament_id = ?;";
+        return jdbcTemplate.update(updateTournamentSql, tournament.getName(), tournament.getGameType(),
+                tournament.getDate(), tournament.getLocation(), tournament.getFee(), tournament.getDescription(),
+                tournament.getPrize(), tournamentId) == 1;
+    }
+
+    @Override
+    public boolean joinTournament(int tournamentId, Team team) {
+        //String joinTournamentSql = "INSERT INTO "
+        return true;
     }
 
     private Tournament mapRowToTournament(SqlRowSet rs) {

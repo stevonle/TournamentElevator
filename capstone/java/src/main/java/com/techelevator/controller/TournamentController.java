@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.TournamentDao;
 import com.techelevator.dao.UserDao;
+import com.techelevator.model.Team;
 import com.techelevator.model.Tournament;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -62,9 +63,10 @@ public class TournamentController {
 
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/tournament/{id}/join", method = RequestMethod.POST)
-    public boolean join() {
+    public boolean join(@PathVariable int id, @RequestBody Team team) {
         boolean success = false;
         try {
+            dao.joinTournament(id, team);
             success = true;
         } catch (Exception e) {
             System.out.println(e.getMessage() + " Tournament join failed!!!!!");
