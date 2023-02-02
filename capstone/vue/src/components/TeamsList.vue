@@ -29,8 +29,9 @@ import TournamentServices from "../services/TournamentServices";
 export default {
   data() {
     return {
-      loading: true,
       teamsList: [],
+      loading: true,
+      
     };
   },
   created() {
