@@ -78,6 +78,11 @@ created() {
       return filteredTeams;
     },
   },
+  methods: {
+    viewTeamDetails(teamID){
+      this.$router.push(`/teams/${teamID}`)
+    }
+  }
 };
 </script>
 
