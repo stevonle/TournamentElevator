@@ -11,6 +11,7 @@ import BrowseTournaments from "../components/BrowseTournaments.vue";
 import TeamsList from "../components/TeamsList.vue";
 import TeamInfo from "../views/TeamInfo.vue";
 import TournamentCard from "../components/TournamentCard.vue"
+import EditTeam from "../views/EditTeam.vue"
 
 Vue.use(Router);
 
@@ -113,6 +114,15 @@ const router = new Router({
         title: "Tournament Details",
       },
     },
+    {
+      path: "/teams/:teamID/edit",
+      name: 'EditTeam',
+      component: EditTeam,
+      meta: {
+        requiresAuth: true,
+        title: "Edit Team"
+      }
+    }
   ],
 });
 

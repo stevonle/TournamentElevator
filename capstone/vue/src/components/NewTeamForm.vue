@@ -37,6 +37,12 @@ import TournamentServices from '../services/TournamentServices.js'
 
 export default {
   name: "new-team-form",
+  props: {
+    teamID: {
+      type: Number,
+      default: 0
+    }
+  },
   data() {
     return {
       team: {
@@ -48,25 +54,51 @@ export default {
     };
   },
   methods: {
-   async saveTeam() {
-    const tempUser = this.$store.state.user
-    this.team.teamCaptainId = tempUser.id;
-      try {
-        const response = await TournamentServices.addTeam(
-          this.team
-        );
-        if (response.status !== 200) {
-          console.log(response.statusText);
-          return;
-        }
-
-         this.$store.commit("SAVE_TEAM", this.team);
-         this.$router.push('/')
-      } catch (err) {
-        console.log(err);
-      }
-    },
+   saveTeam() {
+     const newTeam = {
+       team_id: Number(this.$route.params.teamID),
+       team_name: this.team.team_name,
+       isAcceptingMembers: this.team.isAcceptingMembers,
+       team_captain: this.team.team_captain,
+       team_description: this.team.team_description
+   };
+   if(this.teamID === 0){
+     TournamentServices.addTeam(newTeam).then(response => {
+       if(response.status === 201) {
+         this.$router.push(`/teams/all`);
+       }
+     })
+    
+     } else {
+       newTeam.team_id = this.teamID;
+       newTeam.team_name = this.team.team_name;
+       newTeam.isAcceptingMembers = this.team.isAcceptingMembers;
+       newTeam.team_captain = this.team.team_captain;
+       newTeam.team_description = this.team.team_description;
+       TournamentServices.updateTeam(newTeam).then(response => {
+         if(response.status === 200){
+           this.$router.push(`/teams/all`);
+         }
+       })
+     }
+   },
   },
+   
+  created(){
+    if(this.teamID != 0){
+      TournamentServices.getTeamById(this.teamID).then(response => {
+        this.card = response.data;
+      })
+      .catch(error => {
+        if(error.response && error.response.status === 404){
+          alert(
+            "Team not available. You have entered an invalid team ID pathway."
+          );
+          this.$router.push('/');
+        }
+      });
+    }
+  }
 };
 </script>
 
