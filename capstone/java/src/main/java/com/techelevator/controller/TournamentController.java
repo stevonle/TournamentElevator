@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.TournamentDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Tournament;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,27 +23,40 @@ public class TournamentController {
     }
 
     @PreAuthorize("isAuthenticated()")
+    @ResponseStatus(code = HttpStatus.CREATED, reason = "Created")
     @RequestMapping(path = "/create", method = RequestMethod.POST)
     public boolean create(@RequestBody Tournament tournament, Principal principal){
         boolean success = false;
         try {
             int authorizedUser = userDao.findIdByUsername(principal.getName());
-            dao.create(tournament, authorizedUser);
+            dao.createTournament(tournament, authorizedUser);
             success = true;
         }catch (Exception e){
-            System.out.println(e.getMessage() + "Tournament error");
+            System.out.println(e.getMessage() + " Tournament create failed!!!!!");
         }
         return success;
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public Tournament getTournament(@PathVariable int id) {
-        Tournament tournament = dao.getTournamentById(id);
-        return tournament;
+        return dao.getTournamentById(id);
     }
 
     @RequestMapping(path = "/all", method = RequestMethod.GET)
     public List<Tournament> getTournaments() {
         return dao.getAllTournaments();
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(path = "/{id}/update", method = RequestMethod.PUT)
+    public boolean update(@RequestBody Tournament tournament, @PathVariable int id) {
+        boolean success = false;
+        try {
+            dao.updateTournament(tournament, id);
+            success = true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage() + " Tournament update failed!!!!!");
+        }
+        return success;
     }
 }

@@ -16,7 +16,7 @@ public class JdbcTournamentDao implements TournamentDao{
     public JdbcTournamentDao(JdbcTemplate jdbcTemplate){this.jdbcTemplate = jdbcTemplate;}
 
     @Override
-    public boolean create(Tournament tournament, int hostId) {
+    public boolean createTournament(Tournament tournament, int hostId) {
         String insertTournamentSql = "INSERT INTO tournaments (tournament_name, game_type, tournament_date, " +
                                      "tournament_location, fee, tournament_description, prize, host) " +
                                      "VALUES (?,?,?,?,?,?,?,?);";
@@ -28,8 +28,7 @@ public class JdbcTournamentDao implements TournamentDao{
     @Override
     public Tournament getTournamentById(int tournamentId) {
         Tournament tournament = null;
-        String selectTournamentSql = "SELECT * " +
-                "FROM tournaments WHERE tournament_id = ?;";
+        String selectTournamentSql = "SELECT * FROM tournaments WHERE tournament_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(selectTournamentSql, tournamentId);
         if (results.next()) {
             tournament = mapRowToTournament(results);
@@ -49,7 +48,14 @@ public class JdbcTournamentDao implements TournamentDao{
         return tournaments;
     }
 
-
+    @Override
+    public boolean updateTournament(Tournament tournament, int tournamentId) {
+        String sql = "UPDATE tournaments SET tournament_name = ?, game_type = ?, tournament_date = ?, " +
+                     "tournament_location = ?, fee = ?, tournament_description = ?, prize = ? WHERE tournament_id = ?;";
+        return jdbcTemplate.update(sql, tournament.getName(), tournament.getGameType(), tournament.getDate(),
+                    tournament.getLocation(), tournament.getFee(), tournament.getDescription(), tournament.getPrize(),
+                    tournamentId) == 1;
+    }
 
     private Tournament mapRowToTournament(SqlRowSet rs) {
         Tournament tournament = new Tournament();
