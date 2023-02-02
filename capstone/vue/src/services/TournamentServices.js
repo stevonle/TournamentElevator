@@ -1,25 +1,27 @@
-import axios from 'axios';
+import axios from "axios";
 
 export default {
+  addTeam(team) {
+    return axios.post("/teams/create", team);
+  },
 
-    addTeam(team){
-      return axios.post('/teams/create', team)
-    },
+  addTournament(tournament) {
+    return axios.post("/tournaments/create", tournament);
+  },
 
-    addTournament(tournament) {
-      return axios.post('/tournaments/create', tournament)
-    },
+  viewAllTournaments() {
+    return axios.get("/tournaments/all");
+  },
 
-    viewAllTournaments() {
-      return axios.get('/tournaments/all')
-    },
+  viewAllTeams() {
+    return axios.get("/teams/");
+  },
 
-    viewAllTeams(){
-      return axios.get('/teams/')
-    },
-
-    getTeamById(teamID){
-      return axios.get(`/teams/${teamID}`)
-    }
+  getTeamById(teamID) {
+    return axios.get(`/teams/${teamID}`);
+  },
   
-  }
+  getTournamentById(id) {
+    return axios.get(`/tournaments/${id}`);
+  },
+};
