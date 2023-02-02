@@ -24,6 +24,7 @@
               readonly
               rows="3"
             />
+          <router-link v-bind:to="{name: 'EditTeam', params: {teamID: team.team_id}}"> Edit Team </router-link>
           </div>
         </div>
       </div>
