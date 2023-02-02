@@ -20,10 +20,10 @@ public class JdbcTournamentDao implements TournamentDao{
     public boolean createTournament(Tournament tournament, int hostId) {
         String insertTournamentSql = "INSERT INTO tournaments (tournament_name, game_type, tournament_date, " +
                                      "tournament_location, fee, tournament_description, prize, host) " +
-                                     "VALUES (?,?,?,?,?,?,?,?);";
+                                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
         return jdbcTemplate.update(insertTournamentSql, tournament.getName(), tournament.getGameType(),
                 tournament.getDate(), tournament.getLocation(), tournament.getFee(), tournament.getDescription(),
-                tournament.getPrize(), hostId)==1;
+                tournament.getPrize(), hostId) == 1;
     }
 
     @Override
@@ -62,8 +62,9 @@ public class JdbcTournamentDao implements TournamentDao{
 
     @Override
     public boolean joinTournament(int tournamentId, Team team) {
-        //String joinTournamentSql = "INSERT INTO "
-        return true;
+        String joinTournamentSql = "INSERT INTO teams_tournament (tournament_id, team_id) " +
+                                   "VALUES (?, ?)";
+        return jdbcTemplate.update(joinTournamentSql, tournamentId, team.getTeamId()) == 1;
     }
 
     private Tournament mapRowToTournament(SqlRowSet rs) {
