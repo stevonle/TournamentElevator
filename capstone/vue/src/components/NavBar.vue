@@ -40,7 +40,7 @@
             <a class="dropdown-item" href="/teams/all">View Teams</a>
             <a class="dropdown-item" href="/teams/create">Create Team</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">My Teams</a>
+            <a class="dropdown-item" href="/teams/myteams">My Teams</a>
           </div>
         </li>
         <li class="nav-item dropdown">

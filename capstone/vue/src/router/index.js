@@ -10,8 +10,9 @@ import Tournament from "../views/Tournament.vue";
 import BrowseTournaments from "../components/BrowseTournaments.vue";
 import TeamsList from "../components/TeamsList.vue";
 import TeamInfo from "../views/TeamInfo.vue";
-import TournamentCard from "../components/TournamentCard.vue"
-import EditTeam from "../views/EditTeam.vue"
+import TournamentCard from "../components/TournamentCard.vue";
+import EditTeam from "../views/EditTeam.vue";
+import UserTeamView from "../views/UserTeamView.vue";
 
 Vue.use(Router);
 
@@ -96,6 +97,15 @@ const router = new Router({
         title: "Teams",
       },
     },
+     {
+      path: "/teams/myteams",
+      name: 'UserTeams',
+      component: UserTeamView,
+      meta: {
+        requiresAuth: true,
+        title: 'My Teams'
+      }
+    },
     {
       path: "/teams/:teamID",
       name: "Teamcard",
@@ -122,7 +132,8 @@ const router = new Router({
         requiresAuth: true,
         title: "Edit Team"
       }
-    }
+    },
+   
   ],
 });
 
