@@ -9,7 +9,7 @@ import NewTeamForm from "../components/NewTeamForm.vue";
 import Tournament from "../views/Tournament.vue";
 import BrowseTournaments from "../components/BrowseTournaments.vue";
 import TeamsList from "../components/TeamsList.vue";
-import TeamCard from "../views/TeamCard.vue";
+import TeamInfo from "../views/TeamInfo.vue";
 import TournamentCard from "../components/TournamentCard.vue"
 
 Vue.use(Router);
@@ -98,7 +98,7 @@ const router = new Router({
     {
       path: "/teams/:teamID",
       name: "Teamcard",
-      component: TeamCard,
+      component: TeamInfo,
       meta: {
         requiresAuth: false,
         title: "Team Information",
