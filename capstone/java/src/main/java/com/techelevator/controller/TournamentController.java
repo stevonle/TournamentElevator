@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.TournamentDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Tournament;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class TournamentController {
         this.dao = dao;
         this.userDao = userDao;
     }
-    
+
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/create", method = RequestMethod.POST)
     public boolean create(@RequestBody Tournament tournament, Principal principal){
@@ -30,7 +31,7 @@ public class TournamentController {
             dao.create(tournament, authorizedUser);
             success = true;
         }catch (Exception e){
-            System.out.println(e.getMessage() + "Tournament error");
+            System.out.println(e.getMessage() + "Tournament create failed!!!!!");
         }
         return success;
     }
@@ -45,11 +46,12 @@ public class TournamentController {
         return dao.getAllTournaments();
     }
 
-    @RequestMapping(path = "{id}/update", method = RequestMethod.PUT)
-    public boolean update(@RequestBody Tournament tournament) {
+    @ResponseStatus(code = HttpStatus.I_AM_A_TEAPOT, reason = "idk")
+    @RequestMapping(path = "/{id}/update", method = RequestMethod.PUT)
+    public boolean update(@RequestBody Tournament tournament, @PathVariable int id) {
         boolean success = false;
         try {
-            dao.updateTournament(tournament);
+            dao.updateTournament(tournament, id);
             success = true;
         } catch (Exception e) {
             System.out.println(e.getMessage() + " Tournament update failed!!!!!");

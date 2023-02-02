@@ -50,17 +50,12 @@ public class JdbcTournamentDao implements TournamentDao{
     }
 
     @Override
-    public boolean updateTournament(Tournament tournament) {
+    public boolean updateTournament(Tournament tournament, int tournamentId) {
         String sql = "UPDATE tournament SET tournament_name = ?, game_type = ?, tournament_date = ?, " +
                      "tournament_location = ?, fee = ?, tournament_description = ?, prize = ? WHERE tournament_id = ?;";
-        try {
-            jdbcTemplate.update(sql, tournament.getName(), tournament.getGameType(), tournament.getDate(),
+        return jdbcTemplate.update(sql, tournament.getName(), tournament.getGameType(), tournament.getDate(),
                     tournament.getLocation(), tournament.getFee(), tournament.getDescription(), tournament.getPrize(),
-                    tournament.getTournamentId());
-        } catch (Exception e) {
-            return false;
-        }
-        return true;
+                    tournamentId) == 1;
     }
 
     private Tournament mapRowToTournament(SqlRowSet rs) {
