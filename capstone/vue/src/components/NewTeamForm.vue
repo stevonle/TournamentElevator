@@ -72,6 +72,8 @@ export default {
    };
    //add section
    if(this.teamID === 0){
+     const tempUser = this.$store.state.user
+      this.team.teamCaptainId = tempUser.id;
      TournamentServices.addTeam(newTeam).then(response => {
        if(response.status === 200) {
          this.$router.push(`/teams/all`);
