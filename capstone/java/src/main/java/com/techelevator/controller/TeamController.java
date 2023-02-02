@@ -45,14 +45,6 @@ public class TeamController {
        }
         return success;
     }
-    @PutMapping("{id}")
-    public void updateTeam(@PathVariable int id, @RequestBody Team team){
-        team.setTeamId(id);
-        boolean updated = dao.updateTeam(team);
-        if(!updated){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Team not found!" );
-        }
-    }
 
     @PutMapping("{id}/update")
     public void update(@PathVariable int id, @RequestBody Team team){

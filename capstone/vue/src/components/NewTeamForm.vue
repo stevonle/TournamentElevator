@@ -1,8 +1,9 @@
 <template>
 <div>
-  <h1> Create Team </h1>
-  <form class="new-team-form" v-on:submit.prevent="saveTeam">
-      <label for="teamNameInput" class='form-label'> Input Team Name Below </label>
+  <h1 v-show="isEditing"> Create Team </h1>
+  <h1 v-show="!isEditing"> Edit Team </h1>
+  <form class="new-team-form cardForm" v-on:submit.prevent="saveTeam">
+      <label for="teamNameInput" class='form-label'> Team Name </label>
       <div class='mb-2'>
     <input
       class="team-input"
@@ -22,11 +23,12 @@
     />
     </div>
     <div>
-    <label for="teamDescription" class='form-label'> Please enter team description </label>
+    <label for="teamDescription" class='form-label'> Team Description </label>
     <textarea type="text" class='team-input' placeholder="Team Description" v-model="team.team_description"/>
     </div>
     <br />
-    <button class="btn btn-md btn-primary btn-block" type='submit' placeholder="createTeamButton">Create</button>
+    <button v-show="isEditing" class="btn btn-md btn-primary btn-block" type='submit' placeholder="createTeamButton">Create</button>
+    <button v-show="!isEditing" class="btn btn-md btn-primary btn-block" type='submit' placeholder="createTeamButton">Save Edit</button>
   </form>
   </div>
 </template>
@@ -43,11 +45,17 @@ export default {
       default: 0
     }
   },
+  computed: {
+    isEditing(){
+      return (this.teamID === 0);
+  },
+  },
   data() {
     return {
+      editing: false,
       team: {
         team_name: "", 
-        isAcceptingMembers: false,
+        isAcceptingMembers: "",
         team_captain:"",
         team_description: "",
       },
@@ -62,21 +70,25 @@ export default {
        team_captain: this.team.team_captain,
        team_description: this.team.team_description
    };
+   //add section
    if(this.teamID === 0){
      TournamentServices.addTeam(newTeam).then(response => {
-       if(response.status === 201) {
+       if(response.status === 200) {
          this.$router.push(`/teams/all`);
        }
      })
     
      } else {
+       //update section
        newTeam.team_id = this.teamID;
        newTeam.team_name = this.team.team_name;
        newTeam.isAcceptingMembers = this.team.isAcceptingMembers;
        newTeam.team_captain = this.team.team_captain;
        newTeam.team_description = this.team.team_description;
-       TournamentServices.updateTeam(newTeam).then(response => {
+       TournamentServices.updateTeam(this.teamID, newTeam).then(response => {
+         
          if(response.status === 200){
+           
            this.$router.push(`/teams/all`);
          }
        })
@@ -87,7 +99,8 @@ export default {
   created(){
     if(this.teamID != 0){
       TournamentServices.getTeamById(this.teamID).then(response => {
-        this.card = response.data;
+        this.team = response.data;
+        console.log(response.data);
       })
       .catch(error => {
         if(error.response && error.response.status === 404){
