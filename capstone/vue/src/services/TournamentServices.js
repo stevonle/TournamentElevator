@@ -27,5 +27,9 @@ export default {
 
   updateTeam(teamID, team){
     return axios.put(`/teams/${teamID}/update`, team);
-  }
+  },
+
+  joinRequestTeam(teamID){
+    return axios.post(`/teams/${teamID}/request`)
+  },
 };

@@ -3,9 +3,17 @@
     class="card text-center text-white bg-warning mb-3"
     style="max-width: 15rem"
   >
-    <div class="card-body">
+    <div class="card-body" v-on:submit.prevent="requestJoin(this.team_id)">
       <h2 class="team-name">{{ this.team.team_name }}</h2>
       <p class="team-description">{{ this.team.team_description }}</p>
+      <button
+        v-show="!registeredUser && team.isAcceptingMembers"
+        class="btn btn-md btn-primary btn-block"
+        type="submit"
+        placeholder="RequestToJoin"
+      >
+        Request
+      </button>
     </div>
   </div>
 </template>
@@ -31,6 +39,20 @@ export default {
       this.team = response.data;
     });
   },
+  methods: {
+    requestJoin(teamID) {
+      TournamentServices.joinRequestTeam(teamID).then((response) => {
+        if (response.status === 200) {
+          this.$router.push(`/teams/all`);
+        }
+      });
+    },
+  },
+  computed: {
+    registeredUser(){
+      return this.$store.state.token === ''
+    },
+  }
 };
 </script>
 

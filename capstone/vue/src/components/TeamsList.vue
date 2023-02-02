@@ -6,18 +6,27 @@
     </div>
     <div v-if="!loading" class="container card-group">
       <div class="row">
-      <div
-        class="col-md-6 col-lg-4 card-group"
-        v-for="team in teamsList"
-        v-bind:team="team"
-        v-bind:key="team.team_id"
-      >
-        <div @click="viewTeamDetails(team.team_id)" class="card team-card text-center text-white">
-            <h2 class="team-name"> Team Name: {{ team.team_name }}</h2>
-            <textarea :value="team.team_description" class="form-control description-container" type="text" readonly rows="3"/>
-
-    
-        </div>
+        <div
+          class="col-md-6 col-lg-4 card-group"
+          v-for="team in teamsList"
+          v-bind:team="team"
+          v-bind:key="team.team_id"
+        >
+          <div
+            @click="viewTeamDetails(team.team_id)"
+            class="card team-card text-center text-white"
+            v-on:submit.prevent="requestJoin"
+          >
+            <h2 class="team-name">Team Name: {{ team.team_name }}</h2>
+            <textarea
+              :value="team.team_description"
+              class="form-control description-container"
+              type="text"
+              readonly
+              rows="3"
+            />
+            
+          </div>
         </div>
       </div>
     </div>
@@ -44,13 +53,12 @@ export default {
   methods: {
     viewTeamDetails(teamID){
       this.$router.push(`/teams/${teamID}`)
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
-
 .team-card {
   background-color: orange;
   width: 100%;
@@ -63,7 +71,7 @@ h1 {
   margin: 20px 0px 50px 20px;
 }
 
-.description-container{
+.description-container {
   background-color: orange;
   color: white;
   border: none;
@@ -71,18 +79,18 @@ h1 {
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
- 
+
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-    box-shadow: 0 0 6px rgba(0,0,0,0.3);
-    border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
 }
- 
+
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
-    box-shadow: 0 0 6px rgba(0,0,0,0.5);
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
 }
 </style>
