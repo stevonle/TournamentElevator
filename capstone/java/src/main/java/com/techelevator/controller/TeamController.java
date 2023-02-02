@@ -2,8 +2,10 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.TeamDao;
 import com.techelevator.dao.UserDao;
+import com.techelevator.dao.UserTeamsDao;
 import com.techelevator.model.Team;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -15,11 +17,12 @@ import java.util.List;
 @RequestMapping("/teams/")
 public class TeamController {
     private TeamDao dao;
-    private UserDao userDao;
+    private UserTeamsDao UserTeamsDao;
 
-    public TeamController(TeamDao dao, UserDao userDao){
+
+    public TeamController(TeamDao dao, UserTeamsDao userTeamsDao){
         this.dao = dao;
-        this.userDao = userDao;
+        this.UserTeamsDao = userTeamsDao;
     }
 
     @RequestMapping(path = "", method = RequestMethod.GET)
@@ -32,6 +35,7 @@ public class TeamController {
         Team team = dao.getTeam(id);
         return team;
     }
+
 
 
     @RequestMapping(path = "create", method = RequestMethod.POST)
@@ -62,6 +66,22 @@ public class TeamController {
         if(!updated){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Team not updated.");
         }
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("{id}/request")
+    public boolean add(@PathVariable int id, Principal principal){
+        boolean isAdded = false;
+        Team team = dao.getTeam(id);
+        try{
+            System.out.println(team.toString());
+            System.out.println(principal.toString());
+            UserTeamsDao.add(team, principal.getName());
+            isAdded = true;
+        }catch (Exception e){
+            System.out.println(e.getMessage() + "Something went wrong.");
+        }
+        return isAdded;
     }
 
 
