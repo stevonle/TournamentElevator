@@ -59,4 +59,16 @@ public class TournamentController {
         }
         return success;
     }
+
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(path = "/tournament/{id}/join", method = RequestMethod.POST)
+    public boolean join() {
+        boolean success = false;
+        try {
+            success = true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage() + " Tournament join failed!!!!!");
+        }
+        return success;
+    }
 }
