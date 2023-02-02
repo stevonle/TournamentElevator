@@ -64,12 +64,19 @@ CREATE TABLE team_games (
 CREATE TABLE user_teams (
 	user_id int,
 	team_id int,
+	isAccepted boolean DEFAULT false,
 	CONSTRAINT PK_user_team_key PRIMARY KEY (user_id, team_id),
 	CONSTRAINT FK_user_team_joiner FOREIGN KEY (user_id) REFERENCES users (user_id),
 	CONSTRAINT FK_team_user_joiner FOREIGN KEY (team_id) REFERENCES teams (team_id)
 );
 
+CREATE TABLE teams_tournament(
+	tournament_id int,
+	team_id int,
+	isAccepted boolean DEFAULT false,
+	CONSTRAINT PK_tournament_team_key PRIMARY KEY (tournament_id, team_id),
+	CONSTRAINT FK_team_tournament_joinger FOREIGN KEY (tournament_id) REFERENCES tournaments(tournament_id),
+	CONSTRAINT FK_tournament_team_jointer FOREIGN KEY (team_id) REFERENCES teams (team_id)
+);
+
 COMMIT TRANSACTION;
-
-
-ROLLBack transaction;
