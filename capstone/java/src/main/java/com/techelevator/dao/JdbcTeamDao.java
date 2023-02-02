@@ -38,6 +38,19 @@ public class JdbcTeamDao implements TeamDao{
     }
 
     @Override
+    public boolean update(Team team) {
+        boolean isUpdated = false;
+        String sql = "UPDATE teams SET team_name = ?, isacceptingmembers = ?," +
+                "team_captain = ?, team_description = ? WHERE team_id = ?";
+
+        if(jdbcTemplate.update(sql, team.getTeamName(), team.isAcceptingMembers(),
+                team.getTeamCaptainId(), team.getTeamDescription(), team.getTeamId())==1){
+            isUpdated = true;
+        }
+        return isUpdated;
+    }
+
+    @Override
     public boolean create(String teamName, boolean acceptingMembers, int teamCaptainId, String teamDescription) {
         String insertTeamSql = "insert into teams(team_name, isAcceptingMembers, team_captain, team_description) values (?,?,?,?);";
 
