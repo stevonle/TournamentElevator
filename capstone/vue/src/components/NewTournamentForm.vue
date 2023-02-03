@@ -15,7 +15,7 @@
       <div class="mb-2">
         <label for="tournament-name">Tournament Game Type</label>
         
-        <select required class="form-control" v-model="tournament.game_type">
+        <select required class="form-control" v-model="tournament.gametype">
           <option value="1">Football</option>
           <option value="2">Soccer</option>
           <option value="3">Basketball</option>
@@ -110,7 +110,7 @@ export default {
         const response = await TournamentServices.addTournament(
           this.tournament
         );
-        if (response.status !== 200) {
+        if (response.status !== 201) {
           console.log(response.statusText);
           return;
         }

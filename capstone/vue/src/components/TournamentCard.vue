@@ -27,7 +27,7 @@
             <label for="tournament-name">Tournament Game Type</label>
 
             <select
-              :readonly="!isHost()"
+              :disabled="!isHost()"
               required
               class="form-control"
               v-model="tournament.gametype"
@@ -124,6 +124,7 @@ export default {
   },
   methods: {
     updateTournament() {
+      if(!window.confirm("Are you sure you want to make changes?")) return
       TournamentServices.updateTournament(
         this.tournament.id,
         this.tournament
