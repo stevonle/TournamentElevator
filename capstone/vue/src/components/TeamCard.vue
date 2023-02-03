@@ -1,9 +1,10 @@
 <template>
   <div
     class="card-container text-center text-white bg-warning mb-3"
-    style="max-width: 15rem"
+    style="max-width: 15rem" 
+
   >
-    <div class="card-body" v-on:submit.prevent="requestJoin(this.team_id)">
+    <div class="card-body">
       <h2 class="team-name">{{ this.team.team_name }}</h2>
       <p class="team-description">{{ this.team.team_description }}</p>
       <button
@@ -11,6 +12,7 @@
         class="btn btn-md btn-primary btn-block"
         type="submit"
         placeholder="RequestToJoin"
+        @click="requestJoin(team.team_id)"
       >
         Request
       </button>
@@ -42,6 +44,7 @@ export default {
   methods: {
     requestJoin(teamID) {
       TournamentServices.joinRequestTeam(teamID).then((response) => {
+        console.log(response.data);
         if (response.status === 200) {
           this.$router.push(`/teams/all`);
         }

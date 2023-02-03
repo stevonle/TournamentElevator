@@ -15,7 +15,6 @@
           <div
             @click="viewTeamDetails(team.team_id)"
             class="card team-card text-center text-white"
-            v-on:submit.prevent="requestJoin"
           >
             <h2 class="team-name">Team Name: {{ team.team_name }}</h2>
             <textarea
@@ -54,7 +53,8 @@ export default {
     viewTeamDetails(teamID){
       this.$router.push(`/teams/${teamID}`)
     },
-  },
+      
+    },
 };
 </script>
 
