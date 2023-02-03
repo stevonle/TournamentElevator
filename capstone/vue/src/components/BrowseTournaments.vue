@@ -6,7 +6,7 @@
     </div>
 
     <div v-if="!loading" class="container">
-      <div class="mb-2 text-white">
+      <div class="mb-2 text-white filter-input" >
         <label for="tournament-name">Filter Tournaments</label>
 
         <select
@@ -19,6 +19,8 @@
           <option :selected="this.$route.query.filter" value="myTournaments">My Tournaments</option>
         </select>
       </div>
+  
+    
       <div class="row">
         <div
           class="col-md-6 col-lg-4"
@@ -107,6 +109,10 @@ export default {
 </script>
 
 <style scoped>
+
+.filter-input {
+  width: 200px;
+}
 .tournament-card {
   background-color: orange;
   width: 100%;

@@ -34,5 +34,8 @@ export default {
   },
   updateTournament(id, tournament) {
     return axios.put(`/tournaments/update/${id}`, tournament)
+  },
+  deleteTournament(id) {
+    return axios.delete(`/tournaments/delete/${id}`)
   }
 };

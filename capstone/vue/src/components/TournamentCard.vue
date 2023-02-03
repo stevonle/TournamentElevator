@@ -1,6 +1,13 @@
 <template>
   <div v-if="this.tournament" class="card text-black bg-warning card-container">
     <div class="card-body">
+      <button
+      v-if="isHost()"
+      class="btn delete-btn"
+      @click="deleteTournament()"
+      >
+        <i class="bi bi-trash"></i>
+      </button>
       <h3 class="card-title text-center">{{ tournament.name }}</h3>
 
       <form class="new-tournament-form" @submit.prevent="updateTournament">
@@ -128,6 +135,17 @@ export default {
         window.alert("Changes Saved");
       });
     },
+    deleteTournament() {
+      if(!window.confirm("Are you sure you want to delete?")) return
+      TournamentServices.deleteTournament(this.tournament.id).then(
+        (response) => {
+          if(response.status !== 200) {
+            return;
+          }
+          this.$router.push('/tournament/all')
+        }
+      )
+    },
     isHost() {
       return this.$store.state.user.id === this.tournament.host;
     },
@@ -139,6 +157,17 @@ export default {
 .card-container {
   width: 500px;
   margin: 25px auto;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border: none;
+  background-color: transparent;
+}
+.delete-btn:hover {
+  color: red;
 }
 
 ::-webkit-scrollbar {
