@@ -111,7 +111,7 @@ export default {
         const response = await TournamentServices.addTournament(
           this.tournament
         );
-        if (response.status !== 200) {
+        if (response.status !== 201) {
           console.log(response.statusText);
           return;
         }
