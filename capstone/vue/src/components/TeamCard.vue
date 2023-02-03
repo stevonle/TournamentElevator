@@ -1,6 +1,6 @@
 <template>
   <div
-    class="card text-center text-white bg-warning mb-3"
+    class="card-container text-center text-white bg-warning mb-3"
     style="max-width: 15rem"
   >
     <div class="card-body" v-on:submit.prevent="requestJoin(this.team_id)">
@@ -57,14 +57,14 @@ export default {
 </script>
 
 <style>
-/* .card {
-  border: 2px solid orange;
-  border-radius: 10px;
-  width: 200px;
-  height: 150px;
-  margin: 20px;
-} */
-
+.card-container {
+  width: 500px;
+  margin: 25px auto;
+  background-color: orange;
+}
+.card-body {
+  background-color: orange;
+}
 /* .card .team-name {
   font-size: 1.5rem;
 }
