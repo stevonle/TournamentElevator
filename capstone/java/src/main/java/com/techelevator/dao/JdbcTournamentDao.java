@@ -50,7 +50,7 @@ public class JdbcTournamentDao implements TournamentDao{
     }
 
     @Override
-    public boolean updateTournament(Tournament tournament, int tournamentId) {
+    public boolean updateTournament(int tournamentId, Tournament tournament) {
         String updateTournamentSql = "UPDATE tournaments SET tournament_name = ?, game_type = ?, " +
                                      "tournament_date = ?, tournament_location = ?, fee = ?, " +
                                      "tournament_description = ?, prize = ? " +
@@ -63,7 +63,7 @@ public class JdbcTournamentDao implements TournamentDao{
     @Override
     public boolean joinTournament(int tournamentId, Team team) {
         String joinTournamentSql = "INSERT INTO teams_tournament (tournament_id, team_id) " +
-                                   "VALUES (?, ?)";
+                                   "VALUES (?, ?);";
         return jdbcTemplate.update(joinTournamentSql, tournamentId, team.getTeamId()) == 1;
     }
     
@@ -71,6 +71,20 @@ public class JdbcTournamentDao implements TournamentDao{
     public boolean deleteTournament(int tournamentId) {
         String deleteTournamentSql = "DELETE FROM tournaments WHERE tournament_id = ?;";
         return jdbcTemplate.update(deleteTournamentSql, tournamentId) == 1;
+    }
+
+    @Override
+    public boolean acceptTeam(int tournamentId, int teamId) {
+        String acceptTeamSql = "UPDATE teams_tournament SET isAccepted = ? " +
+                               "WHERE tournament_id = ? AND team_id = ?;";
+        return jdbcTemplate.update(acceptTeamSql, true, tournamentId, teamId) == 1;
+    }
+
+    @Override
+    public boolean rejectTeam(int tournamentId, int teamId) {
+        String rejectTeamSql = "DELETE FROM teams_tournament " +
+                               "WHERE tournament_id = ? AND team_id = ?;";
+        return jdbcTemplate.update(rejectTeamSql, tournamentId, teamId) == 1;
     }
 
     private Tournament mapRowToTournament(SqlRowSet rs) {
