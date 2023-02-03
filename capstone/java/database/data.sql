@@ -25,5 +25,14 @@ INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description)
 INSERT INTO tournaments (tournament_name, game_type, tournament_date, tournament_location, fee,
  tournament_description, prize, host) VALUES ('THE BIG ONE', '1', '2023-02-20 10:23:54', 'Everywhere', '1000.00', 'This is a description. This is the BIG ONE!', 'Everything', '3');
 
+INSERT INTO user_teams (user_id, team_id, isaccepted) values (3, 4, true);
+INSERT INTO user_teams (user_id, team_id, isaccepted) values (4, 4, false);
+INSERT INTO user_teams (user_id, team_id, isaccepted) values (5, 4, false);
+
+INSERT INTO user_teams (user_id, team_id, isaccepted) values (4, 1, true);
+INSERT INTO user_teams (user_id, team_id, isaccepted) values (3, 1, true);
+INSERT INTO user_teams (user_id, team_id, isaccepted) values (5, 1, true);
+INSERT INTO user_teams (user_id, team_id, isaccepted) values (7, 1, false);
+INSERT INTO user_teams (user_id, team_id, isaccepted) values (6, 1, false);
 
 COMMIT TRANSACTION;
