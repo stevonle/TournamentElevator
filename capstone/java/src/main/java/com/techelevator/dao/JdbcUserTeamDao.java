@@ -62,7 +62,23 @@ public class JdbcUserTeamDao implements UserTeamsDao{
         return teamMembers;
     }
 
-        private User mapRowToUser(SqlRowSet rs) {
+    @Override
+    public boolean acceptMember(int teamId, int userId){
+        boolean accepted = false;
+        String sql = "UPDATE user_teams SET isaccepted = TRUE WHERE user_id=? AND team_id=?;";
+    if(jdbcTemplate.update(sql, userId, teamId)==1){
+        accepted= true;
+        }
+        return accepted;
+    }
+
+    @Override
+    public void rejectMember(int teamId, int userId) {
+        String sql = "DELETE FROM user_teams WHERE user_id = ? AND team_id = ?;";
+        jdbcTemplate.update(sql, userId, teamId);
+    }
+
+    private User mapRowToUser(SqlRowSet rs) {
             User user = new User();
             user.setId(rs.getInt("user_id"));
             user.setUsername(rs.getString("username"));
