@@ -42,4 +42,7 @@ export default {
   getTeamMembers(teamID){
     return axios.get(`/teams/${teamID}/members`)
   },
+  getPendingMembers(teamID){
+    return axios.get(`/teams/${teamID}/pending`)
+  }
 };

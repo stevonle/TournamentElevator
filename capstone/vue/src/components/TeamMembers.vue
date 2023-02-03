@@ -5,10 +5,11 @@
       <ul class="list-group">
         <li
           class="list-group-item list-group-item-warning"
-          v-for="member in memberList"
+          v-for="member in members"
           v-bind:key="member.id"
         >
           {{ member.username }}
+          <span class="badge badge-primary" v-if="isCaptain(member.id)"> Team Captain </span>
         </li>
         <li
           v-show="isHost()"
@@ -19,11 +20,11 @@
           {{ user.username }}
           <span
             class="badge badge-success badge-pill"
-            v-on:click.prevent="ApproveMember(this.userID, this.teamID)"
+            v-on:click.prevent="ApproveMember(user.userID, this.teamID)"
             >Approve</span
           ><span
             class="badge badge-danger badge-pill"
-            v-on:click.prevent="RejectMember(this.userID, this.teamID)"
+            v-on:click.prevent="RejectMember(user.userID, this.teamID)"
             >Reject</span
           >
         </li>
@@ -46,24 +47,44 @@ export default {
     };
   },
   created() {
-    TournamentServices.getTeamById(this.teamID).then((response) => {
-      this.currentTeam = response.data;
-    });
-    TournamentServices.getTeamMembers(this.teamID).then((response) => {
-      this.members = response.data;
-      this.loading = false;
-    });
+    this.getTeam(this.teamID);
+    this.getMembers(this.teamID);
+    this.getPendingMembers(this.teamID);
+    
+   
   },
 
   methods: {
     isHost() {
       return this.$store.state.user.id === this.currentTeam.team_captain;
     },
+    isCaptain(userID){
+        return userID === this.currentTeam.team_captain;
+    },
     ApproveMember(userID, teamID) {
       TournamentServices.addMemberToTeam(userID, teamID);
     },
     Rejectmember(userID, teamID) {
       TournamentServices.rejectMemberFromTeam(userID, teamID);
+    },
+    getTeam(teamID){
+        TournamentServices.getTeamById(teamID).then((response) => {
+      this.currentTeam = response.data;
+      console.log(response.data);
+    });
+    },
+    getMembers(teamID){
+        TournamentServices.getTeamMembers(teamID).then((response) => {
+      this.members = response.data;
+      console.log(response.data);
+    });
+    },
+    getPendingMembers(teamID){
+    TournamentServices.getPendingMembers(teamID).then((response) => {
+        this.tentativeMembers = response.data;
+        this.loading = false;
+        console.log(response.data);
+    });
     },
   },
 };
