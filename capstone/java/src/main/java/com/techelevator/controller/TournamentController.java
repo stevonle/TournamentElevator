@@ -73,4 +73,17 @@ public class TournamentController {
         }
         return success;
     }
+
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(path = "/delete/{id}", method = RequestMethod.DELETE)
+    public boolean delete(@PathVariable int id) {
+        boolean success = false;
+        try {
+            dao.deleteTournament(id);
+            success = true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage() + " Tournament delete failed!!!!!");
+        }
+        return success;
+    }
 }

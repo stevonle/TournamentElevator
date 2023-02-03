@@ -11,5 +11,5 @@ public interface TournamentDao {
     List<Tournament> getAllTournaments();
     boolean updateTournament(Tournament tournament, int id);
     boolean joinTournament(int tournamentId, Team team);
-    
+    boolean deleteTournament(int tournamentId);
 }
