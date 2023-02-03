@@ -2,6 +2,7 @@
   <section>
     <div v-if="loading">Loading Members</div>
     <div v-if="!loading">
+      <h2> List of Members </h2>
       <ul class="list-group">
         <li
           class="list-group-item list-group-item-warning"
@@ -99,4 +100,14 @@ export default {
 </script>
 
 <style scoped>
+.list-group {
+  display: inline-block;
+}
+.list-group-item {
+  background-color: orange;
+  color: white;
+}
+h2 {
+  color: white;
+}
 </style>
