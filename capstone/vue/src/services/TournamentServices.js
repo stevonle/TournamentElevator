@@ -37,5 +37,18 @@ export default {
   },
   deleteTournament(id) {
     return axios.delete(`/tournaments/delete/${id}`)
-  }
+  },
+
+  getTeamMembers(teamID){
+    return axios.get(`/teams/${teamID}/members`)
+  },
+  getPendingMembers(teamID){
+    return axios.get(`/teams/${teamID}/pending`)
+  },
+  addMemberToTeam(teamID, userID){
+    return axios.put(`/teams/${teamID}/pending/${userID}`)
+  },
+  rejectMemberFromTeam(teamID, userID){
+    return axios.delete(`/teams/${teamID}/pending/${userID}`)
+  },
 };

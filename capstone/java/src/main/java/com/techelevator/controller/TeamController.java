@@ -4,7 +4,9 @@ import com.techelevator.dao.TeamDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.dao.UserTeamsDao;
 import com.techelevator.model.Team;
+import com.techelevator.model.User;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.method.P;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -18,11 +20,13 @@ import java.util.List;
 public class TeamController {
     private TeamDao dao;
     private UserTeamsDao UserTeamsDao;
+    private UserDao UserDao;
 
 
-    public TeamController(TeamDao dao, UserTeamsDao userTeamsDao){
+    public TeamController(TeamDao dao, UserTeamsDao userTeamsDao, UserDao userDao){
         this.dao = dao;
         this.UserTeamsDao = userTeamsDao;
+        this.UserDao = userDao;
     }
 
     @RequestMapping(path = "", method = RequestMethod.GET)
@@ -82,6 +86,30 @@ public class TeamController {
             System.out.println(e.getMessage() + "Something went wrong.");
         }
         return isAdded;
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("{id}/members")
+    public List<User> listTeamMembers(@PathVariable int id){
+        return UserTeamsDao.listTeamMembers(id);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("{id}/pending")
+    public List<User> pendingTeamMembers(@PathVariable int id){
+        return UserTeamsDao.pendingTeamMembers(id);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PutMapping("{teamId}/pending/{userId}")
+    public boolean acceptMember(@PathVariable int teamId,@PathVariable int userId){
+        return UserTeamsDao.acceptMember(teamId, userId);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @DeleteMapping("{teamId}/pending/{userId}")
+    public void rejectMember(@PathVariable int teamId,@PathVariable int userId){
+        UserTeamsDao.rejectMember(teamId, userId);
     }
 
 

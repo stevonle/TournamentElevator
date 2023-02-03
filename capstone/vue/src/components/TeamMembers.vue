@@ -1,0 +1,102 @@
+<template>
+  <section>
+    <div v-if="loading">Loading Members</div>
+    <div v-if="!loading">
+      <ul class="list-group">
+        <li
+          class="list-group-item list-group-item-warning"
+          v-for="member in members"
+          v-bind:key="member.id"
+        >
+          {{ member.username }}
+          <span class="badge badge-primary" v-if="isCaptain(member.id)"> Team Captain </span>
+        </li>
+        <li
+          v-show="isHost()"
+          class="list-group-item list-group-item-warning"
+          v-for="user in tentativeMembers"
+          v-bind:key="user.id"
+        >
+          {{ user.username }}
+          <span
+            class="badge badge-success badge-pill"
+            v-on:click.prevent="ApproveMember(user.id)"
+            >Approve</span
+          ><span
+            class="badge badge-danger badge-pill"
+            v-on:click.prevent="RejectMember(user.id)"
+            >Reject</span
+          >
+        </li>
+      </ul>
+    </div>
+  </section>
+</template>
+
+<script>
+import TournamentServices from "../services/TournamentServices";
+export default {
+  name: "Team Members",
+  data() {
+    return {
+      members: [],
+      teamID: Number(this.$route.params.teamID),
+      loading: true,
+      currentTeam: {},
+      tentativeMembers: [],
+    };
+  },
+  created() {
+    this.getTeam(this.teamID);
+    this.getMembers(this.teamID);
+    this.getPendingMembers(this.teamID);
+  },
+
+  methods: {
+    isHost() {
+      return this.$store.state.user.id === this.currentTeam.team_captain;
+    },
+    isCaptain(userID){
+        return userID === this.currentTeam.team_captain;
+    },
+    ApproveMember(userID) {
+      TournamentServices.addMemberToTeam(this.teamID, userID).then(response => {
+         if(response.status === 200){
+           
+           window.location.reload();
+         }
+    });
+    },
+    RejectMember(userID) {
+      TournamentServices.rejectMemberFromTeam(this.teamID, userID).then(response => {
+        if(response.status === 200){
+           
+           window.location.reload();
+         }
+    });
+    },
+    getTeam(teamID){
+        TournamentServices.getTeamById(teamID).then((response) => {
+      this.currentTeam = response.data;
+      console.log(response.data);
+    });
+    },
+    getMembers(teamID){
+        TournamentServices.getTeamMembers(teamID).then((response) => {
+      this.members = response.data;
+      console.log(response.data);
+    });
+    },
+    getPendingMembers(teamID){
+    TournamentServices.getPendingMembers(teamID).then((response) => {
+        this.tentativeMembers = response.data;
+        this.loading = false;
+        console.log(response.data);
+    });
+    },
+  },
+};
+</script>
+
+<style scoped>
+</style>
