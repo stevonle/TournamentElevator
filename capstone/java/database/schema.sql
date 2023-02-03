@@ -75,8 +75,8 @@ CREATE TABLE teams_tournament(
 	team_id int,
 	isAccepted boolean DEFAULT false,
 	CONSTRAINT PK_tournament_team_key PRIMARY KEY (tournament_id, team_id),
-	CONSTRAINT FK_team_tournament_joinger FOREIGN KEY (tournament_id) REFERENCES tournaments(tournament_id),
-	CONSTRAINT FK_tournament_team_jointer FOREIGN KEY (team_id) REFERENCES teams (team_id)
+	CONSTRAINT FK_team_tournament_joiner FOREIGN KEY (tournament_id) REFERENCES tournaments(tournament_id),
+	CONSTRAINT FK_tournament_team_joiner FOREIGN KEY (team_id) REFERENCES teams (team_id)
 );
 
 COMMIT TRANSACTION;

@@ -69,7 +69,7 @@ export default {
         return;
       }
 
-      this.$store.state.tournamentList = response.data
+      this.$store.state.tournaments = response.data
       if(this.$route.query.filter === "myTournaments") {
         this.filteredTournament({target:{value: "myTournaments"}})
       } else {

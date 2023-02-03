@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Tournament {
 
@@ -22,11 +24,12 @@ public class Tournament {
     private String description;
     private String prize;
     private int host;
+    private List<Invite> invites;
     //private boolean completed;
 
     public Tournament() {}
 
-    public Tournament(int tournamentId, String name, int gameType, LocalDate date, String location, BigDecimal fee, String description, String prize, int host/*, boolean completed*/) {
+    public Tournament(int tournamentId, String name, int gameType, LocalDate date, String location, BigDecimal fee, String description, String prize, int host) {
         this.tournamentId = tournamentId;
         this.name = name;
         this.gameType = gameType;
@@ -36,6 +39,7 @@ public class Tournament {
         this.description = description;
         this.prize = prize;
         this.host = host;
+        this.invites = new ArrayList<>();
         //this.completed = completed;
     }
 
@@ -107,6 +111,13 @@ public class Tournament {
 
     public void setHost(int host) {this.host = host;}
 
+    public List<Invite> getInvites() {
+        return invites;
+    }
+
+    public void setInvites(List<Invite> invites) {
+        this.invites = invites;
+    }
 //    public boolean isCompleted() {
 //        return completed;
 //    }

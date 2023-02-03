@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Invite;
 import com.techelevator.model.Team;
 import com.techelevator.model.Tournament;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -36,6 +37,20 @@ public class JdbcTournamentDao implements TournamentDao{
         }
         return tournament;
     }
+
+    @Override
+    public List<Invite> getTournamentInvitesById(int tournamentId) {
+        List<Invite> invites = new ArrayList<>();
+        String selectTournamentSql = "SELECT teams.team_name, teams_tournament.* FROM teams_tournament JOIN teams ON teams.team_id = teams_tournament.team_id WHERE tournament_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(selectTournamentSql, tournamentId);
+
+        while(results.next()) {
+            invites.add(mapRowToInvite(results));
+        }
+        return invites;
+    }
+
+
 
     @Override
     public List<Tournament> getAllTournaments() {
@@ -100,6 +115,17 @@ public class JdbcTournamentDao implements TournamentDao{
         tournament.setHost(rs.getInt("host"));
         //tournament.setCompleted(rs.getBoolean("completed"));
         return tournament;
+    }
+
+    private Invite mapRowToInvite(SqlRowSet rs) {
+        Invite invite = new Invite();
+        invite.setTeam_name(rs.getString("team_name"));
+        invite.setTournament_id(rs.getInt("tournament_id"));
+        invite.setTeam_id(rs.getInt("team_id"));
+        invite.setAccepted(rs.getBoolean("isAccepted"));
+
+        return invite;
+
     }
 
 

@@ -51,4 +51,12 @@ export default {
   rejectMemberFromTeam(teamID, userID){
     return axios.delete(`/teams/${teamID}/pending/${userID}`)
   },
+
+  acceptTeamForTournament(tournamentId, teamId) {
+    return axios.put(`/tournaments/${tournamentId}/accept/${teamId}`)
+  },
+  rejectTeamForTournament(tournamentId, teamId) {
+    return axios.delete(`/tournaments/${tournamentId}/reject/${teamId}`)
+  }
+  
 };

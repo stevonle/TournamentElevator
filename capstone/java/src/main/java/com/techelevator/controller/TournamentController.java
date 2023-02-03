@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.TournamentDao;
 import com.techelevator.dao.UserDao;
+import com.techelevator.model.Invite;
 import com.techelevator.model.Team;
 import com.techelevator.model.Tournament;
 import org.springframework.http.HttpStatus;
@@ -37,10 +38,20 @@ public class TournamentController {
         }
         return success;
     }
-
+    @PreAuthorize("permitAll")
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
-    public Tournament getTournament(@PathVariable int id) {
-        return dao.getTournamentById(id);
+    public Tournament getTournament(@PathVariable int id, Principal principal) {
+        Tournament tournament = dao.getTournamentById(id);
+        if(principal == null) {
+            return tournament;
+        }
+        int authorizedUser = userDao.findIdByUsername(principal.getName());
+        if(authorizedUser == tournament.getHost()) {
+            List<Invite> invites = dao.getTournamentInvitesById(id);
+            tournament.setInvites(invites);
+        }
+
+        return tournament;
     }
 
     @RequestMapping(path = "/all", method = RequestMethod.GET)
