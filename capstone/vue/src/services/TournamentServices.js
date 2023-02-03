@@ -32,4 +32,7 @@ export default {
   joinRequestTeam(teamID){
     return axios.post(`/teams/${teamID}/request`)
   },
+  updateTournament(id, tournament) {
+    return axios.put(`/tournaments/update/${id}`, tournament)
+  }
 };

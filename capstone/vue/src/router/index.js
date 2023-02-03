@@ -7,12 +7,13 @@ import Register from "../views/Register.vue";
 import store from "../store/index";
 import NewTeamForm from "../components/NewTeamForm.vue";
 import Tournament from "../views/Tournament.vue";
-import BrowseTournaments from "../components/BrowseTournaments.vue";
 import TeamsList from "../components/TeamsList.vue";
 import TeamInfo from "../views/TeamInfo.vue";
-import TournamentCard from "../components/TournamentCard.vue";
+import IndividualTournaments from "../views/IndividualTournaments.vue";
 import EditTeam from "../views/EditTeam.vue";
 import UserTeamView from "../views/UserTeamView.vue";
+import TournamentBrowse from "../views/TournamentBrowse.vue";
+
 
 Vue.use(Router);
 
@@ -72,7 +73,7 @@ const router = new Router({
     },
     {
       path: "/tournament/create",
-      name: "Tournament",
+      name: "CreateTournament",
       component: Tournament,
       meta: {
         requiresAuth: true,
@@ -82,7 +83,7 @@ const router = new Router({
     {
       path: "/tournament/all",
       name: "BrowseTournaments",
-      component: BrowseTournaments,
+      component: TournamentBrowse,
       meta: {
         requiresAuth: false,
         title: "Tournaments",
@@ -97,15 +98,16 @@ const router = new Router({
         title: "Teams",
       },
     },
-     {
+    {
       path: "/teams/myteams",
-      name: 'UserTeams',
+      name: "UserTeams",
       component: UserTeamView,
       meta: {
         requiresAuth: true,
-        title: 'My Teams'
-      }
+        title: "My Teams",
+      },
     },
+
     {
       path: "/teams/:teamID",
       name: "Teamcard",
@@ -117,8 +119,8 @@ const router = new Router({
     },
     {
       path: "/tournament/:id",
-      name: "TournamentCard",
-      component: TournamentCard,
+      name: "IndividualTournaments",
+      component: IndividualTournaments,
       meta: {
         requiresAuth: false,
         title: "Tournament Details",
@@ -126,14 +128,13 @@ const router = new Router({
     },
     {
       path: "/teams/:teamID/edit",
-      name: 'EditTeam',
+      name: "EditTeam",
       component: EditTeam,
       meta: {
         requiresAuth: true,
-        title: "Edit Team"
-      }
+        title: "Edit Team",
+      },
     },
-   
   ],
 });
 

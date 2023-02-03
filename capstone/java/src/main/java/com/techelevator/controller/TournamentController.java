@@ -48,7 +48,7 @@ public class TournamentController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @RequestMapping(path = "/{id}/update", method = RequestMethod.PUT)
+    @RequestMapping(path = "/update/{id}", method = RequestMethod.PUT)
     public boolean update(@RequestBody Tournament tournament, @PathVariable int id) {
         boolean success = false;
         try {

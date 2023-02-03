@@ -61,7 +61,7 @@
               >Create Tournaments</a
             >
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">My Tournaments</a>
+            <a class="dropdown-item" href="/tournament/all?filter=myTournaments">My Tournaments</a>
           </div>
         </li>
       </ul>

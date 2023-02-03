@@ -6,15 +6,31 @@
     </div>
 
     <div v-if="!loading" class="container">
+      <div class="mb-2 text-white">
+        <label for="tournament-name">Filter Tournaments</label>
+
+        <select
+          @change="filteredTournament"
+          required
+          class="form-control"
+          
+        >
+          <option value="all">All</option>
+          <option :selected="this.$route.query.filter" value="myTournaments">My Tournaments</option>
+        </select>
+      </div>
       <div class="row">
         <div
           class="col-md-6 col-lg-4"
           v-for="tournament in tournamentList"
-          :key="tournament.tournamentId"
+          :key="tournament.id"
         >
-          <div @click="viewTournamentDetails(tournament.tournament_id)" class="tournament-card card text-center text-white">
+          <div
+            @click="viewTournamentDetails(tournament.id)"
+            class="tournament-card card text-center text-white"
+          >
             <h4>{{ tournament.name }}</h4>
-            <p>Game Type: {{ getGameName(tournament.game_type) }}</p>
+            <p>Game Type: {{ getGameName(tournament.gametype) }}</p>
             <p>Date: {{ tournament.date }}</p>
             <p>Location: {{ tournament.location }}</p>
             <p>Fee: {{ tournament.fee }}</p>
@@ -35,6 +51,7 @@
 
 <script>
 import TournamentServices from "../services/TournamentServices.js";
+import { getGameName } from "../util/util.js";
 export default {
   data() {
     return {
@@ -47,35 +64,44 @@ export default {
     try {
       const response = await TournamentServices.viewAllTournaments();
       if (response.status !== 200) {
-        console.log(response.statusText);
         return;
       }
-      this.tournamentList = response.data;
+
+      this.$store.state.tournamentList = response.data
+      if(this.$route.query.filter === "myTournaments") {
+        this.filteredTournament({target:{value: "myTournaments"}})
+      } else {
+        this.tournamentList = response.data
+      }
       this.loading = false;
     } catch (err) {
       console.log(err);
     }
   },
+
   methods: {
-    getGameName(type) {
+    getGameName,
+
+    viewTournamentDetails(tournamentId) {
+      this.$router.push(`/tournament/${tournamentId}`);
+    },
+    filteredTournament(e) {
+      const tempUser = this.$store.state.user;
+      let filteredTournament = [];
+      const type = e.target.value
+      console.log(this.$store.state.tournamentList)
       switch (type) {
-        case 1:
-          return "Football";
-        case 2:
-          return "Soccer";
-        case 3:
-          return "Basketball";
-        case 4:
-          return "Volleyball";
-        case 5:
-          return "Quidditch";
-        default:
-          return "Unknown";
+        case "all":
+          this.tournamentList = this.$store.state.tournamentList
+          break;
+        case "myTournaments":
+          filteredTournament = this.$store.state.tournamentList.filter((t) => {
+            return t.host == tempUser.id;
+          });
+          this.tournamentList = filteredTournament;
+          break;
       }
     },
-    viewTournamentDetails(tournamentId) {
-      this.$router.push(`/tournament/${tournamentId}`)
-    }
   },
 };
 </script>
@@ -93,7 +119,7 @@ h1 {
   margin: 20px 0px 50px 20px;
 }
 
-.description-container{
+.description-container {
   background-color: orange;
   color: white;
   border: none;
@@ -101,18 +127,18 @@ h1 {
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
- 
+
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-    box-shadow: 0 0 6px rgba(0,0,0,0.3);
-    border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
 }
- 
+
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
-    box-shadow: 0 0 6px rgba(0,0,0,0.5);
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
 }
 </style>
