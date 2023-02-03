@@ -13,4 +13,8 @@ public interface UserTeamsDao {
     List<User> listTeamMembers(int team_id);
 
     List<User> pendingTeamMembers(int id);
+
+    boolean acceptMember(int teamId, int userId);
+
+    void rejectMember(int teamId, int userId);
 }

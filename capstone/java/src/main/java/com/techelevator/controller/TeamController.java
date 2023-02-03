@@ -6,6 +6,7 @@ import com.techelevator.dao.UserTeamsDao;
 import com.techelevator.model.Team;
 import com.techelevator.model.User;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.method.P;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -97,6 +98,18 @@ public class TeamController {
     @GetMapping("{id}/pending")
     public List<User> pendingTeamMembers(@PathVariable int id){
         return UserTeamsDao.pendingTeamMembers(id);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PutMapping("{teamId}/pending/{userId}")
+    public boolean acceptMember(@PathVariable int teamId,@PathVariable int userId){
+        return UserTeamsDao.acceptMember(teamId, userId);
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @DeleteMapping("{teamId}/pending/{userId}")
+    public void rejectMember(@PathVariable int teamId,@PathVariable int userId){
+        UserTeamsDao.rejectMember(teamId, userId);
     }
 
 
