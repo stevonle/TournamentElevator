@@ -9,7 +9,9 @@ public interface TournamentDao {
     boolean createTournament(Tournament tournament, int hostId);
     Tournament getTournamentById(int tournamentId);
     List<Tournament> getAllTournaments();
-    boolean updateTournament(Tournament tournament, int id);
+    boolean updateTournament(int id, Tournament tournament);
     boolean joinTournament(int tournamentId, Team team);
     boolean deleteTournament(int tournamentId);
+    boolean acceptTeam(int tournamentId, int teamId);
+    boolean rejectTeam(int tournamentId, int teamId);
 }
