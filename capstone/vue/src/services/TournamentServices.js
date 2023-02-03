@@ -37,5 +37,9 @@ export default {
   },
   deleteTournament(id) {
     return axios.delete(`/tournaments/delete/${id}`)
-  }
+  },
+
+  getTeamMembers(teamID){
+    return axios.get(`/teams/${teamID}/members`)
+  },
 };
