@@ -66,6 +66,12 @@ public class JdbcTournamentDao implements TournamentDao{
                                    "VALUES (?, ?)";
         return jdbcTemplate.update(joinTournamentSql, tournamentId, team.getTeamId()) == 1;
     }
+    
+    @Override
+    public boolean deleteTournament(int tournamentId) {
+        String deleteTournamentSql = "DELETE FROM tournaments WHERE tournament_id = ?;";
+        return jdbcTemplate.update(deleteTournamentSql, tournamentId) == 1;
+    }
 
     private Tournament mapRowToTournament(SqlRowSet rs) {
         Tournament tournament = new Tournament();
