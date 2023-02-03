@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="team-info mb-2 text-center">
   <team-card/>
   <team-members v-bind:teamID="parseInt($route.params.teamID)"/>
 </div>
@@ -15,6 +15,6 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 
 </style>

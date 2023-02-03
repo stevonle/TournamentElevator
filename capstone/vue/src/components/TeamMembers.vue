@@ -64,7 +64,7 @@ export default {
     ApproveMember(userID, teamID) {
       TournamentServices.addMemberToTeam(userID, teamID);
     },
-    Rejectmember(userID, teamID) {
+    RejectMember(userID, teamID) {
       TournamentServices.rejectMemberFromTeam(userID, teamID);
     },
     getTeam(teamID){
