@@ -63,7 +63,7 @@ export default {
       TournamentServices.addMemberToTeam(this.teamID, userID).then(response => {
          if(response.status === 200){
            
-           console.log('success')
+           window.location.reload();
          }
     });
     },
@@ -71,7 +71,7 @@ export default {
       TournamentServices.rejectMemberFromTeam(this.teamID, userID).then(response => {
         if(response.status === 200){
            
-           console.log('success')
+           window.location.reload();
          }
     });
     },
