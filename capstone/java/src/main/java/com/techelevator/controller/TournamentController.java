@@ -24,7 +24,7 @@ public class TournamentController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @ResponseStatus(code = HttpStatus.CREATED, reason = "Created")
+    //@ResponseStatus(code = HttpStatus.CREATED, reason = "Created")
     @RequestMapping(path = "/create", method = RequestMethod.POST)
     public boolean create(@RequestBody Tournament tournament, Principal principal){
         boolean success = false;
@@ -33,7 +33,7 @@ public class TournamentController {
             dao.createTournament(tournament, authorizedUser);
             success = true;
         }catch (Exception e){
-            System.out.println(e.getMessage() + " Tournament create failed!!!!!");
+            System.out.println(e.getMessage() + " - Tournament create failed!!!!!");
         }
         return success;
     }
@@ -50,18 +50,18 @@ public class TournamentController {
 
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/update/{id}", method = RequestMethod.PUT)
-    public boolean update(@RequestBody Tournament tournament, @PathVariable int id) {
+    public boolean update(@PathVariable int id, @RequestBody Tournament tournament) {
         boolean success = false;
         try {
-            dao.updateTournament(tournament, id);
+            dao.updateTournament(id, tournament);
             success = true;
         } catch (Exception e) {
-            System.out.println(e.getMessage() + " Tournament update failed!!!!!");
+            System.out.println(e.getMessage() + " - Tournament update failed!!!!!");
         }
         return success;
     }
 
-    @PreAuthorize("isAuthenticated()")
+    //@PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/{id}/join", method = RequestMethod.POST)
     public boolean join(@PathVariable int id, @RequestBody Team team) {
         boolean success = false;
@@ -69,7 +69,7 @@ public class TournamentController {
             dao.joinTournament(id, team);
             success = true;
         } catch (Exception e) {
-            System.out.println(e.getMessage() + " Tournament join failed!!!!!");
+            System.out.println(e.getMessage() + " - Tournament join failed!!!!!");
         }
         return success;
     }
@@ -82,7 +82,33 @@ public class TournamentController {
             dao.deleteTournament(id);
             success = true;
         } catch (Exception e) {
-            System.out.println(e.getMessage() + " Tournament delete failed!!!!!");
+            System.out.println(e.getMessage() + " - Tournament delete failed!!!!!");
+        }
+        return success;
+    }
+
+    //PreAuthorize("isAuthenticated()")
+    @RequestMapping(path = "/{tournamentId}/accept/{teamId}", method = RequestMethod.PUT)
+    public boolean accept(@PathVariable int tournamentId, @PathVariable int teamId) {
+        boolean success = false;
+        try {
+            dao.acceptTeam(tournamentId, teamId);
+            success = true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage() + " - Team accept failed!!!!!");
+        }
+        return success;
+    }
+
+    //@PreAuthorize("isAuthenticated()")
+    @RequestMapping(path = "/{tournamentId}/reject/{teamId}", method = RequestMethod.DELETE)
+    public boolean reject(@PathVariable int tournamentId, @PathVariable int teamId) {
+        boolean success = false;
+        try {
+            dao.rejectTeam(tournamentId, teamId);
+            success = true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage() + " - Team reject failed!!!!!");
         }
         return success;
     }
