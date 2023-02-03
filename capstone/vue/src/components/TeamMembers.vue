@@ -20,11 +20,11 @@
           {{ user.username }}
           <span
             class="badge badge-success badge-pill"
-            v-on:click.prevent="ApproveMember(user.userID, this.teamID)"
+            v-on:click.prevent="ApproveMember(user.id)"
             >Approve</span
           ><span
             class="badge badge-danger badge-pill"
-            v-on:click.prevent="RejectMember(user.userID, this.teamID)"
+            v-on:click.prevent="RejectMember(user.id)"
             >Reject</span
           >
         </li>
@@ -50,8 +50,6 @@ export default {
     this.getTeam(this.teamID);
     this.getMembers(this.teamID);
     this.getPendingMembers(this.teamID);
-    
-   
   },
 
   methods: {
@@ -61,11 +59,21 @@ export default {
     isCaptain(userID){
         return userID === this.currentTeam.team_captain;
     },
-    ApproveMember(userID, teamID) {
-      TournamentServices.addMemberToTeam(userID, teamID);
+    ApproveMember(userID) {
+      TournamentServices.addMemberToTeam(this.teamID, userID).then(response => {
+         if(response.status === 200){
+           
+           console.log('success')
+         }
+    });
     },
-    RejectMember(userID, teamID) {
-      TournamentServices.rejectMemberFromTeam(userID, teamID);
+    RejectMember(userID) {
+      TournamentServices.rejectMemberFromTeam(this.teamID, userID).then(response => {
+        if(response.status === 200){
+           
+           console.log('success')
+         }
+    });
     },
     getTeam(teamID){
         TournamentServices.getTeamById(teamID).then((response) => {

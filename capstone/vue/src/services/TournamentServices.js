@@ -44,5 +44,11 @@ export default {
   },
   getPendingMembers(teamID){
     return axios.get(`/teams/${teamID}/pending`)
-  }
+  },
+  addMemberToTeam(teamID, userID){
+    return axios.put(`/teams/${teamID}/pending/${userID}`)
+  },
+  rejectMemberFromTeam(teamID, userID){
+    return axios.delete(`/teams/${teamID}/pending/${userID}`)
+  },
 };
