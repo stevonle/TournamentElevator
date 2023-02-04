@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface UserTeamsDao {
 
-    boolean add(Team team, String userName);
+    boolean add(Team team, String userName, boolean isaccepted);
 
     List<User> listTeamMembers(int team_id);
 

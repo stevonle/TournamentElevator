@@ -20,43 +20,46 @@ export default {
   getTeamById(teamID) {
     return axios.get(`/teams/${teamID}`);
   },
-  
+
   getTournamentById(id) {
     return axios.get(`/tournaments/${id}`);
   },
 
-  updateTeam(teamID, team){
+  updateTeam(teamID, team) {
     return axios.put(`/teams/${teamID}/update`, team);
   },
 
-  joinRequestTeam(teamID){
-    return axios.post(`/teams/${teamID}/request`)
+  joinRequestTeam(teamID) {
+    return axios.post(`/teams/${teamID}/request`);
   },
   updateTournament(id, tournament) {
-    return axios.put(`/tournaments/update/${id}`, tournament)
+    return axios.put(`/tournaments/update/${id}`, tournament);
   },
   deleteTournament(id) {
-    return axios.delete(`/tournaments/delete/${id}`)
+    return axios.delete(`/tournaments/delete/${id}`);
   },
 
-  getTeamMembers(teamID){
-    return axios.get(`/teams/${teamID}/members`)
+  getTeamMembers(teamID) {
+    return axios.get(`/teams/${teamID}/members`);
   },
-  getPendingMembers(teamID){
-    return axios.get(`/teams/${teamID}/pending`)
+  getPendingMembers(teamID) {
+    return axios.get(`/teams/${teamID}/pending`);
   },
-  addMemberToTeam(teamID, userID){
-    return axios.put(`/teams/${teamID}/pending/${userID}`)
+  addMemberToTeam(teamID, userID) {
+    return axios.put(`/teams/${teamID}/pending/${userID}`);
   },
-  rejectMemberFromTeam(teamID, userID){
-    return axios.delete(`/teams/${teamID}/pending/${userID}`)
+  rejectMemberFromTeam(teamID, userID) {
+    return axios.delete(`/teams/${teamID}/pending/${userID}`);
   },
 
   acceptTeamForTournament(tournamentId, teamId) {
-    return axios.put(`/tournaments/${tournamentId}/accept/${teamId}`)
+    return axios.put(`/tournaments/${tournamentId}/accept/${teamId}`);
   },
   rejectTeamForTournament(tournamentId, teamId) {
-    return axios.delete(`/tournaments/${tournamentId}/reject/${teamId}`)
-  }
-  
+    return axios.delete(`/tournaments/${tournamentId}/reject/${teamId}`);
+  },
+
+  joinTournament(id, team) {
+    return axios.post(`/tournaments/${id}/join`, team);
+  },
 };

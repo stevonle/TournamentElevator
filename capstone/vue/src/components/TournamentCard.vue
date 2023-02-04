@@ -179,6 +179,7 @@ export default {
       );
     },
     isHost() {
+      if (!this.tournament) return false;
       return this.$store.state.user.id === this.tournament.host;
     },
     acceptTeam(tournamentId, teamId) {

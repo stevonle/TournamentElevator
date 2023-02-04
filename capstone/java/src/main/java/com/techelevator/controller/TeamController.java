@@ -41,12 +41,13 @@ public class TeamController {
     }
 
 
-
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "create", method = RequestMethod.POST)
-    public boolean create(@RequestBody Team team) {
+    public boolean create(@RequestBody Team team, Principal principal) {
        boolean success = false;
        try {
-           dao.create(team.getTeamName(), team.isAcceptingMembers(), team.getTeamCaptainId(), team.getTeamDescription());
+           dao.create(team);
+           UserTeamsDao.add(team, principal.getName(), true);
            success = true;
        } catch (Exception e) {
            System.out.println(e.getMessage() + "Something messed up");
@@ -80,7 +81,7 @@ public class TeamController {
         try{
             System.out.println(team.toString());
             System.out.println(principal.toString());
-            UserTeamsDao.add(team, principal.getName());
+            UserTeamsDao.add(team, principal.getName(), false);
             isAdded = true;
         }catch (Exception e){
             System.out.println(e.getMessage() + "Something went wrong.");

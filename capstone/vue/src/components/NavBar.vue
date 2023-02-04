@@ -1,8 +1,5 @@
 <template>
-  <nav
-    class="navbar navbar-expand-lg navbar-light bg-light"
-    v-bind:class="{ navbarOpen: show }"
-  >
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/">Tournament Elevator</a>
     <button
       class="navbar-toggler"
@@ -13,11 +10,7 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div
-      class="collapse navbar-collapse"
-      id="navbarSupportedContent"
-      v-bind:class="{ show: show }"
-    >
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="/"
@@ -61,7 +54,9 @@
               >Create Tournaments</a
             >
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/tournament/all?filter=myTournaments">My Tournaments</a>
+            <a class="dropdown-item" href="/tournament/all?filter=myTournaments"
+              >My Tournaments</a
+            >
           </div>
         </li>
       </ul>
@@ -70,6 +65,7 @@
         style="text-align: right"
       >
         <ul class="navbar-nav mr-auto">
+          <li class="mr-2">{{ this.$store.state.user.username }}</li>
           <li>
             <router-link
               v-bind:to="{ name: 'logout' }"
@@ -89,4 +85,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+</style>

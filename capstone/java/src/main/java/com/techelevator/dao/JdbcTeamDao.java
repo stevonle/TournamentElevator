@@ -51,11 +51,11 @@ public class JdbcTeamDao implements TeamDao{
     }
 
     @Override
-    public boolean create(String teamName, boolean acceptingMembers, int teamCaptainId, String teamDescription) {
-        String insertTeamSql = "insert into teams(team_name, isAcceptingMembers, team_captain, team_description) values (?,?,?,?);";
-
-
-        return jdbcTemplate.update(insertTeamSql, teamName, acceptingMembers, teamCaptainId, teamDescription)==1;
+    public Team create(Team team) {
+        String insertTeamSql = "insert into teams(team_name, isAcceptingMembers, team_captain, team_description) values (?,?,?,?) RETURNING team_id";
+        int id = jdbcTemplate.queryForObject(insertTeamSql, Integer.class, team.getTeamName(), team.isAcceptingMembers(), team.getTeamCaptainId(), team.getTeamDescription());
+        team.setTeamId(id);
+        return team;
     }
 
     private Team mapRowToTeam(SqlRowSet rowSet){

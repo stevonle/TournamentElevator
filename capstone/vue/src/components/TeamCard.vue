@@ -1,12 +1,11 @@
 <template>
   <div
     class="card-container text-center text-white bg-warning mb-3"
-    style="max-width: 15rem" 
-
+    style="max-width: 15rem"
   >
     <div class="card-body">
-      <h2 class="team-name">{{ this.team.team_name }}</h2>
-      <p class="team-description">{{ this.team.team_description }}</p>
+      <h2 class="team-name">{{ team.team_name }}</h2>
+      <p class="team-description">{{ team.team_description }}</p>
       <button
         v-show="!registeredUser && team.isAcceptingMembers"
         class="btn btn-md btn-primary btn-block"
@@ -24,22 +23,11 @@
 import TournamentServices from "../services/TournamentServices";
 export default {
   name: "team-card",
-  data() {
-    return {
-      team: {
-        team_id: 0,
-        team_name: "",
-        isAcceptingMembers: false,
-        team_captain: "",
-        team_description: "",
-      },
-    };
+  props: {
+    team: Object,
   },
   created() {
-    const teamID = this.$route.params.teamID;
-    TournamentServices.getTeamById(teamID).then((response) => {
-      this.team = response.data;
-    });
+    console.log(this.$props);
   },
   methods: {
     requestJoin(teamID) {
@@ -52,10 +40,10 @@ export default {
     },
   },
   computed: {
-    registeredUser(){
-      return this.$store.state.token === ''
+    registeredUser() {
+      return this.$store.state.token === "";
     },
-  }
+  },
 };
 </script>
 

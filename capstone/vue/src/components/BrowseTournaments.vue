@@ -91,13 +91,12 @@ export default {
       const tempUser = this.$store.state.user;
       let filteredTournament = [];
       const type = e.target.value
-      console.log(this.$store.state.tournamentList)
       switch (type) {
         case "all":
-          this.tournamentList = this.$store.state.tournamentList
+          this.tournamentList = this.$store.state.tournaments
           break;
         case "myTournaments":
-          filteredTournament = this.$store.state.tournamentList.filter((t) => {
+          filteredTournament = this.$store.state.tournaments.filter((t) => {
             return t.host == tempUser.id;
           });
           this.tournamentList = filteredTournament;

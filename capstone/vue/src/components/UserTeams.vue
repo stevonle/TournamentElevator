@@ -64,7 +64,6 @@ created() {
     TournamentServices.viewAllTeams().then((response) => {
       this.teamsList = response.data;
       this.loading = false;
-      console.log(response.data);
     });
   },
 
@@ -75,7 +74,6 @@ created() {
       filteredTeams = filteredTeams.filter((team) => {
         return team.team_captain == tempUser.id;
       });
-      console.log(filteredTeams);
       return filteredTeams;
     },
   },

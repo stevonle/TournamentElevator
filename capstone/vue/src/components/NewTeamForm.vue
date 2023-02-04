@@ -102,7 +102,6 @@ export default {
     if(this.teamID != 0){
       TournamentServices.getTeamById(this.teamID).then(response => {
         this.team = response.data;
-        console.log(response.data);
       })
       .catch(error => {
         if(error.response && error.response.status === 404){

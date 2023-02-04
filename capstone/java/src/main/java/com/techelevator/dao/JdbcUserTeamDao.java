@@ -24,12 +24,12 @@ public class JdbcUserTeamDao implements UserTeamsDao{
 
 
     @Override
-    public boolean add(Team team, String userName){
+    public boolean add(Team team, String userName, boolean isaccepted){
         boolean isAdded = false;
-        String sql = "INSERT INTO user_teams(user_id, team_id, isaccepted) VALUES (?,?,FALSE);";
+        String sql = "INSERT INTO user_teams(user_id, team_id, isaccepted) VALUES (?,?,?);";
         User user = UserDao.findByUsername(userName);
 
-        jdbcTemplate.update(sql, user.getId(), team.getTeamId() );
+        jdbcTemplate.update(sql, user.getId(), team.getTeamId(), isaccepted);
 
         return isAdded;
     }
@@ -39,7 +39,8 @@ public class JdbcUserTeamDao implements UserTeamsDao{
         List<User> teamMembers = new ArrayList<>();
         String sql = "Select * From users as u\n" +
                 "INNER JOIN user_teams as ut\n" +
-                "ON u.user_id = ut.user_id Where team_id = ? AND isaccepted = TRUE;";
+                "ON u.user_id = ut.user_id\n" +
+                "Where team_id = ? AND isaccepted = TRUE;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, team_id);
         while (results.next()){
             User user = mapRowToUser(results);

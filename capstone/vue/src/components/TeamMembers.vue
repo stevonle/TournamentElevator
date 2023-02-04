@@ -37,7 +37,7 @@
 <script>
 import TournamentServices from "../services/TournamentServices";
 export default {
-  name: "Team Members",
+  name: "team-members",
   data() {
     return {
       members: [],
@@ -79,20 +79,17 @@ export default {
     getTeam(teamID){
         TournamentServices.getTeamById(teamID).then((response) => {
       this.currentTeam = response.data;
-      console.log(response.data);
     });
     },
     getMembers(teamID){
         TournamentServices.getTeamMembers(teamID).then((response) => {
       this.members = response.data;
-      console.log(response.data);
     });
     },
     getPendingMembers(teamID){
     TournamentServices.getPendingMembers(teamID).then((response) => {
         this.tentativeMembers = response.data;
         this.loading = false;
-        console.log(response.data);
     });
     },
   },

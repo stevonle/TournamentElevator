@@ -106,7 +106,6 @@ export default {
   },
   methods: {
     async saveTournament() {
-      console.log(this.tournament);
       try {
         const response = await TournamentServices.addTournament(
           this.tournament
