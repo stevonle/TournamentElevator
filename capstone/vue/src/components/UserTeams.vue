@@ -2,7 +2,7 @@
   <section>
     <h1>Viewing my teams</h1>
     <div v-if="loading">
-      <h1>PAGE LOADING</h1>
+      <Loading />
     </div>
     <div v-if="!loading" class="container card-group">
       <div class="row">
@@ -24,7 +24,11 @@
               readonly
               rows="3"
             />
-          <router-link v-bind:to="{name: 'EditTeam', params: {teamID: team.team_id}}"> Edit Team </router-link>
+            <router-link
+              v-bind:to="{ name: 'EditTeam', params: { teamID: team.team_id } }"
+            >
+              Edit Team
+            </router-link>
           </div>
         </div>
       </div>
@@ -34,6 +38,7 @@
 
 <script>
 import TournamentServices from "../services/TournamentServices";
+import Loading from "../components/Loading.vue";
 export default {
   name: "UserTeams",
   data() {
@@ -42,25 +47,28 @@ export default {
       loading: true,
     };
   },
-//   methods: {
-//     getTeamData() {
-//       try {
-//         const response = TournamentServices.viewAllTeams();
-//         if (response.status !== 200) {
-//           console.log(response.statusText);
-//           return;
-//         }
-//         this.teamsList = response.data;
-//         this.loading = false;
-//       } catch (err) {
-//         console.log(err);
-//       }
-//     },
-//   },
-//   created() {
-//     this.getTeamData();
-//   },
-created() {
+  components: {
+    Loading,
+  },
+  //   methods: {
+  //     getTeamData() {
+  //       try {
+  //         const response = TournamentServices.viewAllTeams();
+  //         if (response.status !== 200) {
+  //           console.log(response.statusText);
+  //           return;
+  //         }
+  //         this.teamsList = response.data;
+  //         this.loading = false;
+  //       } catch (err) {
+  //         console.log(err);
+  //       }
+  //     },
+  //   },
+  //   created() {
+  //     this.getTeamData();
+  //   },
+  created() {
     TournamentServices.viewAllTeams().then((response) => {
       this.teamsList = response.data;
       this.loading = false;
@@ -78,10 +86,10 @@ created() {
     },
   },
   methods: {
-    viewTeamDetails(teamID){
-      this.$router.push(`/teams/${teamID}`)
-    }
-  }
+    viewTeamDetails(teamID) {
+      this.$router.push(`/teams/${teamID}`);
+    },
+  },
 };
 </script>
 

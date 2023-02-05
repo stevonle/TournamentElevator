@@ -1,8 +1,10 @@
 <template>
   <section>
-    <div v-if="loading">Loading Members</div>
+    <div v-if="loading">
+      <Loading />
+    </div>
     <div v-if="!loading">
-      <h2> List of Members </h2>
+      <h2>List of Members</h2>
       <ul class="list-group">
         <li
           class="list-group-item list-group-item-warning"
@@ -10,7 +12,9 @@
           v-bind:key="member.id"
         >
           {{ member.username }}
-          <span class="badge badge-primary" v-if="isCaptain(member.id)"> Team Captain </span>
+          <span class="badge badge-primary" v-if="isCaptain(member.id)">
+            Team Captain
+          </span>
         </li>
         <li
           v-show="isHost()"
@@ -36,6 +40,7 @@
 
 <script>
 import TournamentServices from "../services/TournamentServices";
+import Loading from "../components/Loading.vue";
 export default {
   name: "team-members",
   data() {
@@ -47,6 +52,9 @@ export default {
       tentativeMembers: [],
     };
   },
+  components: {
+    Loading,
+  },
   created() {
     this.getTeam(this.teamID);
     this.getMembers(this.teamID);
@@ -57,40 +65,42 @@ export default {
     isHost() {
       return this.$store.state.user.id === this.currentTeam.team_captain;
     },
-    isCaptain(userID){
-        return userID === this.currentTeam.team_captain;
+    isCaptain(userID) {
+      return userID === this.currentTeam.team_captain;
     },
     ApproveMember(userID) {
-      TournamentServices.addMemberToTeam(this.teamID, userID).then(response => {
-         if(response.status === 200){
-           
-           window.location.reload();
-         }
-    });
+      TournamentServices.addMemberToTeam(this.teamID, userID).then(
+        (response) => {
+          if (response.status === 200) {
+            window.location.reload();
+          }
+        }
+      );
     },
     RejectMember(userID) {
-      TournamentServices.rejectMemberFromTeam(this.teamID, userID).then(response => {
-        if(response.status === 200){
-           
-           window.location.reload();
-         }
-    });
+      TournamentServices.rejectMemberFromTeam(this.teamID, userID).then(
+        (response) => {
+          if (response.status === 200) {
+            window.location.reload();
+          }
+        }
+      );
     },
-    getTeam(teamID){
-        TournamentServices.getTeamById(teamID).then((response) => {
-      this.currentTeam = response.data;
-    });
+    getTeam(teamID) {
+      TournamentServices.getTeamById(teamID).then((response) => {
+        this.currentTeam = response.data;
+      });
     },
-    getMembers(teamID){
-        TournamentServices.getTeamMembers(teamID).then((response) => {
-      this.members = response.data;
-    });
+    getMembers(teamID) {
+      TournamentServices.getTeamMembers(teamID).then((response) => {
+        this.members = response.data;
+      });
     },
-    getPendingMembers(teamID){
-    TournamentServices.getPendingMembers(teamID).then((response) => {
+    getPendingMembers(teamID) {
+      TournamentServices.getPendingMembers(teamID).then((response) => {
         this.tentativeMembers = response.data;
         this.loading = false;
-    });
+      });
     },
   },
 };

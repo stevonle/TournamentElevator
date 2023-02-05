@@ -2,25 +2,20 @@
   <div>
     <h1>All Tournaments</h1>
     <div v-if="loading">
-      <h1>PAGE LOADING</h1>
+      <Loading />
     </div>
-
     <div v-if="!loading" class="container">
-      <div class="mb-2 text-white filter-input" >
+      <div class="mb-2 text-white filter-input">
         <label for="tournament-name">Filter Tournaments</label>
 
-        <select
-          @change="filteredTournament"
-          required
-          class="form-control"
-          
-        >
+        <select @change="filteredTournament" required class="form-control">
           <option value="all">All</option>
-          <option :selected="this.$route.query.filter" value="myTournaments">My Tournaments</option>
+          <option :selected="this.$route.query.filter" value="myTournaments">
+            My Tournaments
+          </option>
         </select>
       </div>
-  
-    
+
       <div class="row">
         <div
           class="col-md-6 col-lg-4"
@@ -53,6 +48,7 @@
 
 <script>
 import TournamentServices from "../services/TournamentServices.js";
+import Loading from "../components/Loading.vue";
 import { getGameName } from "../util/util.js";
 export default {
   data() {
@@ -61,7 +57,9 @@ export default {
       tournamentList: [],
     };
   },
-
+  components: {
+    Loading,
+  },
   async created() {
     try {
       const response = await TournamentServices.viewAllTournaments();
@@ -69,11 +67,11 @@ export default {
         return;
       }
 
-      this.$store.state.tournaments = response.data
-      if(this.$route.query.filter === "myTournaments") {
-        this.filteredTournament({target:{value: "myTournaments"}})
+      this.$store.state.tournaments = response.data;
+      if (this.$route.query.filter === "myTournaments") {
+        this.filteredTournament({ target: { value: "myTournaments" } });
       } else {
-        this.tournamentList = response.data
+        this.tournamentList = response.data;
       }
       this.loading = false;
     } catch (err) {
@@ -90,10 +88,10 @@ export default {
     filteredTournament(e) {
       const tempUser = this.$store.state.user;
       let filteredTournament = [];
-      const type = e.target.value
+      const type = e.target.value;
       switch (type) {
         case "all":
-          this.tournamentList = this.$store.state.tournaments
+          this.tournamentList = this.$store.state.tournaments;
           break;
         case "myTournaments":
           filteredTournament = this.$store.state.tournaments.filter((t) => {
@@ -108,7 +106,6 @@ export default {
 </script>
 
 <style scoped>
-
 .filter-input {
   width: 200px;
 }

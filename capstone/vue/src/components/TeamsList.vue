@@ -2,7 +2,7 @@
   <section>
     <h1>Viewing all teams</h1>
     <div v-if="loading">
-      <h1>PAGE LOADING</h1>
+      <Loading />
     </div>
     <div v-if="!loading" class="container card-group">
       <div class="row">
@@ -24,7 +24,6 @@
               readonly
               rows="3"
             />
-            
           </div>
         </div>
       </div>
@@ -34,13 +33,16 @@
 
 <script>
 import TournamentServices from "../services/TournamentServices";
+import Loading from "../components/Loading.vue";
 export default {
   data() {
     return {
       teamsList: [],
       loading: true,
-      
     };
+  },
+  components: {
+    Loading,
   },
   created() {
     TournamentServices.viewAllTeams().then((response) => {
@@ -50,11 +52,10 @@ export default {
     });
   },
   methods: {
-    viewTeamDetails(teamID){
-      this.$router.push(`/teams/${teamID}`)
+    viewTeamDetails(teamID) {
+      this.$router.push(`/teams/${teamID}`);
     },
-      
-    },
+  },
 };
 </script>
 

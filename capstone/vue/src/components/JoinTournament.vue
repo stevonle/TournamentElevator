@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <select v-model="selectedTournamentId" class="form-control">
+  <div class="tournament-container">
+    <h2 class="text-white">Available Tournaments</h2>
+    
+    <select v-model="selectedTournamentId" class="form-control drop-down">
       <option
         v-for="tournament in this.tournaments"
         :value="tournament.id"
@@ -54,7 +56,7 @@ export default {
             console.log(res.data);
             return;
           }
-          alert("YES");
+          alert("Tournament Application Submitted");
         })
         .catch((err) => console.log(err));
     },
@@ -62,4 +64,16 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+.tournament-container {
+  width: 400px;
+  margin: 20px auto;
+
+}
+
+
+.btn {
+  margin-top: 10px;  
+}
+</style>
