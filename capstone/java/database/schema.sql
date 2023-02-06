@@ -35,6 +35,7 @@ CREATE TABLE tournaments (
 	tournament_description varchar(500),
 	prize varChar(100),
 	host int,
+	round int DEFAULT 1,
 	CONSTRAINT PK_tournaments_key PRIMARY KEY (tournament_id),
 	CONSTRAINT FK_host_foreign FOREIGN KEY (host) REFERENCES users(user_id),
 	CONSTRAINT game_type FOREIGN KEY (game_type) REFERENCES games(game_id)
@@ -47,6 +48,7 @@ CREATE TABLE pairings (
 	teamTwo int,
 	team_one_wins int,
 	team_two_wins int,
+	round int,
 	CONSTRAINT PK_pairings_key PRIMARY KEY (pairing_id),
 	CONSTRAINT FK_tournament_pairings FOREIGN KEY (tournament_id) REFERENCES tournaments(tournament_id)
 );

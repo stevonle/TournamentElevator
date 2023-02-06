@@ -42,14 +42,8 @@ public class TournamentController {
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public Tournament getTournament(@PathVariable int id, Principal principal) {
         Tournament tournament = dao.getTournamentById(id);
-        if(principal == null) {
-            return tournament;
-        }
-        int authorizedUser = userDao.findIdByUsername(principal.getName());
-        if(authorizedUser == tournament.getHost()) {
-            List<Invite> invites = dao.getTournamentInvitesById(id);
-            tournament.setInvites(invites);
-        }
+        List<Invite> invites = dao.getTournamentInvitesById(id);
+        tournament.setInvites(invites);
 
         return tournament;
     }

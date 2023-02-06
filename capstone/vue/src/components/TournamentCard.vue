@@ -105,6 +105,7 @@
         </form>
       </div>
     </div>
+    <TournamentMatches v-if="this.tournament" :tournament="this.tournament" />
     <div v-if="isHost()" class="invites-container">
       <table class="table table-bordered table-dark">
         <thead>
@@ -118,12 +119,22 @@
             <td>{{ invite.team_name }}</td>
             <td>
               <div v-if="!invite.accepted">
-                <button class="btn" @click="acceptTeam(invite.tournament_id, invite.team_id)">Accept</button>
+                <button
+                  class="btn"
+                  @click="acceptTeam(invite.tournament_id, invite.team_id)"
+                >
+                  Accept
+                </button>
                 &nbsp;
 
-                <button class="btn" @click="rejectTeam(invite.tournament_id, invite.team_id)">Reject</button>
+                <button
+                  class="btn"
+                  @click="rejectTeam(invite.tournament_id, invite.team_id)"
+                >
+                  Reject
+                </button>
               </div>
-               <div v-if="invite.accepted">
+              <div v-if="invite.accepted">
                 <h5>Accepted</h5>
               </div>
             </td>
@@ -136,11 +147,15 @@
 
 <script>
 import TournamentServices from "../services/TournamentServices.js";
+import TournamentMatches from "../components/TournamentMatches.vue";
 export default {
   data() {
     return {
       tournament: null,
     };
+  },
+  components: {
+    TournamentMatches,
   },
   created() {
     TournamentServices.getTournamentById(this.$route.params.id).then(

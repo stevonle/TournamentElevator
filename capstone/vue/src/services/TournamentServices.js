@@ -62,4 +62,17 @@ export default {
   joinTournament(id, team) {
     return axios.post(`/tournaments/${id}/join`, team);
   },
+
+  addPairing(pairing) {
+    return axios.post("/pairings/create", pairing);
+  },
+  getPairingsForTournament(tournamentId) {
+    return axios.get(`/pairings/${tournamentId}`);
+  },
+  deletePairing(pairingId) {
+    return axios.delete(`/pairings/${pairingId}`);
+  },
+  updatePairings(id, pairing) {
+    return axios.put(`/pairings/update/${id}`, pairing);
+  },
 };

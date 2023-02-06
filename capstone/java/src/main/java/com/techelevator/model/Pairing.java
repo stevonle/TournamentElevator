@@ -6,6 +6,8 @@ public class Pairing {
 
     @JsonProperty("pairing_id")
     private int pairingId;
+    @JsonProperty("tournament_id")
+    private int tournamentId;
     @JsonProperty("team_one")
     private int teamOneId;
     @JsonProperty("team_two")
@@ -14,13 +16,20 @@ public class Pairing {
     private int teamOneWins;
     @JsonProperty("team_two_wins")
     private int teamTwoWins;
+    @JsonProperty("round")
+    private int round;
 
-    public Pairing(int pairingId, int teamOneId, int teamTwoId, int teamOneWins, int teamTwoWins) {
+    public Pairing() {
+
+    }
+
+    public Pairing(int pairingId, int teamOneId, int teamTwoId, int teamOneWins, int teamTwoWins, int round) {
         this.pairingId = pairingId;
         this.teamOneId = teamOneId;
         this.teamTwoId = teamTwoId;
         this.teamOneWins = teamOneWins;
         this.teamTwoWins = teamTwoWins;
+        this.round = round;
     }
 
     public int getPairingId() {
@@ -47,7 +56,7 @@ public class Pairing {
         this.teamTwoId = teamTwoId;
     }
 
-    public int isTeamOneWins() {
+    public int getTeamOneWins() {
         return teamOneWins;
     }
 
@@ -55,11 +64,28 @@ public class Pairing {
         this.teamOneWins = teamOneWins;
     }
 
-    public int isTeamTwoWins() {
+    public int getTeamTwoWins() {
         return teamTwoWins;
     }
 
     public void setTeamTwoWins(int teamTwoWins) {
         this.teamTwoWins = teamTwoWins;
     }
+
+    public int getTournamentId() {
+        return tournamentId;
+    }
+
+    public void setTournamentId(int tournamentId) {
+        this.tournamentId = tournamentId;
+    }
+
+    public int getRound() {
+        return round;
+    }
+
+    public void setRound(int round) {
+        this.round = round;
+    }
+
 }

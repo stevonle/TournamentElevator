@@ -1,5 +1,12 @@
 package com.techelevator.dao;
 
-public interface PairingDao {
+import com.techelevator.model.Pairing;
 
+import java.util.List;
+
+public interface PairingDao {
+     Pairing create(Pairing pairing);
+     List<Pairing> list(int tournamentId);
+     void delete(int id);
+     void update(Pairing pairing);
 }
