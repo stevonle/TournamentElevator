@@ -1,12 +1,21 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
+    <browse-tournaments/>
+    <hr class="solid"/>
+    <user-teams/>
+    <hr class="solid"/>
+    <teams-list/>
   </div>
 </template>
 
 <script>
+import BrowseTournaments from '../components/BrowseTournaments.vue';
+import TeamsList from '../components/TeamsList.vue';
+import UserTeams from '../components/UserTeams.vue';
+
 export default {
+  components: {  BrowseTournaments, TeamsList, UserTeams },
   name: "home"
 };
 </script>
@@ -14,5 +23,9 @@ export default {
 <style scoped>
 .home {
   color: white;
+}
+.solid {
+  margin: 100px 100px;
+  border-top: 3px solid orange;
 }
 </style>
