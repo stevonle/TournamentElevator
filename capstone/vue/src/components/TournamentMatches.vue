@@ -72,6 +72,8 @@ export default {
         team_two: null,
         round: this.currentRound,
         isLocal: true,
+        team_one_wins: 0,
+        team_two_wins: 0,
       });
       this.filteredMatches();
     },
@@ -103,15 +105,15 @@ export default {
         .catch((err) => console.log(err));
     },
     getNumberOfRound() {
-      const numOfRounds = this.$props.tournament.invites.length || 0;
+      const numOfteams = this.$props.tournament.invites.length;
       switch (true) {
-        case numOfRounds <= 2:
+        case numOfteams <= 2:
           return 1;
-        case numOfRounds <= 4:
+        case numOfteams <= 4:
           return 2;
-        case numOfRounds <= 8:
+        case numOfteams <= 8:
           return 3;
-        case numOfRounds <= 16:
+        case numOfteams <= 16:
           return 4;
       }
     },

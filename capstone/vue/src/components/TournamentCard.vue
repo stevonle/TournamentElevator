@@ -161,7 +161,7 @@ export default {
     TournamentServices.getTournamentById(this.$route.params.id).then(
       (response) => {
         if (response.status !== 200) {
-          console.log(response.data);
+          
           return;
         }
         this.tournament = response.data;
@@ -176,7 +176,7 @@ export default {
         this.tournament
       ).then((response) => {
         if (response.status !== 200) {
-          console.log(response.data);
+        
           return;
         }
         window.alert("Changes Saved");

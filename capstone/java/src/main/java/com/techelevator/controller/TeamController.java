@@ -89,13 +89,13 @@ public class TeamController {
         return isAdded;
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @GetMapping("{id}/members")
     public List<User> listTeamMembers(@PathVariable int id){
         return UserTeamsDao.listTeamMembers(id);
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @GetMapping("{id}/pending")
     public List<User> pendingTeamMembers(@PathVariable int id){
         return UserTeamsDao.pendingTeamMembers(id);

@@ -46,27 +46,27 @@
           </select>
         </div>
         <div class="col-sm-6">
-              <label for="team-one-score">Team One Score</label>
-              <input
-                :readonly="!isHost(this.$props.tournament)"
-                class="tournament-input form-control"
-                type="number"
-                id="team-one-score"
-                v-model="match.team_one_wins"
-                required
-              />
-            </div>
-            <div class="col-sm-6">
-              <label for="team-two-score">Team Two Score</label>
-              <input
-                :readonly="!isHost(this.$props.tournament)"
-                class="tournament-input form-control"
-                type="number"
-                id="team-two-score"
-                v-model="match.team_two_wins"
-                required
-              />
-            </div>
+          <label for="team-one-score">Team One Score</label>
+          <input
+            :readonly="!isHost(this.$props.tournament)"
+            class="tournament-input form-control"
+            type="number"
+            id="team-one-score"
+            v-model="match.team_one_wins"
+            required
+          />
+        </div>
+        <div class="col-sm-6">
+          <label for="team-two-score">Team Two Score</label>
+          <input
+            :readonly="!isHost(this.$props.tournament)"
+            class="tournament-input form-control"
+            type="number"
+            id="team-two-score"
+            v-model="match.team_two_wins"
+            required
+          />
+        </div>
         <div class="col-sm-12">
           <button
             v-if="isHost(this.$props.tournament)"
@@ -126,6 +126,7 @@ export default {
           return;
         }
         this.match.pairing_id = undefined;
+        this.match.isLocal = undefined;
         const response = await TournamentServices.addPairing(this.match);
         if (response.status !== 200) {
           throw new Error("Failed creating match: " + response.data);
