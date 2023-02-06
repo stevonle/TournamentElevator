@@ -111,7 +111,7 @@ export default {
   display: inline-block;
 }
 .list-group-item {
-  background-color: orange;
+  background-color: #ff7300;
   color: white;
 }
 h2 {

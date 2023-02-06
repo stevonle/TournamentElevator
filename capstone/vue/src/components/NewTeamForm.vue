@@ -142,7 +142,7 @@ export default {
 
 <style scoped>
 .new-team-form {
-  color: rgb(241, 179, 63);
+  color: #ff7300;
   margin: 35px auto;
   width: 100%;
   min-width: 300px;
@@ -156,7 +156,7 @@ export default {
 }
 
 h1 {
-  color: orange;
+  color: #ff7300;
   text-align: center;
   margin: 20px 0px 0px 0px;
 }
