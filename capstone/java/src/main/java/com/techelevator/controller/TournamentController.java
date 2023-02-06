@@ -38,6 +38,7 @@ public class TournamentController {
         }
         return success;
     }
+
     @PreAuthorize("permitAll")
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public Tournament getTournament(@PathVariable int id, Principal principal) {
@@ -66,7 +67,7 @@ public class TournamentController {
         return success;
     }
 
-    //@PreAuthorize("isAuthenticated()")
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/{id}/join", method = RequestMethod.POST)
     public boolean join(@PathVariable int id, @RequestBody Team team) {
         boolean success = false;
@@ -92,7 +93,7 @@ public class TournamentController {
         return success;
     }
 
-    //PreAuthorize("isAuthenticated()")
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/{tournamentId}/accept/{teamId}", method = RequestMethod.PUT)
     public boolean accept(@PathVariable int tournamentId, @PathVariable int teamId) {
         boolean success = false;
@@ -105,7 +106,7 @@ public class TournamentController {
         return success;
     }
 
-    //@PreAuthorize("isAuthenticated()")
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(path = "/{tournamentId}/reject/{teamId}", method = RequestMethod.DELETE)
     public boolean reject(@PathVariable int tournamentId, @PathVariable int teamId) {
         boolean success = false;
