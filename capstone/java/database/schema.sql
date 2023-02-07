@@ -35,6 +35,7 @@ CREATE TABLE tournaments (
 	tournament_description varchar(500),
 	prize varChar(100),
 	host int,
+	completed boolean DEFAULT false,
 	round int DEFAULT 1,
 	CONSTRAINT PK_tournaments_key PRIMARY KEY (tournament_id),
 	CONSTRAINT FK_host_foreign FOREIGN KEY (host) REFERENCES users(user_id),

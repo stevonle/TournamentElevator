@@ -68,11 +68,11 @@ public class JdbcTournamentDao implements TournamentDao{
     public boolean updateTournament(int tournamentId, Tournament tournament) {
         String updateTournamentSql = "UPDATE tournaments SET tournament_name = ?, game_type = ?, " +
                                      "tournament_date = ?, tournament_location = ?, fee = ?, " +
-                                     "tournament_description = ?, prize = ? " +
+                                     "tournament_description = ?, prize = ?, completed = ? " +
                                      "WHERE tournament_id = ?;";
         return jdbcTemplate.update(updateTournamentSql, tournament.getName(), tournament.getGameType(),
                 tournament.getDate(), tournament.getLocation(), tournament.getFee(), tournament.getDescription(),
-                tournament.getPrize(), tournamentId) == 1;
+                tournament.getPrize(), tournament.isCompleted(), tournamentId) == 1;
     }
 
     @Override
@@ -113,7 +113,7 @@ public class JdbcTournamentDao implements TournamentDao{
         tournament.setDescription(rs.getString("tournament_description"));
         tournament.setPrize(rs.getString("prize"));
         tournament.setHost(rs.getInt("host"));
-        //tournament.setCompleted(rs.getBoolean("completed"));
+        tournament.setCompleted(rs.getBoolean("completed"));
         return tournament;
     }
 

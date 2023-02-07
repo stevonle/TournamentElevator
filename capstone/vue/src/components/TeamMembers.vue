@@ -4,7 +4,7 @@
       <Loading />
     </div>
     <div v-if="!loading">
-      <h2>List of Members</h2>
+      <h2>Team Members</h2>
       <ul class="list-group">
         <li
           class="list-group-item list-group-item-warning"
@@ -23,15 +23,11 @@
           v-bind:key="user.id"
         >
           {{ user.username }}
-          <span
-            class="badge badge-success badge-pill"
-            v-on:click.prevent="ApproveMember(user.id)"
-            >Approve</span
-          ><span
-            class="badge badge-danger badge-pill"
-            v-on:click.prevent="RejectMember(user.id)"
-            >Reject</span
-          >
+          <button class="btn accept-btn" v-on:click.prevent="ApproveMember(user.id)">
+            <i class="bi bi-check"></i></button
+          ><button class="btn delete-btn" v-on:click.prevent="RejectMember(user.id)">
+            <i class="bi bi-x"></i>
+          </button>
         </li>
       </ul>
     </div>
@@ -107,6 +103,23 @@ export default {
 </script>
 
 <style scoped>
+.delete-btn {
+  border: none;
+  background-color: transparent;
+}
+
+.delete-btn:hover {
+  color: red;
+}
+.accept-btn:hover {
+  color: green;
+}
+
+.accept-btn {
+  border: none;
+  background-color: transparent;
+}
+
 .list-group {
   display: inline-block;
 }

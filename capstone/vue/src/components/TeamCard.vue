@@ -7,7 +7,7 @@
       <h2 class="team-name">{{ team.team_name }}</h2>
       <p class="team-description">{{ team.team_description }}</p>
       <button
-        v-show="!registeredUser && team.isAcceptingMembers"
+        v-show="!registeredUser && team.isAcceptingMembers && !isCaptain "
         class="btn btn-md btn-primary btn-block"
         type="submit"
         placeholder="RequestToJoin"
@@ -27,7 +27,8 @@ export default {
     team: Object,
   },
   created() {
-    console.log(this.$props);
+    console.log(this.$props.team);
+    console.log(this.$store.state.user.id)
   },
   methods: {
     requestJoin(teamID) {
@@ -43,6 +44,9 @@ export default {
     registeredUser() {
       return this.$store.state.token === "";
     },
+    isCaptain() {
+      return this.team.team_captain === this.$store.state.user.id
+    }
   },
 };
 </script>

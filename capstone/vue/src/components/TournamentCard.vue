@@ -87,6 +87,17 @@
                 required
               />
             </div>
+              <div class="col-sm-6">
+              <label for="tournament-completed">Tournament Complete</label>
+              <input
+                :readonly="!isHost()"
+                class="tournament-input form-control"
+                type="checkbox"
+                id="tournament-completed"
+                v-model="tournament.completed"
+                required
+              />
+            </div>
             <div class="col-sm-12">
               <label for="tournament-description">Tournament Description</label>
               <textarea
@@ -161,7 +172,7 @@ export default {
     TournamentServices.getTournamentById(this.$route.params.id).then(
       (response) => {
         if (response.status !== 200) {
-          
+          console.log(response.data);
           return;
         }
         this.tournament = response.data;
@@ -176,7 +187,7 @@ export default {
         this.tournament
       ).then((response) => {
         if (response.status !== 200) {
-        
+          console.log(response.data);
           return;
         }
         window.alert("Changes Saved");
