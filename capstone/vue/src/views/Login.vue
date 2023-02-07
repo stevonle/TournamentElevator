@@ -34,6 +34,8 @@
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
       <button class="btn btn-md btn-primary btn-block" type="submit">Sign in</button>
     </form>
+    <div class='filler'>
+        </div>
   </div>
 </template>
 
@@ -77,7 +79,7 @@ export default {
 
 <style scoped>
 .login-container {
-  color: orange;
+  color: #ff7300;
   margin: 30px auto;
   width: 50%;
   text-align: center;

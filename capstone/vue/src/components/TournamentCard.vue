@@ -251,7 +251,7 @@ export default {
   display: inline;
 }
 .invites-container {
-  color: orange;
+  color: #ff7300;
 }
 .card-container {
   width: 500px;

@@ -128,7 +128,7 @@ export default {
   margin: 15px auto;
   padding: 1em;
   position: relative;
-  background-color: orange;
+  background-color: #ff7300;
   border-radius: 3px;
 }
 .add-btn {

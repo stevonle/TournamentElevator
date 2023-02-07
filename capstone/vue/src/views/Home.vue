@@ -26,7 +26,7 @@ export default {
   color: white;
 }
 .solid {
-  margin: 100px 100px;
+  margin: 100px auto;
   border-top: 3px solid #ff7300;
 }
 </style>

@@ -110,20 +110,20 @@ export default {
   width: 200px;
 }
 .tournament-card {
-  background-color: orange;
+  background-color: #ff7300;
   width: 100%;
   max-height: 400px;
   cursor: pointer;
   margin-top: 30px;
 }
 h1 {
-  color: orange;
+  color: #ff7300;
   text-align: center;
   margin: 20px 0px 50px 20px;
 }
 
 .description-container {
-  background-color: orange;
+  background-color: #ff7300;
   color: white;
   border: none;
   text-align: center;

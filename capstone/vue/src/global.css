@@ -4,3 +4,7 @@ body {
     background-color: darkgray;
    
 }
+
+.filler {
+    margin: 0px auto 900px auto;
+}
