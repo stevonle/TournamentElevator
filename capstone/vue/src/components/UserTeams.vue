@@ -16,7 +16,7 @@
             @click="viewTeamDetails(team.team_id)"
             class="card team-card text-center text-white"
           >
-            <h2 class="team-name">Team Name: {{ team.team_name }}</h2>
+            <h2 class="team-name">{{ team.team_name }}</h2>
             <textarea
               :value="team.team_description"
               class="form-control description-container"
@@ -96,7 +96,7 @@ export default {
 <style scoped>
 .team-card {
   background-color: orange;
-  width: 100%;
+  width: 700px;
   max-height: 400px;
   cursor: pointer;
 }
