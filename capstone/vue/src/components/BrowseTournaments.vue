@@ -122,6 +122,10 @@ h1 {
   margin: 20px 0px 50px 20px;
 }
 
+h4 {
+    text-shadow: 2px 2px #676767;
+}
+
 .description-container {
   background-color: #ff7300;
   color: white;

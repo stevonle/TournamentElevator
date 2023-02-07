@@ -284,4 +284,8 @@ export default {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
 }
+
+h3 {
+    text-shadow: 2px 2px #676767;
+}
 </style>
