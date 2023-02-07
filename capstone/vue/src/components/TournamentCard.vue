@@ -95,7 +95,6 @@
                 type="checkbox"
                 id="tournament-completed"
                 v-model="tournament.completed"
-                required
               />
             </div>
             <div class="col-sm-12">
