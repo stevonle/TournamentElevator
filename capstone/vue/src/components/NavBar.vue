@@ -73,6 +73,21 @@
               >Logout</router-link
             >
           </li>
+          <li class="mr-2">
+            <router-link
+              v-bind:to="{ name: 'login' }"
+              v-if="$store.state.token == ''"
+              >Login</router-link
+            >
+          </li>
+          
+          <li class='mr-2'>
+            <router-link
+              v-bind:to="{ name: 'register' }"
+              v-if="$store.state.token == ''"
+              >  Register</router-link
+            >
+          </li>
         </ul>
       </div>
     </div>
