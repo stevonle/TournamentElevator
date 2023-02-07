@@ -75,10 +75,12 @@ export default {
   padding: 10px;
   margin: 10px 0px;
 }
+
 h1 {
   color: #ff7300;
   text-align: center;
-  margin: 20px 0px 50px 20px;
+  margin: 20px 0px 50px 0px;
+  text-shadow: 2px 2px #753500;
 }
 
 .description-container {

@@ -8,3 +8,7 @@ body {
 .filler {
     margin: 0px auto 900px auto;
 }
+
+h2 {
+    text-shadow: 2px 2px #676767;
+}
