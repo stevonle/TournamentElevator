@@ -1,4 +1,5 @@
 <template>
+<section>
   <div v-if="this.team" class="team-info mb-2 text-center">
     <team-card :team="this.team" />
     <team-members v-bind:teamID="parseInt($route.params.teamID)" />
@@ -8,6 +9,9 @@
       :team="this.team"
     />
   </div>
+  <div class='filler'>
+        </div>
+</section>
 </template>
 
 <script>

@@ -1,4 +1,5 @@
 <template>
+<section>
   <div>
     <h1 v-show="isEditing">Create Team</h1>
     <h1 v-show="!isEditing">Edit Team</h1>
@@ -55,7 +56,10 @@
         Save Edit
       </button>
     </form>
-  </div>
+      
+  </div><div class='filler'>
+        </div>
+  </section>
 </template>
 
 <script>

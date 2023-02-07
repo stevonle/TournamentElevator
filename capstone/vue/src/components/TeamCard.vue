@@ -15,6 +15,17 @@
       >
         Request
       </button>
+      <router-link v-show="isCaptain"
+              v-bind:to="{ name: 'EditTeam', params: { teamID: team.team_id } }"
+            >
+             <button
+        v-show="isCaptain"
+        class="btn btn-md btn-primary btn-block"
+        type="confirm"
+      >
+        Edit Team
+      </button>
+            </router-link>
     </div>
   </div>
 </template>

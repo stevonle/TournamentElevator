@@ -21,7 +21,7 @@ export default {
 .spinner1 > div {
   width: 45px;
   height: 32px;
-  background-color: orange;
+  background-color: #ff7300;
   border-radius: 100%;
   display: inline-block;
   -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;

@@ -98,6 +98,7 @@ body {
     padding: 0;
     background-image: url("/img/bg.jpg");
     background-size: cover;
+    position: relative;
     
   
 }
@@ -105,7 +106,7 @@ body {
 
 <style scoped>
 .register-container {
-  color: orange;
+  color: #ff7300;
   margin: 30px auto;
   width: 50%;
   text-align: center;

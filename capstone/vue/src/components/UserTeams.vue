@@ -27,12 +27,18 @@
             <router-link
               v-bind:to="{ name: 'EditTeam', params: { teamID: team.team_id } }"
             >
-              Edit Team
+             <button
+        
+        class="btn btn-md btn-primary btn-block"
+        type="confirm"
+      >
+        Edit Team
+      </button>
             </router-link>
           </div>
         </div>
       </div>
-    </div>
+      </div>
   </section>
 </template>
 
