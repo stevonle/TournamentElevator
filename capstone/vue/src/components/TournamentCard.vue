@@ -87,7 +87,7 @@
                 required
               />
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6" id="tournament-completed">
               <label for="tournament-completed">Tournament Complete</label>
               <input
                 :readonly="!isHost()"
@@ -247,6 +247,9 @@ export default {
 </script>
 
 <style scoped>
+#tournament-completed {
+  display: inline;
+}
 .invites-container {
   color: orange;
 }
