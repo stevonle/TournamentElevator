@@ -16,7 +16,8 @@ import UserTeams from '../components/UserTeams.vue';
 
 export default {
   components: {  BrowseTournaments, TeamsList, UserTeams },
-  name: "home"
+  name: "home",
+ 
 };
 </script>
 
@@ -26,6 +27,6 @@ export default {
 }
 .solid {
   margin: 100px 100px;
-  border-top: 3px solid orange;
+  border-top: 3px solid #ff7300;
 }
 </style>

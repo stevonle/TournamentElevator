@@ -55,10 +55,10 @@ export default {
 .card-container {
   width: 500px;
   margin: 25px auto;
-  background-color: orange;
+  background-color: #ff7300;
 }
 .card-body {
-  background-color: orange;
+  background-color: #ff7300;
 }
 /* .card .team-name {
   font-size: 1.5rem;

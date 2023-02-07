@@ -95,21 +95,21 @@ export default {
 
 <style scoped>
 .team-card {
- background-color: orange;
-  width: 1000px;
+ background-color: #ff7300;
+  width: 100%;
   max-height: 400px;
   cursor: pointer;
   padding: 10px;
   margin: 10px 0px;
 }
 h1 {
-  color: orange;
+  color: #ff7300;
   text-align: center;
   margin: 20px 0px 50px 20px;
 }
 
 .description-container {
-  background-color: orange;
+  background-color: #ff7300;
   color: white;
   border: none;
   text-align: center;
