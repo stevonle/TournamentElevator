@@ -1,6 +1,8 @@
 <template>
   <section>
     <h1>Viewing all teams</h1>
+    <div class="div-bucket .bg-secondary.bg-gradient">
+    
     <div v-if="loading">
       <Loading />
     </div>
@@ -28,7 +30,9 @@
         </div>
       </div>
     </div>
+    </div>
   </section>
+  
 </template>
 
 <script>
@@ -60,6 +64,7 @@ export default {
 </script>
 
 <style scoped>
+
 .team-card {
   background-color: #ff7300;
   width: 100%;
