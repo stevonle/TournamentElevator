@@ -65,6 +65,8 @@ export default {
   width: 100%;
   max-height: 400px;
   cursor: pointer;
+  padding: 10px;
+  margin: 10px 0px;
 }
 h1 {
   color: orange;

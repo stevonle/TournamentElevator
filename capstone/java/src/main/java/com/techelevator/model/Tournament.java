@@ -25,11 +25,11 @@ public class Tournament {
     private String prize;
     private int host;
     private List<Invite> invites;
-    //private boolean completed;
+    private boolean completed;
 
     public Tournament() {}
 
-    public Tournament(int tournamentId, String name, int gameType, LocalDate date, String location, BigDecimal fee, String description, String prize, int host) {
+    public Tournament(int tournamentId, String name, int gameType, LocalDate date, String location, BigDecimal fee, String description, String prize, int host, boolean completed) {
         this.tournamentId = tournamentId;
         this.name = name;
         this.gameType = gameType;
@@ -40,7 +40,7 @@ public class Tournament {
         this.prize = prize;
         this.host = host;
         this.invites = new ArrayList<>();
-        //this.completed = completed;
+        this.completed = completed;
     }
 
     public int getTournamentId() {
@@ -118,11 +118,11 @@ public class Tournament {
     public void setInvites(List<Invite> invites) {
         this.invites = invites;
     }
-//    public boolean isCompleted() {
-//        return completed;
-//    }
-//
-//    public void setCompleted(boolean completed) {
-//        this.completed = completed;
-//    }
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
 }

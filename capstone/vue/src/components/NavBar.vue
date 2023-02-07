@@ -32,8 +32,8 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/teams/all">View Teams</a>
             <a class="dropdown-item" href="/teams/create">Create Team</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/teams/myteams">My Teams</a>
+            <div class="dropdown-divider" v-show="!registeredUser"></div>
+            <a class="dropdown-item"  v-show="!registeredUser" href="/teams/myteams">My Teams</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -53,8 +53,8 @@
             <a class="dropdown-item" href="/tournament/create"
               >Create Tournaments</a
             >
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/tournament/all?filter=myTournaments"
+            <div class="dropdown-divider"  v-show="!registeredUser"></div>
+            <a class="dropdown-item"  v-show="!registeredUser" href="/tournament/all?filter=myTournaments"
               >My Tournaments</a
             >
           </div>
@@ -82,6 +82,12 @@
 <script>
 export default {
   name: "NavBar",
+
+   computed: {
+    registeredUser() {
+      return this.$store.state.token === "";
+    },
+  },
 };
 </script>
 

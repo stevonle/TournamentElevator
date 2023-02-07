@@ -87,6 +87,17 @@
                 required
               />
             </div>
+              <div class="col-sm-6">
+              <label for="tournament-completed">Tournament Complete</label>
+              <input
+                :readonly="!isHost()"
+                class="tournament-input form-control"
+                type="checkbox"
+                id="tournament-completed"
+                v-model="tournament.completed"
+                required
+              />
+            </div>
             <div class="col-sm-12">
               <label for="tournament-description">Tournament Description</label>
               <textarea

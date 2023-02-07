@@ -1,5 +1,5 @@
 <template>
-  <div v-if="this.match" class="match-container">
+  <div v-if="this.match" class="match-container" id="match-container">
     <h3 class="text-center">Match {{ this.$props.index + 1 }}</h3>
     <button
       v-if="isHost(this.$props.tournament)"
@@ -119,7 +119,9 @@ export default {
           ).then((response) => {
             if (response.status !== 200) {
               console.log(response.data);
+              document.reload();
               return;
+              
             }
             this.$store.state.matches[this.$props.index] = this.match;
           });
