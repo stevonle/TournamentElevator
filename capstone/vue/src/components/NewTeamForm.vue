@@ -41,7 +41,7 @@
       <br />
       <button
         v-show="isEditing"
-        class="btn btn-md btn-primary btn-block"
+        class="btn btn-md btn-outline-light btn-block"
         type="submit"
         placeholder="createTeamButton"
       >
@@ -49,7 +49,7 @@
       </button>
       <button
         v-show="!isEditing"
-        class="btn btn-md btn-primary btn-block"
+        class="btn btn-md btn-outline-light btn-block"
         type="submit"
         placeholder="createTeamButton"
       >

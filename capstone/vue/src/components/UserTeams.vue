@@ -29,7 +29,7 @@
             >
              <button
         
-        class="btn btn-md btn-primary btn-block"
+        class="btn btn-md btn-outline-light btn-block"
         type="confirm"
       >
         Edit Team

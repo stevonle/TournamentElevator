@@ -8,7 +8,7 @@
       <p class="team-description">{{ team.team_description }}</p>
       <button
         v-show="!registeredUser && team.isAcceptingMembers && !isCaptain "
-        class="btn btn-md btn-primary btn-block"
+        class="btn btn-md btn-outline-light btn-block"
         type="submit"
         placeholder="RequestToJoin"
         @click="requestJoin(team.team_id)"
@@ -20,7 +20,7 @@
             >
              <button
         v-show="isCaptain"
-        class="btn btn-md btn-primary btn-block"
+        class="btn btn-md btn-outline-light btn-block"
         type="confirm"
       >
         Edit Team
