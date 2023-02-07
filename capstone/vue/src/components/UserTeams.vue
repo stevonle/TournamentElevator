@@ -96,7 +96,7 @@ export default {
 <style scoped>
 .team-card {
  background-color: #ff7300;
-  width: 100%;
+  width: 1000px;
   max-height: 400px;
   cursor: pointer;
   padding: 10px;
