@@ -87,7 +87,7 @@
                 required
               />
             </div>
-              <div class="col-sm-6">
+            <div class="col-sm-6">
               <label for="tournament-completed">Tournament Complete</label>
               <input
                 :readonly="!isHost()"
@@ -116,6 +116,7 @@
         </form>
       </div>
     </div>
+
     <TournamentMatches v-if="this.tournament" :tournament="this.tournament" />
     <div v-if="isHost()" class="invites-container">
       <table class="table table-bordered table-dark">
@@ -163,6 +164,8 @@ export default {
   data() {
     return {
       tournament: null,
+      isReadOnly: false,
+      winning_team: "",
     };
   },
   components: {
@@ -228,6 +231,16 @@ export default {
           window.location.reload();
         }
       );
+    },
+    setReadOnly() {
+      if (this.isReadOnly === true) {
+        this.isReadOnly = false;
+      } else {
+        this.isReadOnly = true;
+      }
+    },
+    setWinningTeam(teamName) {
+      this.winning_team = teamName;
     },
   },
 };
