@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
     <a class="navbar-brand" href="/">Tournament Elevator</a>
     <button
       class="navbar-toggler"
@@ -65,7 +65,7 @@
         style="text-align: right"
       >
         <ul class="navbar-nav mr-auto">
-          <li class="mr-2">{{ this.$store.state.user.username }}</li>
+          <li class="mr-2 idk">{{ this.$store.state.user.username }}</li>
           <li>
             <router-link
               v-bind:to="{ name: 'logout' }"
@@ -107,6 +107,12 @@ export default {
 </script>
 
 <style>
+nav {
+  background-color: rgba(67,67,67,0.9);
+}
 
+.idk {
+  color: white;
+}
 
 </style>

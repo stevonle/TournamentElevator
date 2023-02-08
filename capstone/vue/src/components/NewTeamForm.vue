@@ -16,11 +16,11 @@
       </div>
 
       <div class="mb-2">
-        <label for="acceptingMembers" class="form-label">
+        <label for="acceptingMembers" class="form-label acc">
           Accepting Members?
         </label>
         <input
-          class="team-input"
+          class="team-input inp"
           type="checkbox"
           placeholder="acceptingMembers"
           v-model="team.isAcceptingMembers"
@@ -159,9 +159,4 @@ export default {
   width: 100%;
 }
 
-h1 {
-  color: #ff7300;
-  text-align: center;
-  margin: 20px 0px 0px 0px;
-}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class='t-container'>
+  <div>
     <h1>All Tournaments</h1>
     <div v-if="loading">
       <Loading />
@@ -106,15 +106,6 @@ export default {
 </script>
 
 <style scoped>
-.t-container {
-  background-color: rgb(49, 49, 49);
-  position: relative;
-  height: 100%;
-  width: 70%;
-  margin-left: 15%;
-  padding-bottom: 100px;
-}
-
 .filter-input {
   width: 200px;
 }
@@ -125,11 +116,7 @@ export default {
   cursor: pointer;
   margin-top: 30px;
 }
-h1 {
-  color: #ff7300;
-  text-align: center;
-  margin: 20px 0px 50px 20px;
-}
+
 
 .description-container {
   background-color: #ff7300;
