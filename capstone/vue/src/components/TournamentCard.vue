@@ -250,6 +250,8 @@ export default {
 }
 .invites-container {
   color: #ff7300;
+  width: 50%;
+  margin: 20px auto
 }
 .card-container {
   width: 500px;
