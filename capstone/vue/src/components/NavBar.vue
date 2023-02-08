@@ -1,5 +1,6 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+    <div class='container'>
     <a class="navbar-brand" href="/">Tournament Elevator</a>
     <button
       class="navbar-toggler"
@@ -90,6 +91,7 @@
           </li>
         </ul>
       </div>
+    </div>
     </div>
   </nav>
 </template>

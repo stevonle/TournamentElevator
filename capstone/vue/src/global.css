@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    padding: 0;
+    padding: 70;
     background-color: darkgray;
    
 }
@@ -10,5 +10,9 @@ body {
 }
 
 h2 {
+    text-shadow: 2px 2px #676767;
+}
+
+h3 {
     text-shadow: 2px 2px #676767;
 }
