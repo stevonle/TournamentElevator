@@ -26,7 +26,7 @@
             @click="viewTournamentDetails(tournament.id)"
             class="tournament-card card text-center text-white"
           >
-            <h4>{{ tournament.name }}</h4>
+            <h2>{{ tournament.name }}</h2>
             <p>Game Type: {{ getGameName(tournament.gametype) }}</p>
             <p>Date: {{ tournament.date }}</p>
             <p>Location: {{ tournament.location }}</p>

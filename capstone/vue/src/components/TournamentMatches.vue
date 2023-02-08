@@ -1,6 +1,6 @@
 <template>
   <div class="matches-container">
-    <h3 class="text-center">Manage Tournament Matches</h3>
+    <h2 class="text-center">Manage Tournament Matches</h2>
     <div class="mb-2 text-white filter-input">
       <label for="tournament-name">Current Round</label>
       <select v-model.number="currentRound" required class="form-control">
