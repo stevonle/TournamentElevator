@@ -51,6 +51,8 @@
         <span class="carousel-control-next-icon"></span>
       </a>
     </div>
+    <br/>
+    <br/>
   </section>
 </template>
 
