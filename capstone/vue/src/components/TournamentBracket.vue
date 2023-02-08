@@ -1,7 +1,24 @@
 // consulted http://jsfiddle.net/4KZ6T/236/
 <template>
   <section>
-    <table
+    <div v-for="(round, idx) in numOfRounds" :key="idx">
+      <h4>Round: {{ idx + 1 }} - {{ $props.tournament.date }}</h4>
+      <table class="bracket">
+        <tr>
+          <th>Team One</th>
+          <th>Team Two</th>
+        </tr>
+        <tr v-for="match in getMatchesByRound(round)" :key="match.pairing_id">
+          <td>
+            <p>{{ getTeamName(match.team_one) }}</p>
+          </td>
+          <td>
+            <p>{{ getTeamName(match.team_two) }}</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!-- <table
       summary="Tournament Bracket"
       class="bracket"
       v-for="(round, idx) in numOfRounds"
@@ -10,22 +27,18 @@
       <tr>
         <th>
           Round {{ idx }} <br />
-          {{ this.tournament.date }}
+          {{ $props.tournament.date }}
         </th>
       </tr>
-      <tr v-for="pairing in this.pairings" :key="pairing.id">
+      <tr v-for="match in matches" :key="match.pairing_id">
         <td>
-          <p>{{ getTeamName(pairing.team_one) }}</p>
+          <p>{{ getTeamName(match.team_one) }}</p>
         </td>
-        <td rowspan="2"><p></p></td>
-        <td rowspan="4"><p></p></td>
-      </tr>
-      <tr>
         <td>
-          <p>{{ getTeamName(pairing.team_two) }}</p>
+          <p>{{ getTeamName(match.team_two) }}</p>
         </td>
       </tr>
-    </table>
+    </table> -->
   </section>
 </template>
 
@@ -34,24 +47,20 @@ import TournamentServices from "../services/TournamentServices";
 export default {
   data() {
     return {
-      pairings: [],
-      tournamentID: Number(this.$route.params.id),
       numOfRounds: 1,
-      tournament: {},
-      filteredPairs: [],
-      currentRound: 1,
+      matches: [],
     };
   },
+  props: {
+    tournament: Object,
+  },
   created() {
-    TournamentServices.getPairingsForTournament(this.tournamentID)
+    TournamentServices.getPairingsForTournament(this.$props.tournament.id)
       .then((res) => {
-        this.pairings = res.data;
+        this.matches = res.data;
         this.numOfRounds = this.getNumberOfRound();
       })
       .catch((err) => console.log(err));
-    TournamentServices.getTournamentById(this.tournamentID).then((res) => {
-      this.tournament = res.data;
-    });
   },
   methods: {
     getNumberOfRound() {
@@ -67,16 +76,17 @@ export default {
           return 4;
       }
     },
-    getTeamName(teamID) {
-      TournamentServices.getTeamById(teamID).then((res) => {
-        return res.data.team_name;
-      });
+    getMatchesByRound(round) {
+      return this.matches.filter((m) => m.round === round);
     },
-    filteredPairings() {
-      this.filteredPairs = this.pairings;
-      this.filteredPairs = this.pairings.filter((pairing) => {
-        return pairing.round === this.idx;
-      });
+    getTeamName(teamID) {
+      if (!this.$props.tournament || !this.$props.tournament.invites)
+        return "UKNOWN";
+      const team = this.$props.tournament.invites.find(
+        (t) => t.team_id === teamID
+      );
+      if (!team) return "UKNOWN";
+      return team.team_name;
     },
   },
 };
