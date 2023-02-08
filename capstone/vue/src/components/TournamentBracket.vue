@@ -4,14 +4,11 @@
     <table
       summary="Tournament Bracket"
       class="bracket"
-      v-for="(round, idx) in numOfRounds"
+      v-for="(round, idx) in numOfRounds + 1"
       :key="idx"
     >
       <tr>
-        <th>
-          Round {{ idx }} <br />
-          {{ this.tournament.date }}
-        </th>
+        <th>Round {{ idx }} <br /></th>
       </tr>
       <tr v-for="pairing in this.pairings" :key="pairing.id">
         <td>
@@ -20,7 +17,7 @@
         <td rowspan="2"><p></p></td>
         <td rowspan="4"><p></p></td>
       </tr>
-      <tr>
+      <tr  v-for="pairing in this.pairings" :key="pairing.id">
         <td>
           <p>{{ getTeamName(pairing.team_two) }}</p>
         </td>
@@ -37,8 +34,8 @@ export default {
       pairings: [],
       tournamentID: Number(this.$route.params.id),
       numOfRounds: 1,
-      tournament: {},
-      filteredPairs: [],
+      tournament: null,
+      filteredPairs: {},
       currentRound: 1,
     };
   },
@@ -69,6 +66,7 @@ export default {
     },
     getTeamName(teamID) {
       TournamentServices.getTeamById(teamID).then((res) => {
+        console.log(res.data.team_name);
         return res.data.team_name;
       });
     },
