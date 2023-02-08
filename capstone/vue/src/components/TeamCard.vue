@@ -71,6 +71,10 @@ export default {
 .card-body {
   background-color: #ff7300;
 }
+
+.btn {
+  margin-top: 2px;
+}
 /* .card .team-name {
   font-size: 1.5rem;
 }

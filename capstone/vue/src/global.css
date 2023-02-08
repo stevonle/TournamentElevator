@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    padding: 100px;
+    padding: 70;
     background-color: darkgray;
    
 }
@@ -19,3 +19,7 @@ h1 {
     margin: 20px 0px 50px 0px;
     text-shadow: 2px 2px #753500;
   }
+  
+h3 {
+    text-shadow: 2px 2px #676767;
+}

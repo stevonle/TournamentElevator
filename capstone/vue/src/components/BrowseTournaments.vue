@@ -118,6 +118,10 @@ export default {
 }
 
 
+h4 {
+    text-shadow: 2px 2px #676767;
+}
+
 .description-container {
   background-color: #ff7300;
   color: white;

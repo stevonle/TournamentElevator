@@ -4,17 +4,19 @@
     <hr class="solid"/>
     <user-teams/>
     <hr class="solid"/>
-    <teams-list/>
+    <!-- <teams-list/> -->
+    <team-carousel/>
   </div>
 </template>
 
 <script>
 import BrowseTournaments from '../components/BrowseTournaments.vue';
-import TeamsList from '../components/TeamsList.vue';
+// import TeamsList from '../components/TeamsList.vue';
 import UserTeams from '../components/UserTeams.vue';
+import TeamCarousel from '../components/TeamCarousel.vue';
 
 export default {
-  components: {  BrowseTournaments, TeamsList, UserTeams },
+  components: {  BrowseTournaments, UserTeams, TeamCarousel },
   name: "home",
  
 };

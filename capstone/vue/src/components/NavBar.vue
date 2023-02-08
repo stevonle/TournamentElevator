@@ -98,7 +98,7 @@
 export default {
   name: "NavBar",
 
-   computed: {
+  computed: {
     registeredUser() {
       return this.$store.state.token === "";
     },
@@ -108,11 +108,10 @@ export default {
 
 <style>
 nav {
-  background-color: rgba(67,67,67,0.9);
+  background-color: rgba(67, 67, 67, 0.9);
 }
 
 .idk {
   color: white;
 }
-
 </style>
