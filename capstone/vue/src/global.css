@@ -1,12 +1,12 @@
 body {
     margin: 0;
-    padding: 70;
+    padding: 70px;
     background-color: darkgray;
    
 }
 
 .filler {
-    margin: 0px auto 900px auto;
+    margin: 0px auto 400px auto;
 }
 
 h2 {
@@ -19,7 +19,7 @@ h1 {
     margin: 20px 0px 50px 0px;
     text-shadow: 2px 2px #753500;
   }
-  
+
 h3 {
     text-shadow: 2px 2px #676767;
 }
