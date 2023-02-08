@@ -123,11 +123,7 @@ export default {
   cursor: pointer;
   margin-top: 30px;
 }
-h1 {
-  color: #ff7300;
-  text-align: center;
-  margin: 20px 0px 50px 20px;
-}
+
 
 h4 {
   text-shadow: 2px 2px #676767;
