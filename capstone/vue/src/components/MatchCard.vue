@@ -118,12 +118,11 @@ export default {
             this.match
           ).then((response) => {
             if (response.status !== 200) {
-              console.log(response.data);
-              document.reload();
               return;
               
             }
             this.$store.state.matches[this.$props.index] = this.match;
+            alert("Updated")
           });
           return;
         }

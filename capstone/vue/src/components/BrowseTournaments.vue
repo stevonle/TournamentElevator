@@ -5,7 +5,7 @@
       <Loading />
     </div>
     <div v-if="!loading" class="container">
-      <div class="mb-2 text-white filter-input">
+      <div class="mb-2 text-white filter-input" v-if="this.$route.name !== 'home'">
         <label for="tournament-name">Filter Tournaments</label>
 
         <select @change="filteredTournament" required class="form-control">
@@ -26,7 +26,7 @@
             @click="viewTournamentDetails(tournament.id)"
             class="tournament-card card text-center text-white"
           >
-            <h4>{{ tournament.name }}</h4>
+            <h2>{{ tournament.name }}</h2>
             <p>Game Type: {{ getGameName(tournament.gametype) }}</p>
             <p>Date: {{ tournament.date }}</p>
             <p>Location: {{ tournament.location }}</p>
@@ -55,12 +55,14 @@ export default {
     return {
       loading: true,
       tournamentList: [],
+      isHome: false,
     };
   },
   components: {
     Loading,
   },
   async created() {
+    console.log(this.$route)
     try {
       const response = await TournamentServices.viewAllTournaments();
       if (response.status !== 200) {

@@ -87,15 +87,13 @@
                 required
               />
             </div>
-            <div class="col-sm-6" id="tournament-completed" v-show='isHost()'>
+            <div class="col-sm-6" id="tournament-completed" v-show="isHost()">
               <label for="tournament-completed">Tournament Complete</label>
               <input
-                :readonly="!isHost()"
                 class="tournament-input form-control"
                 type="checkbox"
                 id="tournament-completed"
                 v-model="tournament.completed"
-                required
               />
             </div>
             <div class="col-sm-12">
@@ -252,6 +250,8 @@ export default {
 }
 .invites-container {
   color: #ff7300;
+  width: 50%;
+  margin: 20px auto
 }
 .card-container {
   width: 500px;
