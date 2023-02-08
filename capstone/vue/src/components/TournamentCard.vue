@@ -87,7 +87,7 @@
                 required
               />
             </div>
-            <div class="col-sm-6" id="tournament-completed">
+            <div class="col-sm-6" id="tournament-completed" v-show='isHost()'>
               <label for="tournament-completed">Tournament Complete</label>
               <input
                 :readonly="!isHost()"
