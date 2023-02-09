@@ -2,8 +2,8 @@
   <div>
     <h1 class="welcome">Welcome To Tournament Elevator</h1>
     <div class="phrase">
-      <h4>Everyone is afraid of winning.</h4>
-      <h4>A Champion is afraid of losing.</h4>
+      <h4>Everyone is afraid of winning</h4>
+      <h4>A Champion is afraid of losing</h4>
     </div>
     <img class="banner" src="../../public/img/banner.png" alt="banner.png" />
   </div>
@@ -19,7 +19,7 @@ export default {
 .banner {
   width: 100%;
   max-height: 170px;
-  /* margin-bottom: 280px; */
+  margin-bottom: 280px;
 }
 
 .phrase {

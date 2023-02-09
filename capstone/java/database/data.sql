@@ -103,7 +103,7 @@ INSERT INTO teams_tournament (tournament_id, team_id, isaccepted) VALUES (1, 9, 
 
 
 --teams in tourneys
-INSERT INTO pairings (tournament_id, teamone, teamtwo, team_one_wins, team_two_wins, round) values (1, 2, 6, 0, 0, 1);
-INSERT INTO pairings (tournament_id, teamone, teamtwo, team_one_wins, team_two_wins, round) values (1, 3, 5, 0, 0, 1);
+
+
 
 COMMIT TRANSACTION;
