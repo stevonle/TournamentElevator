@@ -31,5 +31,6 @@ export default {
 .solid {
   margin: 100px auto;
   border-top: 3px solid #ff7300;
+  width: 90%;
 }
 </style>
