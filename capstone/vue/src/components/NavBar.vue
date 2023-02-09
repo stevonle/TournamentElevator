@@ -1,5 +1,6 @@
 <template>
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+    <img class="img-fluid nav-image" src="/img/SmallLogo.png" />
     <a class="navbar-brand" href="/">Tournament Elevator</a>
     <button
       class="navbar-toggler"
@@ -33,7 +34,12 @@
             <a class="dropdown-item" href="/teams/all">View Teams</a>
             <a class="dropdown-item" href="/teams/create">Create Team</a>
             <div class="dropdown-divider" v-show="!registeredUser"></div>
-            <a class="dropdown-item"  v-show="!registeredUser" href="/teams/myteams">My Teams</a>
+            <a
+              class="dropdown-item"
+              v-show="!registeredUser"
+              href="/teams/myteams"
+              >My Teams</a
+            >
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -53,8 +59,11 @@
             <a class="dropdown-item" href="/tournament/create"
               >Create Tournaments</a
             >
-            <div class="dropdown-divider"  v-show="!registeredUser"></div>
-            <a class="dropdown-item"  v-show="!registeredUser" href="/tournament/all?filter=myTournaments"
+            <div class="dropdown-divider" v-show="!registeredUser"></div>
+            <a
+              class="dropdown-item"
+              v-show="!registeredUser"
+              href="/tournament/all?filter=myTournaments"
               >My Tournaments</a
             >
           </div>
@@ -80,12 +89,13 @@
               >Login</router-link
             >
           </li>
-          
-          <li class='mr-2'>
+
+          <li class="mr-2">
             <router-link
               v-bind:to="{ name: 'register' }"
               v-if="$store.state.token == ''"
-              >  Register</router-link
+            >
+              Register</router-link
             >
           </li>
         </ul>
@@ -113,5 +123,8 @@ nav {
 
 .idk {
   color: white;
+}
+.nav-image {
+  max-width: 60px;
 }
 </style>
