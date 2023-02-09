@@ -4,10 +4,10 @@
     <div v-for="(round, idx) in numOfRounds" :key="idx">
       <h4>Round: {{ idx + 1 }} - {{ $props.tournament.date }}</h4>
       <table class="bracket">
-        <tr>
+        <!-- <tr>
           <th>Team One</th>
           <th>Team Two</th>
-        </tr>
+        </tr> -->
         <tr v-for="match in getMatchesByRound(round)" :key="match.pairing_id">
           <td>
             <p>{{ getTeamName(match.team_one) }}</p>
@@ -99,16 +99,16 @@ table.bracket {
 }
 
 .bracket td {
-  vertical-align: middle;
   width: 40em;
   margin: 0;
   padding: 10px 0px 10px 0px;
+  display: block;
 }
 
 .bracket td p {
-  border-bottom: solid 1px black;
-  border-top: solid 1px black;
-  border-right: solid 1px black;
+  border-bottom: solid 1px #ff7300;
+  border-top: solid 1px #ff7300;
+  border-right: solid 1px #ff7300;
   margin: 0;
   padding: 5px 5px 5px 5px;
 }
