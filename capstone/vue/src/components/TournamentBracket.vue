@@ -127,23 +127,43 @@ table.bracket {
   height: 500px;
   margin: auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  /* grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr; */
   grid-template-areas: "round-title round-title round-title round-title"
   "match match match match"
   "match match match match"
   "match match match match";
 }
-
+.container {
+  /* display: flex;
+  flex-direction: column;
+  margin: auto;
+   */
+}
 .match {
   grid-area: match;
+  /* display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  margin: auto; */
+
+  
 }
 .round-title {
   grid-area: round-title;
+   /* display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: start;
+  align-content: flex-start; */
+
+
 }
 .bracket-lead {
   margin-left: 100px;
   justify-content: right;
+  
 }
 h4 {
   text-shadow: 2px 2px #676767;

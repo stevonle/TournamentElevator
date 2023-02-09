@@ -98,8 +98,6 @@ INSERT INTO user_teams (user_id, team_id, isaccepted) values (12, 10, false);
 INSERT INTO teams_tournament (tournament_id, team_id, isaccepted) VALUES (1, 1, true);
 INSERT INTO teams_tournament (tournament_id, team_id, isaccepted) VALUES (1, 2, true);
 INSERT INTO teams_tournament (tournament_id, team_id, isaccepted) VALUES (1, 3, true);
-INSERT INTO teams_tournament (tournament_id, team_id, isaccepted) VALUES (1, 5, true);
-INSERT INTO teams_tournament (tournament_id, team_id, isaccepted) VALUES (1, 6, true);
 INSERT INTO teams_tournament (tournament_id, team_id, isaccepted) VALUES (1, 7, false);
 INSERT INTO teams_tournament (tournament_id, team_id, isaccepted) VALUES (1, 9, false);
 
