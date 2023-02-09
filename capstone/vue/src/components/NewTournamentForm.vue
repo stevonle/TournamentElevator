@@ -14,14 +14,13 @@
       </div>
       <div class="mb-2">
         <label for="tournament-name">Tournament Game Type</label>
-        
+
         <select required class="form-control" v-model="tournament.gametype">
           <option value="1">Football</option>
           <option value="2">Soccer</option>
           <option value="3">Basketball</option>
           <option value="4">Volleyball</option>
           <option value="5">Quidditch</option>
-          
         </select>
       </div>
       <div class="mb-2">
@@ -84,7 +83,7 @@
         Create
       </button>
     </form>
-    <div class='filler'></div>
+    <div class="filler"></div>
   </div>
 </template>
 
@@ -117,9 +116,12 @@ export default {
           this.$router.push("/tournament/all");
           return;
         }
+<<<<<<< HEAD
 
         
         this.$router.push("/tournament/all");
+=======
+>>>>>>> main
       } catch (err) {
         console.log(err);
       }
@@ -141,6 +143,4 @@ export default {
   display: block;
   width: 100%;
 }
-
-
 </style>
