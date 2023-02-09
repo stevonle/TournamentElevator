@@ -114,8 +114,9 @@
         </form>
       </div>
     </div>
-
+    <TournamentBracket v-if="this.tournament" :tournament="this.tournament"/>
     <TournamentMatches v-if="this.tournament" :tournament="this.tournament" />
+    
     <div v-if="isHost()" class="invites-container">
       <table class="table table-bordered table-dark">
         <thead>
@@ -158,6 +159,7 @@
 <script>
 import TournamentServices from "../services/TournamentServices.js";
 import TournamentMatches from "../components/TournamentMatches.vue";
+import TournamentBracket from '../components/TournamentBracket.vue';
 export default {
   data() {
     return {
@@ -168,6 +170,7 @@ export default {
   },
   components: {
     TournamentMatches,
+    TournamentBracket,
   },
   created() {
     TournamentServices.getTournamentById(this.$route.params.id).then(

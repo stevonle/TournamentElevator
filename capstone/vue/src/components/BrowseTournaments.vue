@@ -5,7 +5,10 @@
       <Loading />
     </div>
     <div v-if="!loading" class="container">
-      <div class="mb-2 text-white filter-input" v-if="this.$route.name !== 'home'">
+      <div
+        class="mb-2 text-white filter-input"
+        v-if="this.$route.name !== 'home'"
+      >
         <label for="tournament-name">Filter Tournaments</label>
 
         <select @change="filteredTournament" required class="form-control">
@@ -27,6 +30,8 @@
             class="tournament-card card text-center text-white"
           >
             <h2>{{ tournament.name }}</h2>
+            <div><img :src="getGameIcon(tournament.gametype)" /></div>
+
             <p>Game Type: {{ getGameName(tournament.gametype) }}</p>
             <p>Date: {{ tournament.date }}</p>
             <p>Location: {{ tournament.location }}</p>
@@ -50,6 +55,7 @@
 import TournamentServices from "../services/TournamentServices.js";
 import Loading from "../components/Loading.vue";
 import { getGameName } from "../util/util.js";
+import { getGameIcon } from "../util/util.js";
 export default {
   data() {
     return {
@@ -62,7 +68,7 @@ export default {
     Loading,
   },
   async created() {
-    console.log(this.$route)
+    console.log(this.$route);
     try {
       const response = await TournamentServices.viewAllTournaments();
       if (response.status !== 200) {
@@ -83,6 +89,7 @@ export default {
 
   methods: {
     getGameName,
+    getGameIcon,
 
     viewTournamentDetails(tournamentId) {
       this.$router.push(`/tournament/${tournamentId}`);
@@ -119,9 +126,8 @@ export default {
   margin-top: 30px;
 }
 
-
 h4 {
-    text-shadow: 2px 2px #676767;
+  text-shadow: 2px 2px #676767;
 }
 
 .description-container {
