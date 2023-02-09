@@ -18,15 +18,15 @@ export function getGameName(type) {
 export function getGameIcon(gameId) {
   switch (gameId) {
     case 1:
-      return "img/Icons/football.png";
+      return "/img/Icons/football.png";
     case 2:
-      return "img/Icons/soccer.png";
+      return "/img/Icons/soccer.png";
     case 3:
-      return "img/Icons/basketball.png";
+      return "/img/Icons/basketball.png";
     case 4:
-      return "img/Icons/volleyball.png";
+      return "/img/Icons/volleyball.png";
     default:
-      return "img/Icons/default.png";
+      return "/img/Icons/default.png";
   }
 }
 
