@@ -83,6 +83,8 @@ public class JdbcTournamentDao implements TournamentDao{
     
     @Override
     public boolean deleteTournament(int tournamentId) {
+        String deleteTeamsFromTournamentSql = "DELETE FROM teams_tournament where tournament_id = ?;";
+        jdbcTemplate.update(deleteTeamsFromTournamentSql, tournamentId);
         String deleteTournamentSql = "DELETE FROM tournaments WHERE tournament_id = ?;";
         return jdbcTemplate.update(deleteTournamentSql, tournamentId) == 1;
     }

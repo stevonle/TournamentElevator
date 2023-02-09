@@ -1,5 +1,5 @@
 <template>
-  <div class="matches-container">
+  <div class="matches-container"> 
     <h2 class="text-center">Manage Tournament Matches</h2>
     <div class="mb-2 text-white filter-input">
       <label for="tournament-name">Current Round</label>
