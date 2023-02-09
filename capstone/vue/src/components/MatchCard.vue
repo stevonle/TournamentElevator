@@ -75,6 +75,7 @@
           >
             {{ this.match.isLocal ? "Save" : "Update" }}
           </button>
+          <p v-if="this.success" class="success-msg">{{ this.success }}</p>
         </div>
       </div>
     </form>
@@ -95,6 +96,7 @@ export default {
     return {
       match: null,
       errMessage: null,
+      success: null,
     };
   },
   created() {
@@ -122,7 +124,7 @@ export default {
               
             }
             this.$store.state.matches[this.$props.index] = this.match;
-            alert("Updated")
+            this.success = "Updated Successfully"
           });
           return;
         }
@@ -151,6 +153,10 @@ export default {
 }
 .err-message {
   color: red;
+}
+.success-msg {
+  color: green;
+  margin-top: 5px;
 }
 .del-btn {
   position: absolute;

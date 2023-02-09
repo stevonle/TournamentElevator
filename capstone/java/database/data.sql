@@ -25,14 +25,14 @@ INSERT INTO games (game_name) VALUES ('Volleyball');
 INSERT INTO games (game_name) VALUES ('Quidditch');
 
 --create teams
-INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description) VALUES ('The Avengers', FALSE ,'4','This is a description. '); --1 team_id
-INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description) VALUES ('Toon Squad', TRUE ,'7','This is a description. This is a description. '); --2
-INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description) VALUES ('Army of Whatever', TRUE ,'5','This is a description. This is a description. This is a description. '); --3
-INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description) VALUES ('Legion of Doom', TRUE ,'3','This is a description. This is a description. This is a description. This is a description. '); --4
-INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description) VALUES ('Janes Green Turtles', FALSE ,'6','This is a description. '); --5
-INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description) VALUES ('Bruces Blue Berries', FALSE ,'5','This is a description. '); --6
-INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description) VALUES ('Steve and the pirates', FALSE ,'4','This is a description. ');--7
-INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description) VALUES ('Defenders', FALSE ,'5','This is a description. '); --8
+INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description) VALUES ('The Avengers', FALSE ,'4','We can do this all day '); --1 team_id
+INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description) VALUES ('Toon Squad', TRUE ,'7','Whatever it is, we have a lot of it '); --2
+INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description) VALUES ('Army of Whatever', TRUE ,'5','Whenever, wherever, whatever '); --3
+INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description) VALUES ('Legion of Doom', TRUE ,'3','We will become an unstoppable force that no one will be able to... stop '); --4
+INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description) VALUES ('Janes Green Turtles', FALSE ,'6','Turtle Time! '); --5
+INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description) VALUES ('Bruces Blue Berries', FALSE ,'5','We''re new, but not newbs '); --6
+INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description) VALUES ('Steve and the pirates', FALSE ,'4','If you can dodge a wrench, you can dodge a ...');--7
+INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description) VALUES ('Defenders', FALSE ,'5','Defense wins championships'); --8
 INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description) VALUES ('Latvarian Dooms', FALSE ,'12','DOOM!'); --9
 INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description) VALUES ('Bob''s Boys', FALSE ,'3','Bob is pretty cool.'); --10
 
@@ -40,15 +40,15 @@ INSERT INTO teams(team_name, isacceptingmembers, team_captain, team_description)
 
 --tournaments
 INSERT INTO tournaments (tournament_name, game_type, tournament_date, tournament_location, fee,
- tournament_description, prize, host) VALUES ('THE BIG ONE', '1', '2023-02-28 10:23:54', 'Everywhere', '1000.00', 'This is a description. This is the BIG ONE!', 'Everything', '3');
+ tournament_description, prize, host) VALUES ('THE BIG ONE', '1', '2023-02-28 10:23:54', 'Everywhere', '1000.00', 'This is the BIG ONE!', 'Everything', '3');
  INSERT INTO tournaments (tournament_name, game_type, tournament_date, tournament_location, fee,
- tournament_description, prize, host) VALUES ('The Medium One', '2', '2023-03-20 10:23:54', 'My House', '100.00', 'This is a description. This is medium!', 'Pretty Good stuff', '3');
+ tournament_description, prize, host) VALUES ('The Medium One', '2', '2023-03-20 10:23:54', 'My House', '100.00', 'The sequel to the big one, not quite as big', 'Pretty Good stuff', '3');
   INSERT INTO tournaments (tournament_name, game_type, tournament_date, tournament_location, fee,
  tournament_description, prize, host) VALUES ('Quidditch Cup', '5', '2023-04-20 10:23:54', 'Hogwarts', '0.00', 'Invitation only! Get that snitch.', 'THE HOUSE CUP', '4');
  INSERT INTO tournaments (tournament_name, game_type, tournament_date, tournament_location, fee,
  tournament_description, prize, host) VALUES ('The Small One', '5', '2023-03-22 10:23:54', 'Ant Hill', '1.00', 'This one is pretty small.', 'Tiny Trinkets', '10');
  INSERT INTO tournaments (tournament_name, game_type, tournament_date, tournament_location, fee,
- tournament_description, prize, host) VALUES ('Tournament Elevator Final', '4', '2023-02-10 9:00:00', 'REMOTE', '0.00', 'We did it.', 'A job.', '3');
+ tournament_description, prize, host) VALUES ('Tournament Elevator Final', '4', '2023-02-10 9:00:00', 'REMOTE', '0', 'We did it.', 'A job.', '3');
  
 --team members
 INSERT INTO user_teams (user_id, team_id, isaccepted) values (4, 1, true); -- team 1
