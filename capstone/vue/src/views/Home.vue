@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <banner/>
     <browse-tournaments/>
     <hr class="solid"/>
     <user-teams/>
@@ -10,13 +11,14 @@
 </template>
 
 <script>
+import banner from '../components/banner.vue'
 import BrowseTournaments from '../components/BrowseTournaments.vue';
 // import TeamsList from '../components/TeamsList.vue';
 import UserTeams from '../components/UserTeams.vue';
 import TeamCarousel from '../components/TeamCarousel.vue';
 
 export default {
-  components: {  BrowseTournaments, UserTeams, TeamCarousel },
+  components: {  banner, BrowseTournaments, UserTeams, TeamCarousel },
   name: "home",
  
 };
