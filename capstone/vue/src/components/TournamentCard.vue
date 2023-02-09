@@ -115,7 +115,7 @@
       </div>
     </div>
     <TournamentBracket v-if="this.tournament" :tournament="this.tournament"/>
-    <TournamentMatches v-if="this.tournament" :tournament="this.tournament" />
+    <TournamentMatches v-if="this.tournament && isHost()" :tournament="this.tournament" />
     
     <div v-if="isHost()" class="invites-container">
       <table class="table table-bordered table-dark">

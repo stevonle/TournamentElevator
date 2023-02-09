@@ -2,7 +2,7 @@
 <template>
   <section class="bracket-container" v-if="matches.length > 0">
     <div v-for="(round, idx) in numOfRounds" :key="idx" class="bracket-container container">
-      <h4 class="round-title">Round: {{ idx + 1 }} - {{ $props.tournament.date }}</h4>
+      <h4 class="round-title">Round: {{ idx + 1 }}</h4>
       <table class="bracket">
         <!-- <tr>
           <th>Team One</th>
@@ -11,11 +11,11 @@
         <div v-for="match in getMatchesByRound(round)" :key="match.pairing_id" class="match">
           
           <tr>
-            <td><p>Team One: {{ getTeamName(match.team_one) }} {{match.team_one_wins}}</p></td>
+            <td><p> {{ getTeamName(match.team_one) }} {{match.team_one_wins}}</p></td>
            
           </tr>
           <tr>
-            <td><p>Team Two: {{ getTeamName(match.team_two)}} {{match.team_two_wins}}</p></td>
+            <td><p> {{ getTeamName(match.team_two)}} {{match.team_two_wins}}</p></td>
           </tr>
         </div>
       </table>
