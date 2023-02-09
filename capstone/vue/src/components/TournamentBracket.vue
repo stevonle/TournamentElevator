@@ -1,6 +1,6 @@
 // consulted http://jsfiddle.net/4KZ6T/236/
 <template>
-  <section class="bracket-container">
+  <section class="bracket-container" v-if="matches.length > 0">
     <div v-for="(round, idx) in numOfRounds" :key="idx" class="bracket-container container">
       <h4 class="round-title">Round: {{ idx + 1 }}</h4>
       <table class="bracket">
