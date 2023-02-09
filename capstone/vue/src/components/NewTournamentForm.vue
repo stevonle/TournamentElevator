@@ -113,10 +113,12 @@ export default {
         );
         if (response.status !== 201) {
           console.log(response.statusText);
+          this.$store.commit("SAVE_TOURNAMENT", this.tournament);
+          this.$router.push("/tournament/all");
           return;
         }
 
-        this.$store.commit("SAVE_TOURNAMENT", this.tournament);
+        
         this.$router.push("/tournament/all");
       } catch (err) {
         console.log(err);
