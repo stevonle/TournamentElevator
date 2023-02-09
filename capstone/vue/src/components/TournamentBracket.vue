@@ -8,6 +8,7 @@
           <th>Team One</th>
           <th>Team Two</th>
         </tr> -->
+        <hr class="solid"/>
         <div v-for="match in getMatchesByRound(round)" :key="match.pairing_id" class="match">
           
           <tr>
@@ -16,6 +17,7 @@
           </tr>
           <tr>
             <td><p> {{ getTeamName(match.team_two)}} {{match.team_two_wins}}</p></td>
+            <hr class="solid"/>
           </tr>
         </div>
       </table>
@@ -168,5 +170,10 @@ table.bracket {
 h4 {
   text-shadow: 2px 2px #676767;
   color: white;
+}
+.solid {
+  border-top: 2px solid #676767;
+  width: 100%;
+  margin: auto;
 }
 </style>
