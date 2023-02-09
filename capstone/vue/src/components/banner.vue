@@ -19,7 +19,7 @@ export default {
 .banner {
   width: 100%;
   max-height: 170px;
-  margin-bottom: 280px;
+  /* margin-bottom: 280px; */
 }
 
 .phrase {
@@ -30,6 +30,6 @@ export default {
 }
 
 .welcome {
-  margin-top: 200px;
+  /* margin-top: 200px; */
 }
 </style>
