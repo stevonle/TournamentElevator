@@ -25,7 +25,6 @@ public class TournamentController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    //@ResponseStatus(code = HttpStatus.CREATED, reason = "Created")
     @RequestMapping(path = "/create", method = RequestMethod.POST)
     public boolean create(@RequestBody Tournament tournament, Principal principal){
         boolean success = false;
@@ -45,7 +44,6 @@ public class TournamentController {
         Tournament tournament = dao.getTournamentById(id);
         List<Invite> invites = dao.getTournamentInvitesById(id);
         tournament.setInvites(invites);
-
         return tournament;
     }
 

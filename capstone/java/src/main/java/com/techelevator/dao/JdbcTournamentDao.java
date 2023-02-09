@@ -41,16 +41,15 @@ public class JdbcTournamentDao implements TournamentDao{
     @Override
     public List<Invite> getTournamentInvitesById(int tournamentId) {
         List<Invite> invites = new ArrayList<>();
-        String selectTournamentSql = "SELECT teams.team_name, teams_tournament.* FROM teams_tournament JOIN teams ON teams.team_id = teams_tournament.team_id WHERE tournament_id = ?;";
+        String selectTournamentSql = "SELECT teams.team_name, teams_tournament.* FROM teams_tournament " +
+                                     "JOIN teams ON teams.team_id = teams_tournament.team_id " +
+                                     "WHERE tournament_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(selectTournamentSql, tournamentId);
-
         while(results.next()) {
             invites.add(mapRowToInvite(results));
         }
         return invites;
     }
-
-
 
     @Override
     public List<Tournament> getAllTournaments() {
@@ -123,10 +122,7 @@ public class JdbcTournamentDao implements TournamentDao{
         invite.setTournament_id(rs.getInt("tournament_id"));
         invite.setTeam_id(rs.getInt("team_id"));
         invite.setAccepted(rs.getBoolean("isAccepted"));
-
         return invite;
-
     }
-
 
 }

@@ -259,6 +259,7 @@ export default {
 .card-container {
   width: 500px;
   margin: 25px auto;
+  color: white;
 }
 
 .delete-btn {

@@ -1,13 +1,13 @@
 body {
     margin: 0;
-    padding: 70px;
+    padding: 70px 0px 70px 0px;
     background-color: darkgray;
    
 }
 
-.filler {
+/* .filler {
     margin: 0px auto 400px auto;
-}
+} */
 
 h2 {
     text-shadow: 2px 2px #676767;
@@ -16,8 +16,9 @@ h2 {
 h1 {
     color: #ff7300;
     text-align: center;
-    margin: 20px 0px 50px 0px;
+    margin-top: 50px;
     text-shadow: 2px 2px #753500;
+    font-family: 'Permanent Marker', sans-serif;
   }
 
 h3 {
