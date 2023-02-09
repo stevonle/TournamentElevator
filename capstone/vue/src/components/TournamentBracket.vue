@@ -1,21 +1,23 @@
 // consulted http://jsfiddle.net/4KZ6T/236/
 <template>
-  <section>
-    <div v-for="(round, idx) in numOfRounds" :key="idx">
-      <h4>Round: {{ idx + 1 }} - {{ $props.tournament.date }}</h4>
+  <section class="bracket-container">
+    <div v-for="(round, idx) in numOfRounds" :key="idx" class="bracket-container container">
+      <h4 class="round-title">Round: {{ idx + 1 }} - {{ $props.tournament.date }}</h4>
       <table class="bracket">
         <!-- <tr>
           <th>Team One</th>
           <th>Team Two</th>
         </tr> -->
-        <tr v-for="match in getMatchesByRound(round)" :key="match.pairing_id">
-          <td>
-            <p>{{ getTeamName(match.team_one) }}</p>
-          </td>
-          <td>
-            <p>{{ getTeamName(match.team_two) }}</p>
-          </td>
-        </tr>
+        <div v-for="match in getMatchesByRound(round)" :key="match.pairing_id" class="match">
+          
+          <tr>
+            <td><p>Team One: {{ getTeamName(match.team_one) }} {{match.team_one_wins}}</p></td>
+           
+          </tr>
+          <tr>
+            <td><p>Team Two: {{ getTeamName(match.team_two)}} {{match.team_two_wins}}</p></td>
+          </tr>
+        </div>
       </table>
     </div>
     <!-- <table
@@ -96,24 +98,55 @@ export default {
 table.bracket {
   border-collapse: collapse;
   border: none;
+  display: inline;
 }
 
 .bracket td {
-  width: 40em;
+  width: 20em;
   margin: 0;
   padding: 10px 0px 10px 0px;
   display: block;
 }
 
 .bracket td p {
-  border-bottom: solid 1px #ff7300;
-  border-top: solid 1px #ff7300;
-  border-right: solid 1px #ff7300;
-  margin: 0;
+  border-bottom: solid 1px white;
+  border-top: solid 1px white;
+  border-right: solid 1px white;
+  margin: auto 5px;
   padding: 5px 5px 5px 5px;
+  color: white;
 }
 
 .bracket th {
   text-align: center;
+}
+
+.bracket-container {
+  background-color: #ff7300;
+  width: 75%;
+  height: 500px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas: "round-title round-title round-title round-title"
+  "match match match match"
+  "match match match match"
+  "match match match match";
+}
+
+.match {
+  grid-area: match;
+}
+.round-title {
+  grid-area: round-title;
+}
+.bracket-lead {
+  margin-left: 100px;
+  justify-content: right;
+}
+h4 {
+  text-shadow: 2px 2px #676767;
+  color: white;
 }
 </style>

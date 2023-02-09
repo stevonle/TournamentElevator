@@ -1,8 +1,7 @@
 <template>
 <div>
     <BrowseTournaments/>
-    <div class='filler'>
-        </div>
+  
 </div>
 
 </template>
@@ -20,8 +19,6 @@ export default {
 </script>
 
 <style>
-.filler {
-    margin: 0px auto 500px auto;
-}
+
 
 </style>
