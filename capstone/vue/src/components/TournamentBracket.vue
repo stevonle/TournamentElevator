@@ -25,26 +25,15 @@
       :key="idx"
     >
       <tr>
-<<<<<<< HEAD
-        <th>Round {{ idx }} <br /></th>
-=======
         <th>
           Round {{ idx }} <br />
           {{ $props.tournament.date }}
         </th>
->>>>>>> main
       </tr>
       <tr v-for="match in matches" :key="match.pairing_id">
         <td>
           <p>{{ getTeamName(match.team_one) }}</p>
         </td>
-<<<<<<< HEAD
-        <td rowspan="2"><p></p></td>
-        <td rowspan="4"><p></p></td>
-      </tr>
-      <tr  v-for="pairing in this.pairings" :key="pairing.id">
-=======
->>>>>>> main
         <td>
           <p>{{ getTeamName(match.team_two) }}</p>
         </td>
@@ -59,13 +48,7 @@ export default {
   data() {
     return {
       numOfRounds: 1,
-<<<<<<< HEAD
-      tournament: null,
-      filteredPairs: {},
-      currentRound: 1,
-=======
       matches: [],
->>>>>>> main
     };
   },
   props: {
@@ -93,16 +76,8 @@ export default {
           return 4;
       }
     },
-<<<<<<< HEAD
-    getTeamName(teamID) {
-      TournamentServices.getTeamById(teamID).then((res) => {
-        console.log(res.data.team_name);
-        return res.data.team_name;
-      });
-=======
     getMatchesByRound(round) {
       return this.matches.filter((m) => m.round === round);
->>>>>>> main
     },
     getTeamName(teamID) {
       if (!this.$props.tournament || !this.$props.tournament.invites)

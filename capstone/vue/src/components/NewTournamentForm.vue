@@ -116,12 +116,9 @@ export default {
           this.$router.push("/tournament/all");
           return;
         }
-<<<<<<< HEAD
 
         
         this.$router.push("/tournament/all");
-=======
->>>>>>> main
       } catch (err) {
         console.log(err);
       }
