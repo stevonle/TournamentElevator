@@ -30,7 +30,7 @@
             class="tournament-card card text-center text-white"
           >
             <h2>{{ tournament.name }}</h2>
-            <div><img src="/img/Icons/basketball.png" /></div>
+            <div><img :src="getGameIcon(tournament.gametype)" /></div>
 
             <p>Game Type: {{ getGameName(tournament.gametype) }}</p>
             <p>Date: {{ tournament.date }}</p>
@@ -55,6 +55,7 @@
 import TournamentServices from "../services/TournamentServices.js";
 import Loading from "../components/Loading.vue";
 import { getGameName } from "../util/util.js";
+import { getGameIcon } from "../util/util.js";
 export default {
   data() {
     return {
@@ -88,6 +89,7 @@ export default {
 
   methods: {
     getGameName,
+    getGameIcon,
 
     viewTournamentDetails(tournamentId) {
       this.$router.push(`/tournament/${tournamentId}`);
@@ -123,7 +125,6 @@ export default {
   cursor: pointer;
   margin-top: 30px;
 }
-
 
 h4 {
   text-shadow: 2px 2px #676767;
